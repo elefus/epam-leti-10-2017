@@ -1,4 +1,4 @@
-package com.gubadev.task1p2;
+package com.epam.jf.guba.homework;
 
 public class CommandLineArgs {
 

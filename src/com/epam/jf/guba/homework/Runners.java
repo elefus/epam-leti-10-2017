@@ -1,4 +1,4 @@
-package com.gubadev.task1p1;
+package com.epam.jf.guba.homework;
 
 public class Runners {
 

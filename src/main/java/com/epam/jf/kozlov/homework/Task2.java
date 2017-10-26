@@ -1,4 +1,4 @@
-package com.epam.jf.kozlov.homework;
+package main.java.com.epam.jf.kozlov.homework;
 
 public class Task2 {
     public static void main(String[] args) {

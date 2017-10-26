@@ -6,9 +6,9 @@ public class Task2 {
         int min = 0;
         try {
             for (int i = 0; i < args.length; i++) {
-                if (args[i].length() > args[max].length())
+                if (args[i].length() >= args[max].length())
                     max = i;
-                if (args[i].length() < args[min].length())
+                if (args[i].length() <= args[min].length())
                     min = i;
             }
             System.out.println("String with minimum length:" + args[min]);

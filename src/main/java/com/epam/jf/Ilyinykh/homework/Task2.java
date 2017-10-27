@@ -1,4 +1,4 @@
-package com.epam;
+package com.epam.jf.ilyinykh.homework;
 
 public class Task2 {
     public static void main(String[] args) {

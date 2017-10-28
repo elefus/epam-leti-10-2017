@@ -20,7 +20,7 @@ public class MaxMinLength {
             }
 
             System.out.println("Минимальная строка среди представленных: " + args[minLenIndex]);
-            System.out.println("Максималья строка среди представленных: " + args[maxLenIndex]);
+            System.out.println("Максимальная строка среди представленных: " + args[maxLenIndex]);
         }
     }
 }

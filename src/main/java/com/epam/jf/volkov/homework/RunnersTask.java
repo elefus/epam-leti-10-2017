@@ -11,9 +11,9 @@ public class RunnersTask {
             if (times[i]<times[second]) {
                 second = i;
                 if (times[second]<times[first]) {
-                    first = second+first;
-                    second = first-second;
-                    first = first - second;
+                    int temp = first;
+                    first = second;
+                    second = temp;
                 }
             }
         }

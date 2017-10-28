@@ -18,22 +18,22 @@ public class Task2 {
 
     public static void main(String[] args) {
         int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        int[] index = new int[]{-1, -1};
+        int iMin = -1, iMax = -1;
         for (int i = 0; i < args.length; i++) {
             int len = args[i].length();
-            if (index[0] == -1 || min >= len) {
+            if (iMin == -1 || min >= len) {
                 min = len;
-                index[0] = i;
+                iMin = i;
             }
-            if (index[1] == -1 || max <= len) {
+            if (iMax == -1 || max <= len) {
                 max = len;
-                index[1] = i;
+                iMax = i;
             }
         }
 
-        if (index[0] != -1 && index[1] != -1) {
-            System.out.println("Минимальная строка среди представленных: " + args[index[0]]);
-            System.out.println("Максимальная строка среди представленных: " + args[index[1]]);
+        if (iMin != -1 && iMax != -1) {
+            System.out.println("Минимальная строка среди представленных: " + args[iMin]);
+            System.out.println("Максимальная строка среди представленных: " + args[iMax]);
         }
 
     }

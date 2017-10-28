@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.dementyev.homework;
+package com.epam.jf.dementyev.homework;
 
 /**
  * На вход программе подается несколько строк (через параметры командной строки args).

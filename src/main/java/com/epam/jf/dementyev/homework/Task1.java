@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.dementyev.homework;
+package com.epam.jf.dementyev.homework;
 
 /**
  * Группа людей участвует в марафоне, их имена и время за которое они пробежали марафон представленны в массиве.

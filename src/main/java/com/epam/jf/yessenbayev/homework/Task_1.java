@@ -8,12 +8,12 @@ public class Task_1 {
 
         int max = 0;
         int preMax = 0;
-        for(int i = 0; i < times.length; i++){
+        for(int i = 1; i < times.length; i++){
             if (max != i && times[i] > times[max]) {
                 preMax = max;
                 max = i;
             } else
-            if (preMax != i && times[i] > times[preMax] && times[i] < times[max])
+            if (preMax != i && times[i] > times[preMax])
                 preMax = i;
         }
 

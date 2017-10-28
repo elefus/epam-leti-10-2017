@@ -17,24 +17,24 @@ package com.epam.jf.dementyev.homework;
 public class Task2 {
 
     public static void main(String[] args) {
-        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
-        int iMin = -1, iMax = -1;
-        for (int i = 0; i < args.length; i++) {
-            int len = args[i].length();
-            if (iMin == -1 || min >= len) {
-                min = len;
-                iMin = i;
+        if (args.length > 0) {
+            int min = args[0].length();
+            int max = min;
+            int iMin = 0;
+            int iMax = 0;
+            for (int i = 1; i < args.length; i++) {
+                int len = args[i].length();
+                if (min >= len) {
+                    min = len;
+                    iMin = i;
+                }
+                if (max <= len) {
+                    max = len;
+                    iMax = i;
+                }
             }
-            if (iMax == -1 || max <= len) {
-                max = len;
-                iMax = i;
-            }
-        }
-
-        if (iMin != -1 && iMax != -1) {
             System.out.println("Минимальная строка среди представленных: " + args[iMin]);
             System.out.println("Максимальная строка среди представленных: " + args[iMax]);
         }
-
     }
 }

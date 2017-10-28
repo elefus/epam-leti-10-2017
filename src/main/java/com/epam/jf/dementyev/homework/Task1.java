@@ -13,7 +13,8 @@ public class Task1 {
                 "Jane", "Emily", "Daniel", "Neda", "Aaron", "Kate"};
         int[] times = {341, 273, 278, 329, 445, 402, 388, 275, 243, 334, 412, 393, 299, 343, 317, 265};
 
-        int min1 = 0, min2 = 0;
+        int min1 = 0;
+        int min2 = 0;
         for (int i = 1; i < times.length; i++) {
             if (times[min1] > times[i]) {
                 min2 = min1;

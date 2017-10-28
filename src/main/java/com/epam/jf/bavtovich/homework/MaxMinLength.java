@@ -12,11 +12,11 @@ public class MaxMinLength {
             for (int i = 1; i < args.length; i++) {
                 if (args[i].length() >= args[maxLenIndex].length()) {
                     maxLenIndex = i;
-                } else {
-                    if (args[i].length() <= args[minLenIndex].length()) {
-                        minLenIndex = i;
                     }
-                }
+                if (args[i].length() <= args[minLenIndex].length()) {
+                    minLenIndex = i;
+                    }
+
             }
 
             System.out.println("Минимальная строка среди представленных: " + args[minLenIndex]);

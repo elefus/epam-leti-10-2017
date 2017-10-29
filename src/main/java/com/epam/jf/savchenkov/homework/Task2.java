@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.savchenkov.homework.task1;
+package main.java.com.epam.jf.savchenkov.homework;
 
 /**
  *
@@ -16,7 +16,7 @@ package main.java.com.epam.jf.savchenkov.homework.task1;
  * Максимальная строка среди представленных: edf
  */
 
-public class Main {
+public class Task2 {
 
     public static void main(String[] args) {
         String max = args[0], min = args[0];

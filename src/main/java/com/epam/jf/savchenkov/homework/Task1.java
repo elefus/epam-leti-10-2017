@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.savchenkov.homework.task2;
+package main.java.com.epam.jf.savchenkov.homework;
 
 /**
  * №1.
@@ -8,7 +8,7 @@ package main.java.com.epam.jf.savchenkov.homework.task2;
  * (Опционально) Найти человека, который прибежал вторым.
  */
 
-public class Main {
+public class Task1 {
 
     public static void main(String[] args) {
         String[] names = {"Elena", "Thomas", "Hamilton", "Suzie", "Phil", "Matt", "Alex", "Emma", "John",

@@ -1,4 +1,6 @@
-public class main {
+package main.java.com.epam.jf.Kazakov.homework;
+
+public class Task2 {
     public static void main(String...args) {
         int maxStringLength = args[0].length();
         int indexMaxStringLength = 0;

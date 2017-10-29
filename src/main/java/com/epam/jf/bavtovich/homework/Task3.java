@@ -6,9 +6,8 @@ public class Task3 {
         if (args.length != 1) {
             System.out.println("Invalid format of input data");
         } else {
-            int timeFromStart;
-            timeFromStart = Integer.parseInt(args[0]);
-            int timeFromBeginCycle = timeFromStart % 10;
+
+            int timeFromBeginCycle = Integer.parseInt(args[0]) % 10;
 
             String ifLight = whatColorIndicateIf(timeFromBeginCycle);
             String switchLight = whatColorIndicateSwitch(timeFromBeginCycle);

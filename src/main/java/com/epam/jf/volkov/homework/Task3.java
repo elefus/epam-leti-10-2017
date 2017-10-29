@@ -16,8 +16,8 @@ public class Task3 {
      */
     public static void main(String[] args) {
         try {
-            int time = Integer.parseInt(args[0])%12;
-            // || GREEN 0 1 2 3 | YELLOW 4 5 | RED 6 7 8 9 | YELLOW 10 11 || GREEN 12 13 14 15 | YELLOW 16 17 | RED 18 19 ..
+            int time = Integer.parseInt(args[0])%10;
+            // || GREEN 0 1 2 3 | YELLOW 4 5 | RED 6 7 8 9 || GREEN 10 11 12 13 | YELLOW 14 15 | RED 16 17 ..
             String ifresult = ifelsemethod(time);
             String switchresult = switchmethod(time);
             System.out.println("The if-else operator result color is: "+ifresult);
@@ -46,8 +46,6 @@ public class Task3 {
                 break;
             case 4:
             case 5:
-            case 10:
-            case 11:
                 result = "YELLOW";
                 break;
             case 6:

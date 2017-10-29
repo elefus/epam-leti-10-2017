@@ -16,7 +16,7 @@ public class Task3 {
      */
     public static void main(String[] args) {
         try {
-            int time = Integer.valueOf(args[0]) % 12;
+            int time = Integer.valueOf(args[0]) % 10;
             String color1 = SolveWithIf(time);
             String color2 = SolveWithSwitch(time);
             System.out.println(color1);
@@ -29,7 +29,7 @@ public class Task3 {
     private static String SolveWithIf(int time) {
         if (time >= 0 && time <= 3)
             return "Зелёный";
-        else if (time == 4 || time == 5 || time == 10 || time == 11)
+        else if (time == 4 || time == 5)
             return "Жёлтый";
         else if (time >= 6 && time <= 9)
             return "Красный";
@@ -45,8 +45,6 @@ public class Task3 {
                 return "Зелёный";
             case 4:
             case 5:
-            case 10:
-            case 11:
                 return "Жёлтый";
             case 6:
             case 7:

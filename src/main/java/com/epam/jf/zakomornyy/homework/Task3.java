@@ -1,7 +1,6 @@
 package com.epam.jf.zakomornyy.homework;
 
 public class Task3 {
-
     /**
      * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
      */
@@ -21,7 +20,6 @@ public class Task3 {
         }else {
             System.out.println("Enter at least one argument");
         }
-
     }
 
     public static void trafficLightsSimulationWithIf(int seconds){
@@ -57,3 +55,4 @@ public class Task3 {
         }
     }
 }
+

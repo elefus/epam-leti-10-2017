@@ -24,9 +24,9 @@ public class Task3 {
 
     public static void trafficLightsSimulationWithIf(int seconds){
         int secondsModTen = seconds % 10;
-        if(secondsModTen >= 0 && secondsModTen <= 3) {
+        if(secondsModTen <= 3) {
             System.out.println("Green");
-        } else if(secondsModTen >= 4 && secondsModTen <= 5) {
+        } else if(secondsModTen <= 5) {
             System.out.println("Yellow");
         } else {
             System.out.println("Red");

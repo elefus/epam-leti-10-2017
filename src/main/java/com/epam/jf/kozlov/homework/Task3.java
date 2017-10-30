@@ -5,7 +5,7 @@ public class Task3 {
     /**
      * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
      */
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args){
         try {
             int i = Integer.parseInt(args[0]);
             if(i < 0)

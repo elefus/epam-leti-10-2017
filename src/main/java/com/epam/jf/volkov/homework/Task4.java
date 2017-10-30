@@ -31,13 +31,13 @@ public class Task4 {
 
     private static int countSymbols(String str) {
         int uniqueChars = str.length();
-        for (int lastIndex = 0; lastIndex<str.length(); lastIndex++) {
+        chariteration: for (int lastIndex = 0; lastIndex<str.length(); lastIndex++) {
             char lastChar = str.charAt(lastIndex);
             for (int anotherIndex = 0; anotherIndex<lastIndex; anotherIndex++) {
                 char anotherChar = str.charAt(anotherIndex);
                 if ((lastChar^anotherChar)==0) {
                     uniqueChars--;
-                    lastIndex++;
+                    continue chariteration;
                 }
             }
         }

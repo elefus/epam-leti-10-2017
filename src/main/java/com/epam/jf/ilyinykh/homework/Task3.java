@@ -16,6 +16,30 @@ public class Task3 {
      */
     public static void main(String[] args) {
         int number = Integer.valueOf(args[0]) % 10;
+        ifMethod(number);
+        switchMethod(number);
+    }
+
+    private static void switchMethod(int number) {
+        switch (number) {
+            case 0:
+            case 2:
+            case 3:
+                System.out.println("Зеленый");
+                break;
+            case 4:
+            case 5:
+                System.out.println("Желтый");
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                System.out.println("Красный");
+        }
+    }
+
+    private static void ifMethod(int number) {
         if (number <= 3) {
             System.out.println("Заленый");
         } else if (number <= 5) {

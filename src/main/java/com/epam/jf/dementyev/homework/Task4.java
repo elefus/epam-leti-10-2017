@@ -34,7 +34,8 @@ public class Task4 {
 
     private static int GetCountOfDifferentSymbol(String word) {
         long bitmap = 0;
-        for (char c: word.toCharArray()) {
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
             if (c >= 'A' && c <= 'Z')
                 bitmap |= 1L << (c - 'A');
             else if (c >= 'a' && c <= 'z')

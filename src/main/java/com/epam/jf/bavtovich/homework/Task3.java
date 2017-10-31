@@ -24,9 +24,7 @@ public class Task3 {
         else if (time < 6) {
             return "Yellow light";
         }
-        else {
-            return "Red light";
-        }
+        return "Red light";
     }
 
     private static String whatColorIndicateSwitch(int time) {
@@ -39,13 +37,8 @@ public class Task3 {
             case 4:
             case 5:
                 return "Yellow light";
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-                return "Red light";
             default:
-                return "Error";
+                return "Red light";
         }
     }
 

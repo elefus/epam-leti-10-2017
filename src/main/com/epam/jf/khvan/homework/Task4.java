@@ -1,4 +1,4 @@
-package com.epam.jf.common.homework;
+package com.epam.jf.khvan.homework;
 
 /**
  * На вход программе подается несколько строк (через параметры командной строки args).
@@ -15,8 +15,10 @@ package com.epam.jf.common.homework;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
-public class Task4 {
+import java.awt.image.AreaAveragingScaleFilter;
+import java.util.ArrayList;
 
+public class Task4 {
     public static void main (String [] args) {
         int number=0;
         int max=0;
@@ -24,7 +26,7 @@ public class Task4 {
         int difLetter=0;
         ArrayList<Integer> arrayNumberLetter=new ArrayList<>();
         int min=0;
-        for (int r=0;r<args.length;r++) {
+        for (int r=0;r<args.length;r++) { // по словам
             char[] letters =   args[r].toCharArray();
             for (int i=0;i<letters.length-1;i++){ // текущую букву с остальными
                 for(int j=i+1;j<letters.length;j++){
@@ -39,11 +41,10 @@ public class Task4 {
                 }
             }
             if(letters[letters.length-1]!=0){difLetter++;}
-
             arrayNumberLetter.add(difLetter);
-            min=arrayNumberLetter.get(0);
-            if(r>0 & r<=5){
-                if(min > arrayNumberLetter.get(r)){
+            if(r>0 & r<args.length){
+                if(min==0){min=arrayNumberLetter.get(0);}
+                if(min > arrayNumberLetter.get(r) ){
                     min= arrayNumberLetter.get(r);
                     k=r;
                 }
@@ -51,8 +52,9 @@ public class Task4 {
             difLetter=0;
         }
         System.out.println(args[k]);
-
     }}
+
+
 
 
 

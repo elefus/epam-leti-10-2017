@@ -23,6 +23,7 @@ public class Task3 {
     private static void switchMethod(int number) {
         switch (number) {
             case 0:
+            case 1:
             case 2:
             case 3:
                 System.out.println("Зеленый");

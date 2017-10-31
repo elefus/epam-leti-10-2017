@@ -1,4 +1,4 @@
-package com.epam.jf.guba.homework;
+package main.java.com.epam.jf.guba.homework;
 
 public class CommandLineArgs {
 

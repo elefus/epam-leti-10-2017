@@ -1,4 +1,4 @@
-package com.epam.jf.khvan.homework.StringsQuest.java
+package com.epam.jf.khvan.homework;
 
 public class StringsQuest {
     public static void main(String [] m) {

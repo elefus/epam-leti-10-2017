@@ -1,4 +1,4 @@
-package com.epam.jf.common.homework;
+package com.epam.jf.khvan.homework;
 
 /**
  * Необходимо смоделировать работу светофора.
@@ -10,35 +10,31 @@ package com.epam.jf.common.homework;
  * Задачу можно решить используя операторы условного ветвления if и switch, следует реализовать оба варианта.
  */
 public class Task3 {
-
-    /**
-     * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
-     */
     public static void main(String[] args) {
         // TODO решение задачи
         if(args.length>0){
             int n =Integer.parseInt(args[0]);
             switch (n){
                 case 0..3:System.out.println("Green");
-                          break;
+                    break;
                 case 4..5:System.out.println("Yellow");
-                          break;
+                    break;
                 case 6..9:System.out.println("Red");
-                          break;
-                          default:
-                              System.out.println("Inavailable"); }
+                    break;
+                default:
+                    System.out.println("Inavailable"); }
 
-            if(n>=0 & n <=3){
-                 System.out.println("Green");
-             }
-                   else    if(n>=4 & n<=5){
-                 System.out.println("Yellow");
-             }
-                   else     if(n>=6 & n<=9){
-                 System.out.println("Red");
-             } else {
-                 System.out.println("Inavailable");
-             }
+                    if(n>=0 & n <=3){
+                System.out.println("Green");
+            }
+            else  if(n>=4 & n<=5){
+                System.out.println("Yellow");
+            }
+            else  if(n>=6 & n<=9){
+                System.out.println("Red");
+            } else {
+                System.out.println("Inavailable");
+            }
         }
     }
 }

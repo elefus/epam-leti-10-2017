@@ -18,39 +18,35 @@ public class Task3 {
     }
 
     private static String whatColorIndicateIf(int time) {
-        String answer = "";
         if (time <= 3) {
-            answer = "Green light";
+            return "Green light";
         }
-        if (time > 3 & time <6) {
-            answer = "Yellow light";
+        else if (time < 6) {
+            return "Yellow light";
         }
-        if (time > 6) {
-            answer = "Red light";
+        else {
+            return "Red light";
         }
-        return answer;
     }
 
     private static String whatColorIndicateSwitch(int time) {
-        String answer = "";
         switch (time) {
             case 0:
             case 1:
             case 2:
             case 3:
-                answer = "Green light";
-                break;
+                return "Green light";
             case 4:
             case 5:
-                answer = "Yellow light";
-                break;
+                return "Yellow light";
             case 6:
             case 7:
             case 8:
             case 9:
-                answer = "Red light";
+                return "Red light";
+            default:
+                return "Error";
         }
-        return answer;
     }
 
 }

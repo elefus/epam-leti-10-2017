@@ -46,28 +46,19 @@ public class Task4 {
         for (int i = 0; i < Str.length(); i++){
             CharIntValue = (int)Str.charAt(i);
             // Если uppercase
-            if (CharIntValue >= 65 && CharIntValue <= 90){
+            if (CharIntValue >= 65 && CharIntValue <= 90)
                 CharIntValue -= 65;
-                // Если символ ещё не учитывался
-                if((Bitmap & (1L<<CharIntValue)) == 0){
-                    DiffCharNum++;
-                    // Учитываем символ в битовой карте
-                    Bitmap |= 1L<<CharIntValue;
-                }
-            }
             // Если lowercase
-            else if (CharIntValue >= 97 && CharIntValue <= 122){
+            else if (CharIntValue >= 97 && CharIntValue <= 122)
                 CharIntValue -= 71;
-                // Если символ ещё не учитывался
-                if((Bitmap & (1L<<CharIntValue)) == 0){
-                    DiffCharNum++;
-                    // Учитываем символ в битовой карте
-                    Bitmap |= 1L<<CharIntValue;
-                }
-            }
             // Если строка содержит недопустимые символы
-            else{
+            else
                 throw new IllegalArgumentException();
+            // Если символ ещё не учитывался
+            if((Bitmap & (1L<<CharIntValue)) == 0){
+                DiffCharNum++;
+                // Учитываем символ в битовой карте
+                Bitmap |= 1L<<CharIntValue;
             }
         }
         return DiffCharNum;

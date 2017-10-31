@@ -33,23 +33,13 @@ public class Task4 {
     }
 
     private static int GetCountOfDifferentSymbol(String word) {
-        int uppercase = 0;
-        int lowercase = 0;
+        long bitmap = 0;
         for (char c: word.toCharArray()) {
             if (c >= 'A' && c <= 'Z')
-                uppercase |= 1 << (c - 'A');
+                bitmap |= 1L << (c - 'A');
             else if (c >= 'a' && c <= 'z')
-                lowercase |= 1 << (c - 'a');
+                bitmap |= 1L << (c - 'a' + ('Z' - 'A' + 1));
         }
-        return bitCounter(uppercase) + bitCounter(lowercase);
-    }
-
-    private static int bitCounter(int n) {
-        int count = 0;
-        while (n != 0) {
-            count++;
-            n = n & (n - 1);
-        }
-        return count;
+        return Long.bitCount(bitmap);
     }
 }

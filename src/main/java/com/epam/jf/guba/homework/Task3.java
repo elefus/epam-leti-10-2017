@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.guba.homework;
+package com.epam.jf.guba.homework;
 
 /**
  * Необходимо смоделировать работу светофора.

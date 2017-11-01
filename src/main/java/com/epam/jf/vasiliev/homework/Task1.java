@@ -9,9 +9,9 @@ public class Task1 {
    		int first = 0;
    		int second = 0;
    		for(int i = 0; i < times.length;i++) {
-   			if(times[i] < times[second]) {
-   				second = i;
-   				if(second > first) {
+   			if(times[i] < times[first]) {
+   				first = i;
+   				if(second < first) {
    					int buff = first;
    					first = second;
    					second = buff;	
@@ -19,7 +19,7 @@ public class Task1 {
    			}	
    		}
 
-   		System.out.println(names[first] + " " + times[first]);
-   		System.out.println(names[second] + " " + times[second]);
+   		System.out.println("First is " + names[first] + ",time - " + times[first]);
+   		System.out.println("Second is " + names[second] + ",time - " + times[second]);
 	}
 }

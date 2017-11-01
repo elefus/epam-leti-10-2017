@@ -18,21 +18,21 @@ public class Task3 {
 
     public static void main(String[] args) {
         int numb = Integer.parseInt(args[0]) % 10;
-        System.out.println(detectColorIf(numb));
-        System.out.println(detectColorSwitch(numb));
+        System.out.println(detectColourIf(numb));
+        System.out.println(detectColourSwitch(numb));
     }
 
-    private static String detectColorIf(int numb) {
+    private static String detectColourIf(int numb) {
         if(numb >= 0 && numb < 4)
             return "Green";
         if(numb >= 4 && numb < 6)
             return "Yellow";
         if(numb >= 6 && numb < 10)
             return "Red";
-        return "Can't resolve color!";
+        return "Can't resolve colour!";
     }
 
-    private static String detectColorSwitch(int numb) {
+    private static String detectColourSwitch(int numb) {
         switch(numb) {
             case 0:
             case 1:
@@ -48,7 +48,7 @@ public class Task3 {
             case 9:
                 return "Red";
             default:
-                return "Can't resolve color!";
+                return "Can't resolve colour!";
         }
     }
 }

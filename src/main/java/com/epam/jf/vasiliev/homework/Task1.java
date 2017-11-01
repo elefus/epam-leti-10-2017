@@ -1,3 +1,5 @@
+package main.java.com.epam.jf.vasiliev.homework;
+
 public class FindWinners {
 	public static void main(String...args) {
 		String[] names = { "Elena", "Thomas", "Hamilton", "Suzie", "Phil", "Matt", "Alex", "Emma",
@@ -16,6 +18,7 @@ public class FindWinners {
    				}
    			}	
    		}
+
    		System.out.println(names[first] + " " + times[first]);
    		System.out.println(names[second] + " " + times[second]);
 	}

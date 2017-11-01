@@ -1,3 +1,5 @@
+package main.java.com.epam.jf.vasiliev.homework;
+
 public class FindMinMaxStrings {
 	public static void main(String...args) {
 		int max = 0;

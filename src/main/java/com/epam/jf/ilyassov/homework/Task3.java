@@ -1,16 +1,18 @@
 public class Task3 {
 
     public static void main(String[] args) {
-        int temp = Integer.parseInt(args[0]);
-        temp = temp % 10;
-        method_if(args,temp);
-        method_switch(args,temp);
+        if(args.length!=0)
+        {
+            int temp = Integer.parseInt(args[0]);
+            temp = temp % 10;
+            method_if(temp);
+            method_switch(temp);
+        }
+
     }
 
-    private static void method_if(String[] args,int temp) {
-        if (args.length == 0) {
-            System.out.println("Error, args is empty");
-        } else {
+    private static void method_if(int temp) {
+
             if (temp >= 0 && temp <= 3) {
 
                 System.out.println("The traffic light is green");
@@ -21,13 +23,11 @@ public class Task3 {
             } else if (temp >= 6 && temp <= 9) {
                 System.out.println("The traffic light is red");
             }
-        }
+
+
     }
 
-    private static void method_switch(String[] args,int temp) {
-        if (args.length == 0) {
-            System.out.println("Error, args is empty");
-        } else {
+    private static void method_switch(int temp) {
             switch (temp) {
                 case 0:
                 case 1:
@@ -46,7 +46,7 @@ public class Task3 {
                     System.out.println("The traffic light is red");
                     break;
             }
-        }
+
 
     }
 

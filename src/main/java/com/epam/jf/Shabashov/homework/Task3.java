@@ -16,13 +16,8 @@ public class Task3 {
      */
     public static void main(String[] args) {
         int value = Integer.parseInt(args[0]);
-        for (int i = 0; i < 10; i++) {
-            System.out.println(i);
-            System.out.println("Traffic light " + getColorByIf(i));
-            System.out.println("Traffic light " + getColorBySwitch(i));
-        }
-
-
+        System.out.println("Traffic light by if" + getColorByIf(value));
+        System.out.println("Traffic light by switch" + getColorBySwitch(value));
     }
 
     public static String getColorByIf(int n) {

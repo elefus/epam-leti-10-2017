@@ -14,24 +14,22 @@ public class Task3 {
     /**
      * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
      */
-    public static void main(String[] args) {
-        if (args.length != 1 || args[0].length() != 1) {
-            System.out.println("Неподходящий аргумент");
-            return;
-        }
+    public static void main(String...args) {
+        char lastDigit = args[0].charAt(args[0].length()-1);
 
         System.out.print("Через if:\n\t");
-        if (args[0].charAt(0) >= '0' && args[0].charAt(0) <= '3')
+        if (lastDigit <= '3') {
             System.out.println("Светофор горит зелёным");
-        else if (args[0].charAt(0) >= '4' && args[0].charAt(0) <= '5')
+        }
+        else if (lastDigit <= '5') {
             System.out.println("Светофор горит жёлтым");
-        else if (args[0].charAt(0) >= '6' && args[0].charAt(0) <= '9')
+        }
+        else if (lastDigit <= '9') {
             System.out.println("Светофор горит красным");
-        else
-            System.out.println("Неподходящий аргумент");
+        }
 
         System.out.print("Через switch:\n\t");
-		switch(args[0].charAt(0)) {
+		switch(lastDigit) {
             case '0':
             case '1':
             case '2':
@@ -48,8 +46,6 @@ public class Task3 {
             case '9':
                 System.out.println("Светофор горит красным");
                 break;
-            default:
-                System.out.println("Неподходящий аргумент");
         }
     }
 }

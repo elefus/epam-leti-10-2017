@@ -18,10 +18,10 @@ public class Task1 {
     }
 
     private static void usingFori(String[] names, int[] times) {
-        int first = 0;
-        int second = 0;
+        int first = times[0] > times[1] ? 1 : 0;
+        int second = 1 - first;
 
-        for (int i = 1; i < times.length; ++i) {
+        for (int i = 2; i < times.length; ++i) {
             if (times[first] > times[i]) {
                 second = first;
                 first = i;

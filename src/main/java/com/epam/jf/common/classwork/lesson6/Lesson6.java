@@ -1,7 +1,7 @@
 package com.epam.jf.common.classwork.lesson6;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+//import org.jetbrains.annotations.NotNull;
+//import org.jetbrains.annotations.Nullable;
 
 import java.util.Scanner;
 
@@ -31,29 +31,29 @@ public class Lesson6 {
 
     private static void nullableExample() {
         Scanner scanner = new Scanner(System.in);
-        @NotNull String string = scanner.nextLine();
+       // @NotNull String string = scanner.nextLine();
 //        @NotNull String str1 = method(string);
     }
 
-    /**
-     * {@code int a = 30;}
-     * Value = {@value Lesson6#value}
-     * asdsad {@link Lesson6#getValues()}
-     * @param string
-     * @param a
-     * @param b
-     * @param j
-     * @return
-     * @throws IllegalAccessError
-     * @throws NullPointerException
-     * @see <a href="https://jcp.org/en/jsr/detail?id=335">JSR-335: Lambda Expressions for the Java Programming Language</a>
-     * @see Lesson6#isCellEditable(int)
-     *
-     */
-    public static @Nullable String method(@NotNull String string, int a, double b, int j) throws IllegalAccessError, NullPointerException {
-        System.out.println(string);
-        return "123";
-    }
+//    /**
+//     * {@code int a = 30;}
+//     * Value = {@value Lesson6#value}
+//     * asdsad {@link Lesson6#getValues()}
+//     * @param string
+//     * @param a
+//     * @param b
+//     * @param j
+//     * @return
+//     * @throws IllegalAccessError
+//     * @throws NullPointerException
+//     * @see <a href="https://jcp.org/en/jsr/detail?id=335">JSR-335: Lambda Expressions for the Java Programming Language</a>
+//     * @see Lesson6#isCellEditable(int)
+//     *
+//     */
+//    public static @Nullable String method(@NotNull String string, int a, double b, int j) throws IllegalAccessError, NullPointerException {
+//        System.out.println(string);
+//        return "123";
+//    }
 
     private static int[] getValues() {
         return new int[0];

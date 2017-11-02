@@ -20,12 +20,7 @@ public class Task6 {
         }
 
         Arrays.sort(args);
-        Arrays.sort(args, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return Integer.compare(o1.length(), o2.length());
-            }
-        });
+        Arrays.sort(args, Comparator.comparingInt(String::length));
 
         for (String string : args){
             System.out.println(string);

@@ -1,26 +1,21 @@
 
 public class Task2 {
     public static void main(String[] args) {
-        
+        String max = args[0];
+        String min = args[0];
         if (args.length == 0) {
             System.out.println("Error,args is empty");
         } else {
-			String str = args[0];
-			String str2 = args[0];
-			
             for (int i = 0; i < args.length; ++i) {
-                if (str.length() <= args[i].length()) {
-                    str = args[i];
+                if (max.length() <= args[i].length()) {
+                    max = args[i];
                 }
-                if (str2.length() >= args[i].length()) {
-                    str2 = args[i];
+                if (min.length() >= args[i].length()) {
+                    min = args[i];
                 }
-
             }
-            System.out.println("Minimum " + str2);
-            System.out.println("Maximum " + str);
+            System.out.println("Minimum " + min);
+            System.out.println("Maximum " + max);
         }
-
-
     }
 }

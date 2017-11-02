@@ -6,19 +6,22 @@ public class Task1 {
         int k = Integer.MAX_VALUE;
         int min_index = 0;
         int sec_index=0;
-        int second=times[0];
+        int second=Integer.MAX_VALUE;
         for (int i = 0; i < times.length; ++i) {
             if (k > times[i]) {
+                second=k;
                 k = times[i];
                 min_index = i;
             }
             else
-                {
-                    sec_index=i;
-                    second=times[i];
-                }
+            if(second>times[i])
+            {
+                second=times[i];
+                sec_index=i;
+            }
         }
         System.out.println("First: " + names[min_index] + ", score: " + k);
         System.out.println("Second: " + names[sec_index] + " , score: " + second);
+
     }
 }

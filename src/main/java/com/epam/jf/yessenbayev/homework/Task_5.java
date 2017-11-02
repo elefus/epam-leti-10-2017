@@ -24,9 +24,10 @@ public class Task_5 {
         if (args.length > 0) {
             for (String word: args) {
                 if (isWordCorrect(word)) {
-                    System.out.println(word);
+                    correctWordCounter++;
                 }
             }
+            System.out.println(correctWordCounter);
         } else {
             System.out.println("Error");
         }
@@ -41,9 +42,9 @@ public class Task_5 {
         String temp = word.toLowerCase();
         int charCounter = 0;
         for (int i = 0; i < temp.length(); i++) {
-            if ("aeiouy".indexOf(temp.charAt(i)) != -1) {
+            if ("bcdfghjklmnpqrstvwxz".indexOf(temp.charAt(i)) != -1) {
                 charCounter++;
-            } else if ("bcdfghjklmnpqrstvwxz".indexOf(temp.charAt(i)) != -1) {
+            } else if ("aeiouy".indexOf(temp.charAt(i)) != -1) {
                 charCounter--;
             } else {
                 return false;

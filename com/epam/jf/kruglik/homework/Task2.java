@@ -1,3 +1,5 @@
+package com.epam.jf.kruglik.homework;
+
 public class Task2 {
 
     public static void main(String...args) {

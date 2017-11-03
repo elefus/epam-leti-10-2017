@@ -1,3 +1,5 @@
+package com.epam.jf.kruglik.homework;
+
 public class Task1 {
     public static void main(String... args) {
         String[] names = new String[]{"Elena", "Thomas", "Hamilton", "Suzie", "Phil", "Matt", "Alex", "Emma", "John", "James", "Jane", "Emily", "Daniel", "Neda", "Aaron", "Kate"};

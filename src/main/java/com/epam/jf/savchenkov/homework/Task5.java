@@ -47,6 +47,6 @@ public class Task5 {
             }
         }
 
-        return (diff == 0) ? true : false;
+        return diff == 0;
     }
 }

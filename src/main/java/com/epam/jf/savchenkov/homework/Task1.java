@@ -19,6 +19,12 @@ public class Task1 {
         int first = times.length - 1;
         int second = times.length - 2;
 
+        if (second < first) {
+            int temp = first;
+            first = second;
+            second = first;
+        }
+
         for (int i = 0; i < times.length; i++) {
             if(times[i] < times[first]) {
                 second = first;

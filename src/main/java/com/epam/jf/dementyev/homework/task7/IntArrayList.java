@@ -54,17 +54,12 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean containsAll(AbstractIntArrayList list) {
-        int count = 0;
         for (int i = 0; i < list.size(); i++) {
-            int val = list.get(i);
-            for (int j = 0; j < size; j++) {
-                if (val == values[j]) {
-                    count++;
-                    break;
-                }
+            if (!contains(list.get(i))) {
+                return false;
             }
         }
-        return count == list.size();
+        return true;
     }
 
     @Override

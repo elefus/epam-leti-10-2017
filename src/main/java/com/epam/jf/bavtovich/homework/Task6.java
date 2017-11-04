@@ -18,9 +18,10 @@ public class Task6 {
             Arrays.sort(args, new Comparator<String>() {
                 @Override
                 public int compare(String o1, String o2) {
-                    Integer lenFirst = o1.length();
-                    Integer lenSecond = o2.length();
-                    return lenFirst.equals(lenSecond) ? o1.compareTo(o2) : lenFirst.compareTo(lenSecond);
+                    int lenFirst = o1.length();
+                    int lenSecond = o2.length();
+                    return lenFirst == lenSecond ? o1.compareTo(o2)
+                                                 : Integer.compare(lenFirst, lenSecond);
                 }
             });
             for (String word : args) {

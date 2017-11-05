@@ -36,16 +36,10 @@ public class Task4 {
 
     private static int countUniqueChars(String str) {
         long bitMap = 0;
-        int uniqueChars = 0;
-
-        //if we have 0 at the cell of bitMap which matches current char, than we increment ctr
-        //and write 1 to this cell
         for (int i = 0; i < str.length(); i++) {
-            if((bitMap & (1L << str.charAt(i) - 'A')) == 0) {
-                uniqueChars++;
-                bitMap |= (1L << str.charAt(i) - 'A');
-            }
+            bitMap |= (1L << str.charAt(i) - 'A');
         }
-        return uniqueChars;
+
+        return Long.bitCount(bitMap);
     }
 }

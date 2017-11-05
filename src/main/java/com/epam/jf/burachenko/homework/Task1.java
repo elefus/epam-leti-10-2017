@@ -26,10 +26,10 @@ public class Task1 {
 				i_first = i;
 			}
 			else
-			if (times[i] < second) {
-				second = times[i];
-				i_second = i;
-			}
+				if (times[i] < second) {
+					second = times[i];
+					i_second = i;
+				}
 		}
 		System.out.println("Первым прибежал(а): " + names[i_first] + " за " + times[i_first]);
 		System.out.println("Вторым прибежал(а): " + names[i_second] + " за " + times[i_second]);

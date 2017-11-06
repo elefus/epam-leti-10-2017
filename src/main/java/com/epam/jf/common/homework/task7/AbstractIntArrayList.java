@@ -1,18 +1,18 @@
 package com.epam.jf.common.homework.task7;
 
-public abstract class IntArrayList {
+public abstract class AbstractIntArrayList {
 
     protected int[] values;
 
-    public IntArrayList() {
+    public AbstractIntArrayList() {
         // TODO values (на 10 элементов)
     }
 
-    public IntArrayList(int capacity) {
+    public AbstractIntArrayList(int capacity) {
         // TODO value[capacity]
     }
 
-    public IntArrayList(IntArrayList list) {
+    public AbstractIntArrayList(AbstractIntArrayList list) {
         // TODO конструктор копирования
     }
 
@@ -24,13 +24,13 @@ public abstract class IntArrayList {
 
     public abstract boolean contains(int value);
 
-    public abstract boolean containsAll(IntArrayList list);
+    public abstract boolean containsAll(AbstractIntArrayList list);
 
     public abstract int remove(int index);
 
     public abstract int set(int value, int index);
 
-    public abstract boolean addAll(IntArrayList list);
+    public abstract boolean addAll(AbstractIntArrayList list);
 
     public abstract void clear();
 
@@ -42,5 +42,5 @@ public abstract class IntArrayList {
 
     public abstract int lastIndexOf(int value);
 
-    public abstract IntArrayList subList(int fromInclusive, int toInclusive);
+    public abstract AbstractIntArrayList subList(int fromInclusive, int toInclusive);
 }

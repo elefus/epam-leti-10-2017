@@ -29,7 +29,7 @@ public class Task3 {
         }
 
         System.out.print("Через switch:\n\t");
-		    switch(lastDigit) {
+        switch(lastDigit) {
             case '0':
             case '1':
             case '2':

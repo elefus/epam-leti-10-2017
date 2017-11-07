@@ -11,10 +11,6 @@ class Task9Test {
         Task9 testingClass = new Task9();
 
         assertFalse(testingClass.isPowerOfTwo(Long.MAX_VALUE));
-
-        assertFalse(testingClass.isPowerOfTwo(0));
-
-        assertTrue(testingClass.isPowerOfTwo(1 << new Random().nextInt(64)));
     }
 
     @Test
@@ -29,5 +25,12 @@ class Task9Test {
         Task9 testingClass = new Task9();
 
         assertTrue(testingClass.isPowerOfTwo(1 << new Random().nextInt(64)));
+    }
+
+    @Test
+    void testNotIsPowerOfTwoValue() {
+        Task9 testingClass = new Task9();
+
+        assertFalse(testingClass.isPowerOfTwo(1_348_185_015_007L));
     }
 }

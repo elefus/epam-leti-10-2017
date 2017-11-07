@@ -6,14 +6,17 @@ public abstract class AbstractIntArrayList {
 
     public AbstractIntArrayList() {
         // TODO values (на 10 элементов)
+        values = new int[10];
     }
 
     public AbstractIntArrayList(int capacity) {
         // TODO value[capacity]
+        values = new int[capacity];
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
         // TODO конструктор копирования
+        values = list.values;
     }
 
     public abstract boolean add(int value);

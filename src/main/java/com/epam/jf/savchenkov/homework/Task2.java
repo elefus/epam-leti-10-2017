@@ -1,4 +1,4 @@
-package main.java.com.epam.jf.savchenkov.homework;
+package com.epam.jf.savchenkov.homework;
 
 /**
  *
@@ -19,7 +19,8 @@ package main.java.com.epam.jf.savchenkov.homework;
 public class Task2 {
 
     public static void main(String[] args) {
-        String max = args[0], min = args[0];
+        String max = args[0];
+        String min = args[0];
 
         for (int i = 0; i < args.length; i++) {
             if(args[i].length() >= max.length())

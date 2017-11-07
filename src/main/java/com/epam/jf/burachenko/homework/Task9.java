@@ -1,16 +1,6 @@
 package com.epam.jf.burachenko.homework;
 
-public abstract class Task9 {
-
-    /**
-     * С помощью битовых и логических операций определяет, является ли указанное значение степенью двойки.
-     * @param value анализируемое не отрицательное число.
-     * @return true - число является степенью двойки, false в противном случае.
-     */
-    public abstract boolean isPowerOfTwo(long value);
-}
-
-class Decision extends Task9 {
+public class Task9 extends com.epam.jf.common.homework.Task9 {
     @Override
     public boolean isPowerOfTwo(long value) {
         int count = 0;
@@ -21,8 +11,8 @@ class Decision extends Task9 {
         return count == 1;
     }
 
-    public static void main(String[] args) {
-        Task9 example = new Decision();
+    /*public static void main(String[] args) {
+        Task9 example = new Task9();
         System.out.println(example.isPowerOfTwo(16_384));
-    }
+    }*/
 }

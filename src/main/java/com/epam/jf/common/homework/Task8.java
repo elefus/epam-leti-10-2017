@@ -17,6 +17,15 @@ public class Task8 {
      * @param args анализируемые строки.
      */
     public static void main(String[] args) {
+        for (String word: args) {
+            char [] charArray = word.toCharArray();
+            for ( int i = 0; i < charArray.length; i++){
+                if( charArray[i].isDigit())
+            }
+
+        }
+
+
 
     }
 }

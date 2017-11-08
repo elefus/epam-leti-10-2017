@@ -1,4 +1,4 @@
-package com.epam.jf.ilyinykh.homework;
+package com.epam.jf.ilyinykh.homework.task9;
 
 public abstract class Task9 {
 

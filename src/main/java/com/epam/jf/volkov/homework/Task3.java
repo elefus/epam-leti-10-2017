@@ -1,4 +1,4 @@
-package com.epam.jf.common.homework;
+package com.epam.jf.volkov.homework;
 
 /**
  * Необходимо смоделировать работу светофора.
@@ -15,6 +15,50 @@ public class Task3 {
      * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
      */
     public static void main(String[] args) {
-        // TODO решение задачи
+        try {
+            int time = Integer.parseInt(args[0])%10;
+            // || GREEN 0 1 2 3 | YELLOW 4 5 | RED 6 7 8 9 || GREEN 10 11 12 13 | YELLOW 14 15 | RED 16 17 ..
+            String ifresult = ifelsemethod(time);
+            String switchresult = switchmethod(time);
+            System.out.println("The if-else operator result color is: "+ifresult);
+            System.out.println("The switch operator result color is: "+switchresult);
+        } catch (Exception e) {
+            System.out.println("There is an exception. Check the args.");
+        }
     }
+
+
+
+    private static String ifelsemethod(int seconds) {
+        if (seconds>=6&&seconds<=9) return "RED";
+        else if (seconds<4) return "GREEN";
+        else return "YELLOW";
+    }
+
+    private static String switchmethod(int seconds) {
+        String result = "string";
+        switch (seconds) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                result = "GREEN";
+                break;
+            case 4:
+            case 5:
+                result = "YELLOW";
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                result = "RED";
+                break;
+            default:
+                result = "ERROR";
+                break;
+        }
+        return result;
+    }
+
 }

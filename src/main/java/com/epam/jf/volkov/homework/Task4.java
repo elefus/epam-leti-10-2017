@@ -18,6 +18,29 @@ public class Task4 {
      * @param args анализируемые строки.
      */
     public static void main(String[] args) {
-        // TODO решение задачи
+        if (args.length>0) {
+            int minimumSymbolsIndex = 0;
+            for (int argIndex = 0; argIndex<args.length; argIndex++) {
+                if (countSymbols(args[argIndex])<countSymbols(args[minimumSymbolsIndex])) minimumSymbolsIndex = argIndex;
+            }
+
+            System.out.println("\nWord with minumal count of unique symbols: \""+args[minimumSymbolsIndex]+"\"\n");
+
+        } else System.out.println("\nNo args detected.\n");
+    }
+
+    private static int countSymbols(String str) {
+        int uniqueChars = str.length();
+        charIteration: for (int lastIndex = 0; lastIndex<str.length(); lastIndex++) {
+            char lastChar = str.charAt(lastIndex);
+            for (int anotherIndex = 0; anotherIndex<lastIndex; anotherIndex++) {
+                char anotherChar = str.charAt(anotherIndex);
+                if ((lastChar^anotherChar)==0) {
+                    uniqueChars--;
+                    continue charIteration;
+                }
+            }
+        }
+        return uniqueChars;
     }
 }

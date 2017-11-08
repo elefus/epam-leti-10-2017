@@ -1,4 +1,4 @@
-package com.epam.jf.homework;
+package com.epam.jf.guba.homework;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

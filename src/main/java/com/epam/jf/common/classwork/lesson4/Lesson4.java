@@ -1,4 +1,4 @@
-package com.epam.jf.common.classwork;
+package com.epam.jf.common.classwork.lesson4;
 
 import java.util.Arrays;
 import java.util.Iterator;

@@ -15,7 +15,40 @@ public class Task3 {
      * @param args [0] - количество секунд, прошедших с момента начала работы светофора.
      */
     public static void main(String[] args) {
+        ifSolution(args);
+        switchSolution(args);
+    }
 
-        // TODO решение задачи
+    public static void ifSolution(String[] args) {
+        int val = Integer.valueOf(args[0]) % 10;
+        if (val < 4) {
+            System.out.println("ЗЕЛЕНЫЙ");
+        } else if (val < 6) {
+            System.out.println("ЖЕЛТЫЙ");
+        } else if (val < 10) {
+            System.out.println("КРАСНЫЙ");
+        }
+    }
+
+    public static void switchSolution(String[] args) {
+        int val = Integer.valueOf(args[0]) % 10;
+        switch (val) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                System.out.println("ЗЕЛЕНЫЙ");
+                break;
+            case 4:
+            case 5:
+                System.out.println("ЖЕЛТЫЙ");
+                break;
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+                System.out.println("КРАСНЫЙ");
+                break;
+        }
     }
 }

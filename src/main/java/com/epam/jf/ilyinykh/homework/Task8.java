@@ -46,9 +46,8 @@ public class Task8 {
         }
 
         for (int i = 0; i < chars.length / 2; ++i) {
-            if (!Character.isDigit(chars[i]) ||
-                !Character.isDigit(chars[chars.length - 1 - i]) ||
-                chars[i] != chars[chars.length - 1 - i]) {
+            if (chars[i] != chars[chars.length - 1 - i] ||
+                !Character.isDigit(chars[i])) {
                 return false;
             }
         }

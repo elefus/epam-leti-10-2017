@@ -14,6 +14,6 @@ public class Task6 {
      * @param args анализируемые строки.
      */
     public static void main(String[] args) {
-        Arrays.stream(args).sorted().sorted(Comparator.comparingInt(String::length)).forEach(System.out::println);
+        Arrays.stream(args).sorted((a, b) -> a.length() == b.length() ? a.compareTo(b) : Integer.compare(a.length(), b.length())).forEach(System.out::println);
     }
 }

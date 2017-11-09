@@ -20,8 +20,7 @@ public class Task5 {
 
     private static int vowels(String str) {
         int counter = 0;
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
+        for (char ch : str.toLowerCase().toCharArray()) {
             if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
                 counter++;
             }

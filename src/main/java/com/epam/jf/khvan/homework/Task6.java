@@ -1,4 +1,4 @@
-package com.epam.jf.common.homework;
+package com.epam.jf.khvan.homework;
 
 /**
  * На вход программе подается несколько строк (через параметры командной строки args).

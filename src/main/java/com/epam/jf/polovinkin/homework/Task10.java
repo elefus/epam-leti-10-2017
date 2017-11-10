@@ -1,7 +1,7 @@
 package com.epam.jf.polovinkin.homework;
 
 
-public abstract class Task10 {
+public class Task10 {
 
     /**
      * Вычисляет сумму цифр, составляющих указанное число с использованием рекурсии.

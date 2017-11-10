@@ -1,6 +1,6 @@
 package com.epam.jf.polovinkin.homework;
 
-public abstract class Task11 {
+public class Task11 {
 
     /**
      * Создает число, в котором порядок цифр обратный по отношению к исходному с использованием рекурсии.

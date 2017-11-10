@@ -20,39 +20,33 @@ import java.util.ArrayList;
 
 public class Task4 {
     public static void main (String [] args) {
-        int number=0;
-        int max=0;
-        int k=0;
-        int difLetter=0;
-        ArrayList<Integer> arrayNumberLetter=new ArrayList<>();
-        int min=0;
-        for (int r=0;r<args.length;r++) { // по словам
-            char[] letters =   args[r].toCharArray();
-            for (int i=0;i<letters.length-1;i++){ // текущую букву с остальными
-                for(int j=i+1;j<letters.length;j++){
-                    if(letters[i]==0 ){continue;}
-                    if(letters[i]==letters[j]){
-                        letters[j]=0;
-                        number++; }
-                    if(j==letters.length-1 & number==0){
-                        difLetter++; }
-                    if(j==letters.length-1 & number!=0){
-                        difLetter++; }
+        int k = 0;
+        int numberOfDifferentLetter = 0;
+        ArrayList<Integer> arrayNumberLetter = new ArrayList<>();
+        int min = 0;
+        for ( int r = 0; r < args.length; r++) { // по словам
+            char[] letters = args[r].toCharArray();
+            for ( int i = 0; i < letters.length - 1; i++){ // текущую букву с остальными
+                for ( int j = i + 1; j < letters.length; j++){
+                    if ( letters[i] == 0 ){continue;}
+                    if ( letters[i] == letters[j]){
+                        letters[j] = 0;}
+                    if ( j == letters.length - 1){
+                        numberOfDifferentLetter++; }
                 }
             }
-            if(letters[letters.length-1]!=0){difLetter++;}
-            arrayNumberLetter.add(difLetter);
-            if(r>0 & r<args.length){
-                if(min==0){min=arrayNumberLetter.get(0);}
-                if(min > arrayNumberLetter.get(r) ){
-                    min= arrayNumberLetter.get(r);
-                    k=r;
-                }
+            if ( letters[letters.length - 1] != 0){ numberOfDifferentLetter++;}
+            arrayNumberLetter.add(numberOfDifferentLetter);
+            if ( min == 0){ min = arrayNumberLetter.get(0);}
+            if ( min > arrayNumberLetter.get(r) ){
+                min = arrayNumberLetter.get(r);
+                k = r;
             }
-            difLetter=0;
+            numberOfDifferentLetter = 0;
         }
         System.out.println(args[k]);
-    }}
+    }
+}
 
 
 

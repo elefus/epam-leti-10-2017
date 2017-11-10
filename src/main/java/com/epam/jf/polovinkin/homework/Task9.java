@@ -1,6 +1,6 @@
 package com.epam.jf.polovinkin.homework;
 
-public abstract class Task9 {
+public class Task9 {
 
     /**
      * С помощью битовых и логических операций определяет, является ли указанное значение степенью двойки.

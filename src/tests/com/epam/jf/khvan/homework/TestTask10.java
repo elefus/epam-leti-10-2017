@@ -14,3 +14,5 @@ public class TestTask10 {
         assertEquals(0, testClass.getSumDigits(0));
     }
 }
+
+

@@ -14,3 +14,5 @@ public class Task10Impl extends Task10 {
         return result;
     }
 }
+
+

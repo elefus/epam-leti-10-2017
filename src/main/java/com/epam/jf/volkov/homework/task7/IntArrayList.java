@@ -114,6 +114,7 @@ public class IntArrayList extends AbstractIntArrayList {
   @Override
   public void clear() {
     values = new int[pointer];
+    pointer = 0;
   }
 
   @Override

@@ -1,5 +1,8 @@
 package com.epam.jf.khvan.homework;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /**
  * На вход программе подается несколько строк (через параметры командной строки args).
  * Каждая строка представляет собой одно слово.
@@ -21,37 +24,36 @@ public class Task5 {
      */
     public static void main(String[] args) {
         // TODO решение задачи
-        LinkedList<Character> vowels=new LinkedList<>(Arrays.asList('a','A','e','E','i','I','o','O','u','U','y','Y'));
-        int vowelNumber=0;
-        int consonantNumber=0;
-        int numberOfWords=0;
+        LinkedList<Character> vowels = new LinkedList<>(Arrays.asList('a','A','e','E','i','I','o','O','u','U','y','Y'));
+        int vowelNumber = 0;
+        int consonantNumber = 0;
+        int numberOfWords = 0;
 
         for (String word: args) {
-            char [] lettersWord=word.toCharArray();
-            boolean isLetterEnglish=false;
-            for (int i = 0; i <lettersWord.length ; i++) {
-                if(lettersWord[i]>='a' && lettersWord[i]<='z' || lettersWord[i]>='A'&&lettersWord[i]<='Z'){
-                    isLetterEnglish=true;
-                }else {
-                    isLetterEnglish=false;
+            char [] lettersWord = word.toCharArray();
+            boolean isLetterEnglish = false;
+            for ( int i = 0; i < lettersWord.length ; i++) {
+                if ( lettersWord[i] >= 'a' && lettersWord[i] <= 'z' || lettersWord[i] >= 'A' && lettersWord[i] <= 'Z'){
+                    isLetterEnglish = true;
+                } else {
+                    isLetterEnglish = false;
                 }
             }
-            if(isLetterEnglish==true){
-                for (int j=0;j<lettersWord.length;j++){
-                    if(vowels.contains(lettersWord[j])) {
+            if ( isLetterEnglish){
+                for (int j = 0; j < lettersWord.length; j++){
+                    if ( vowels.contains(lettersWord[j])) {
                         vowelNumber++;}
                     else{
-                        consonant++;
+                        consonantNumber++;
                     }
-                    if(j==lettersWord.length-1 && consonantNumber==vowelNumber){numberOfWords++;}
-                    if(j==lettersWord.length-1){
-                        consonantNumber=0;
-                        vowelNumber=0;
+                    if ( j == lettersWord.length - 1 && consonantNumber == vowelNumber){ numberOfWords++;}
+                    if ( j == lettersWord.length - 1){
+                        consonantNumber = 0;
+                        vowelNumber = 0;
                     }
                 }
             }
         }
-
         System.out.println(numberOfWords);
     }
 }

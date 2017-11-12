@@ -27,5 +27,5 @@ public class TestTask9 {
         Task9Implement testingClass = new Task9Implement();
         assertTrue(testingClass.isPowerOfTwo( 1 << new Random().nextInt(64)));
     }
-
 }
+

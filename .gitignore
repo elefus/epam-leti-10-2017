@@ -1,14 +1,5 @@
-<<<<<<< HEAD
 +.idea 
 +out 
 +*.iml 
++.git/info/exclude
 +
-
-=======
-.idea
-out
-*.iml
-<<<<<<< HEAD
->>>>>>> 9e84c831fdf422f0424c772cdda9b8878e7c1ba9
-=======
->>>>>>> e559d13012c1bec040647b99fb392c3a88e048db

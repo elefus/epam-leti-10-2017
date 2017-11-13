@@ -51,7 +51,7 @@ public class Task5 {
             }
         }
 
-        return vowelCtr == consonantCtr ? true : false;
+        return vowelCtr == consonantCtr;
     }
 }
 

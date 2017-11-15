@@ -3,8 +3,19 @@ package com.epam.jf.savchenkov.homework.task7;
 public abstract class AbstractIntArrayList {
 
     protected int[] values;
-    protected int size;
-    
+
+    public AbstractIntArrayList() {
+        values = new int[10];
+    }
+
+    public AbstractIntArrayList(int capacity) {
+        values = new int[capacity];
+    }
+
+    public AbstractIntArrayList(AbstractIntArrayList list) {
+        values = new int[list.size()];
+        System.arraycopy(list.values, 0, values, 0, values.length);
+    }
 
     public abstract boolean add(int value);
 

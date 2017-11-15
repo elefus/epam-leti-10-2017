@@ -19,7 +19,7 @@ public class Task8 {
   */
   public static void main(String[] args) {
     if (args.length > 0) {
-      String palindromeNumber = getNumberPalindrome ( args, 2 );
+      String palindromeNumber = getNumberPalindrome(args, 2);
       System.out.println(palindromeNumber);
     } else {
       System.out.println("No args detected");

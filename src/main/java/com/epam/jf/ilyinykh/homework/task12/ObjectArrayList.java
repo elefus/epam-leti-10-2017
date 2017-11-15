@@ -18,7 +18,6 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     @Override
     public boolean add(Object value) {
         ensureCapacity(size + 1);
-
         values[size] = value;
         size++;
         return true;
@@ -34,6 +33,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
             values[i - 1] = temp;
         }
 
+        size++;
         return true;
     }
 
@@ -45,8 +45,8 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean contains(Object value) {
-        for (Object obj : values) {
-            if (Objects.equals(obj, value)) {
+        for (int i = 0; i < size; i++) {
+            if (Objects.equals(values[i], value)) {
                 return true;
             }
         }
@@ -55,8 +55,8 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean containsAll(AbstractObjectArrayList list) {
-        for (Object obj : list.values) {
-            if (!contains(obj)) {
+        for (int i = 0; i < list.size; i++) {
+            if (!contains(list.values[i])) {
                 return false;
             }
         }
@@ -69,7 +69,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         Object val = values[index];
         Object[] vals = new Object[size - 1];
         System.arraycopy(values, 0, vals, 0, index);
-        System.arraycopy(values, index + 1, vals, index, size - index);
+        System.arraycopy(values, index + 1, vals, index, size - index - 1);
         size--;
         values = vals;
         return val;
@@ -82,8 +82,8 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean removeAll(AbstractObjectArrayList list) {
-        for (Object obj : values) {
-            remove(obj);
+        for (int i = 0; i < list.size; i++) {
+            remove(list.values[i]);
         }
         return true;
     }
@@ -98,8 +98,8 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean addAll(AbstractObjectArrayList list) {
-        for (Object o : list.values) {
-            if (!add(o)) {
+        for (int i = 0; i < list.size; i++) {
+            if (!add(list.values[i])) {
                 return false;
             }
         }

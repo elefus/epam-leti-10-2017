@@ -1,7 +1,5 @@
 package com.epam.jf.common.classwork.lesson9;
 
-import org.jetbrains.annotations.NotNull;
-
 import javax.xml.ws.WebEndpoint;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

@@ -1,4 +1,4 @@
-
+package com.epam.jf.ilyassov.homework;
 public class Task2 {
     public static void main(String[] args) {
         String max = args[0];

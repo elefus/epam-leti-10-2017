@@ -18,7 +18,6 @@ import java.util.LinkedList;
  * 2
  */
 public class Task5 {
-
     /**
      * @param args анализируемые строки.
      */
@@ -31,26 +30,21 @@ public class Task5 {
 
         for (String word: args) {
             char [] lettersWord = word.toCharArray();
-            boolean isLetterEnglish = false;
             for ( int i = 0; i < lettersWord.length ; i++) {
                 if ( lettersWord[i] >= 'a' && lettersWord[i] <= 'z' || lettersWord[i] >= 'A' && lettersWord[i] <= 'Z'){
-                    isLetterEnglish = true;
-                } else {
-                    isLetterEnglish = false;
-                }
-            }
-            if ( isLetterEnglish){
-                for (int j = 0; j < lettersWord.length; j++){
-                    if ( vowels.contains(lettersWord[j])) {
+                    if ( vowels.contains(lettersWord[i])) {
                         vowelNumber++;}
                     else{
                         consonantNumber++;
                     }
-                    if ( j == lettersWord.length - 1 && consonantNumber == vowelNumber){ numberOfWords++;}
-                    if ( j == lettersWord.length - 1){
+                    if ( i == lettersWord.length - 1 && consonantNumber == vowelNumber){ numberOfWords++;}
+                    if ( i == lettersWord.length - 1){
                         consonantNumber = 0;
                         vowelNumber = 0;
                     }
+                } else {
+                    continue;
+
                 }
             }
         }

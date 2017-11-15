@@ -35,7 +35,7 @@ public class Task4 {
         }
         return indexMinTime;
     }
-    
+
     public static void main(String[] args) {
         int[] stringLength = new int[args.length];
         for (int i = 0; i < args.length; i++) {

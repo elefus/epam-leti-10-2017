@@ -18,22 +18,19 @@ import java.util.LinkedList;
  * 2
  */
 public class Task5 {
-    /**
-     * @param args анализируемые строки.
-     */
+
     public static void main(String[] args) {
-        // TODO решение задачи
-        LinkedList<Character> vowels = new LinkedList<>(Arrays.asList('a','A','e','E','i','I','o','O','u','U','y','Y'));
+
+        LinkedList<Character> vowels = new LinkedList<>(Arrays.asList('a','e','i','o','u','y'));
         int vowelNumber = 0;
         int consonantNumber = 0;
         int numberOfWords = 0;
-
         for (String word: args) {
-            char [] lettersWord = word.toCharArray();
+            char [] lettersWord = word.toLowerCase().toCharArray();
             for ( int i = 0; i < lettersWord.length ; i++) {
-                if ( lettersWord[i] >= 'a' && lettersWord[i] <= 'z' || lettersWord[i] >= 'A' && lettersWord[i] <= 'Z'){
+                if ( lettersWord[i] >= 'a' && lettersWord[i] <= 'z' ){
                     if ( vowels.contains(lettersWord[i])) {
-                        vowelNumber++;}
+                         vowelNumber++;}
                     else{
                         consonantNumber++;
                     }
@@ -43,8 +40,9 @@ public class Task5 {
                         vowelNumber = 0;
                     }
                 } else {
+                    consonantNumber = 0;
+                    vowelNumber = 0;
                     continue;
-
                 }
             }
         }

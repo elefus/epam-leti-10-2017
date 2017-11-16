@@ -1,6 +1,6 @@
 package com.epam.jf.Shabashov.homework;
 
-public abstract class Task10 extends com.epam.jf.common.homework.Task10{
+public class Task10 extends com.epam.jf.common.homework.Task10{
 
     /**
      * Вычисляет сумму цифр, составляющих указанное число с использованием рекурсии.

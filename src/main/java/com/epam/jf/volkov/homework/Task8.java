@@ -36,6 +36,9 @@ public class Task8 {
         return args[i];
       }
     }
+    if (counter == 0) {
+      return "No palindromes detected";
+    }
     return getNumberPalindrome(args, count - 1);
   }
 
@@ -43,7 +46,7 @@ public class Task8 {
     try {
       Integer.parseInt(word);
       return true;
-    } catch (NumberFormatException e) {
+    } catch (Exception e) {
       return false;
     }
   }

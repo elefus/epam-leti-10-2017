@@ -10,6 +10,8 @@ package com.epam.jf.volkov.homework;
  *
  * Одна цифра является палиндромом.
  * Ограничения на размер числа нет.
+ * @author Anton Volkov aka thewalkingwind
+ * @version 1.0.5
  */
 public class Task8 {
 
@@ -26,14 +28,20 @@ public class Task8 {
     }
   }
 
+  /**
+   *
+   * @param args Исследуемый массив строк
+   * @param count Последовательный номер возвращаемого палиндрома
+   * @return Строка с числом-палиндромом, или сообщение "No palindromes detected"
+   */
   public static String getNumberPalindrome(String[] args, int count) {
     int counter = 0;
-    for (int i = 0; i < args.length; i++) {
-      if (isNumber(args[i]) && isPalindrome(args[i])) {
+    for (String word: args) {
+      if (isNumber(absword(word)) && isPalindrome(absword(word))) {
         counter++;
       }
       if (counter == count) {
-        return args[i];
+        return word;
       }
     }
     if (counter == 0) {
@@ -42,6 +50,25 @@ public class Task8 {
     return getNumberPalindrome(args, count - 1);
   }
 
+  /**
+   *
+   * @param word Исследуемая строка
+   * @return Возвращает строку без минуса в качестве первого знака, если ее длина больше 1 символа
+   */
+  private static String absword(String word) {
+    if (word.length() > 1 && word.charAt(0) == '-') {
+      return word.substring(1);
+    } else {
+      return word;
+    }
+  }
+
+  /**
+   *
+   * @Костыль с исключениями
+   * @param word Исследуемая строка
+   * @return Содержит ли строка число
+   */
   private static boolean isNumber(String word) {
     try {
       Integer.parseInt(word);
@@ -51,6 +78,11 @@ public class Task8 {
     }
   }
 
+  /**
+   *
+   * @param word Исследуемая строка
+   * @return Является ли строка палиндромом
+   */
   private static boolean isPalindrome(String word) {
     for (int i = 0; i < (word.length() / 2 + 1); i++) {
       if (word.charAt(i) != word.charAt(word.length() - i - 1)) {

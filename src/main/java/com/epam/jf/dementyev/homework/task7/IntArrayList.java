@@ -124,9 +124,9 @@ public class IntArrayList extends AbstractIntArrayList {
         }
         checkIndex(fromInclusive);
         checkIndex(toInclusive);
-        IntArrayList obj = new IntArrayList(toInclusive - fromInclusive);
-        System.arraycopy(values, fromInclusive, obj.values, 0, toInclusive - fromInclusive);
-        obj.size = toInclusive - fromInclusive;
+        IntArrayList obj = new IntArrayList(toInclusive - fromInclusive + 1);
+        System.arraycopy(values, fromInclusive, obj.values, 0, toInclusive - fromInclusive + 1);
+        obj.size = toInclusive - fromInclusive + 1;
         return obj;
     }
 

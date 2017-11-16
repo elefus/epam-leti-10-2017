@@ -16,14 +16,17 @@ package com.epam.jf.vasiliev.homework;
  */
 public class Task5 {
 
-    private static final long VOWEL_MASK = 76_632_734_953_390_353L;
-    private static final long CONSONANT_MASK = 211_597_636_970_462_958L;
+    private static final long VOWEL_MASK = 0b0000000100010000010000010001000100000001000100000100000100010001L;
+    private static final long CONSONANT_MASK = 0b0000001011101111101111101110111000000010111011111011111011101110L;
 
     /**
      * @param args анализируемые строки.
      */
     public static void main(String[] args) {
         int result = 0;
+        System.out.println(VOWEL_MASK);
+        System.out.println(CONSONANT_MASK);
+
 
         for (String ctr : args) {
             if(isAppropriateWord(ctr)) {
@@ -40,7 +43,7 @@ public class Task5 {
 
         for (int i = 0; i < word.length(); i++) {
             char crtChar = word.charAt(i);
-            if(crtChar < 'A' || crtChar > 'z') {
+            if(crtChar < 'A' || crtChar > 'z' || crtChar > 'Z' && crtChar < 'a') {
                 return false;
             }
 
@@ -50,6 +53,7 @@ public class Task5 {
                 consonantCtr++;
             }
         }
+
 
         return vowelCtr == consonantCtr;
     }

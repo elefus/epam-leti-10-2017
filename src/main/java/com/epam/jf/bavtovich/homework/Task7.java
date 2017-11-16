@@ -133,9 +133,9 @@ public class Task7 extends com.epam.jf.bavtovich.homework.task7.AbstractIntArray
     }
 
     @Override
-    public Task7 subList(int fromInclusive, int toInclusive) {
+    public AbstractIntArrayList subList(int fromInclusive, int toInclusive) {
         if (fromInclusive < toInclusive) {
-            Task7 obj = new Task7(toInclusive - fromInclusive + 1);
+            AbstractIntArrayList obj = new Task7(toInclusive - fromInclusive + 1);
             for (int i = fromInclusive; i <= toInclusive; i++) {
                 obj.set(values[i], i - fromInclusive);
             }

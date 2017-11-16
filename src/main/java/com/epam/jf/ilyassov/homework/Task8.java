@@ -7,10 +7,12 @@ public class Task8 {
             return;
         }
         String palidrom="";
+        int second=0;
         for (int i = 0; i < args.length; i++) {
-            if(methodPalidrom(args[i]))
+            if(methodPalidrom(args[i])&&second<2)
             {
                 palidrom=args[i];
+                second++;
             }
         }
         System.out.println(palidrom);

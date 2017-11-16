@@ -1,7 +1,7 @@
 package com.epam.jf.dementyev.homework;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.security.InvalidParameterException;
 import org.junit.jupiter.api.Test;
@@ -10,13 +10,13 @@ class Task10Test {
 
     @Test
     void testZeroValue() {
-        assertTrue(new Task10().getSumDigits(0) == 0);
+        assertEquals(0, new Task10().getSumDigits(0));
     }
 
     @Test
     void testMaxValue() {
-        assertTrue(new Task10().getSumDigits(Long.MAX_VALUE) == 88);
-        assertTrue(new Task10().getSumDigits(8999999999999999999L) == 18 * 9 + 8);
+        assertEquals(88, new Task10().getSumDigits(Long.MAX_VALUE));
+        assertEquals(18 * 9 + 8, new Task10().getSumDigits(8999999999999999999L));
     }
 
     @Test
@@ -26,6 +26,6 @@ class Task10Test {
 
     @Test
     void testArbitraryValue() {
-        assertTrue(new Task10().getSumDigits(1234567890123456789L) == 90);
+        assertEquals(90, new Task10().getSumDigits(1234567890123456789L));
     }
 }

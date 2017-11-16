@@ -44,12 +44,7 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean contains(int value) {
-        for (int i = 0; i < size; i++) {
-            if (values[i] == value) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(value) != -1;
     }
 
     @Override

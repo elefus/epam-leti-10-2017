@@ -21,20 +21,20 @@ class Task13Test {
     }
 
     @Test
-    void testSingleDimension() {
+    public void testSingleDimension() {
         Task13 task13 = new Task13();
         assertEquals(1, task13.createSquareMatrix(1).length);
     }
 
 
     @Test
-    void testSomeDimension() {
+    public void testSomeDimension() {
         Task13 task13 = new Task13();
         assertEquals(9, task13.createSquareMatrix(3)[2][2]);
     }
 
     @Test
-    void testtSomeDimensionSize(){
+    public void testtSomeDimensionSize(){
         Task13 task13 = new Task13();
         assertEquals(9, task13.createSquareMatrix(9)[8].length);
     }

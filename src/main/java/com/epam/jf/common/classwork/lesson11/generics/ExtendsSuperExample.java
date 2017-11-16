@@ -1,6 +1,5 @@
 package com.epam.jf.common.classwork.lesson11.generics;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;

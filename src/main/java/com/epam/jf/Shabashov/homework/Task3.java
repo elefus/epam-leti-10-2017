@@ -16,8 +16,8 @@ public class Task3 {
      */
     public static void main(String[] args) {
         int value = Integer.parseInt(args[0]);
-        System.out.println("Traffic light by if" + getColorByIf(value));
-        System.out.println("Traffic light by switch" + getColorBySwitch(value));
+        System.out.println("Traffic light by if " + getColorByIf(value));
+        System.out.println("Traffic light by switch " + getColorBySwitch(value));
     }
 
     public static String getColorByIf(int n) {
@@ -27,7 +27,10 @@ public class Task3 {
         if (n <= 5) {
             return "Yellow";
         }
-        return "red";
+        if (n<=9){
+            return "red";
+        }
+        return null;
     }
 
     public static String getColorBySwitch(int n) {
@@ -40,8 +43,13 @@ public class Task3 {
             case 4:
             case 5:
                 return "Yellow";
-            default:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
                 return "Red";
+            default:
+                return null;
 
         }
     }

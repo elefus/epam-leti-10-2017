@@ -35,6 +35,11 @@ public class Task8 {
                 index = i;
             }
         }
-        System.out.println("Palindrome is " +args[index]);
+        if (indexCounter == 0) {
+            System.out.println("There are no any palindromes.");
+        }
+        else {
+            System.out.println("Palindrome is " + args[index]);
+        }
     }
 }

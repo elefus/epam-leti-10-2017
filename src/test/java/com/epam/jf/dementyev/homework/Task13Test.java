@@ -1,6 +1,6 @@
 package com.epam.jf.dementyev.homework;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -16,14 +16,16 @@ class Task13Test {
 
     @Test
     void testResult() {
-        int[][] matrix = new Task13().createSquareMatrix(2);
-        assertEquals(2, matrix.length);
-        assertEquals(2, matrix[0].length);
-        assertEquals(2, matrix[1].length);
-        assertEquals(1, matrix[0][0]);
-        assertEquals(2, matrix[0][1]);
-        assertEquals(3, matrix[1][0]);
-        assertEquals(4, matrix[1][1]);
+        int[][] matrix = new Task13().createSquareMatrix(5);
+
+        int[][] expected = {
+            {1, 2, 3, 4, 5},
+            {6, 7, 8, 9, 10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20},
+            {21, 22, 23, 24, 25}
+        };
+        assertArrayEquals(expected, matrix);
     }
 
 }

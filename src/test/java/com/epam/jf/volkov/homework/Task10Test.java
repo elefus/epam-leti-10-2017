@@ -14,11 +14,6 @@ public class Task10Test {
     }
 
     @Test
-    void test2() {
-        assertNotEquals(-1, solution.getSumDigits(-1L));
-    }
-
-    @Test
     void test3() {
         assertEquals(1, solution.getSumDigits(100_000_000_000_000L));
     }

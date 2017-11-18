@@ -12,6 +12,8 @@ public class Task8 {
             if(Number(arg)&&Palidrom(arg)&&count<2){
                 palidrom=arg;
                 count++;
+                if(count==2)
+                    break;
             }
 
         }

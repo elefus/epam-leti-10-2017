@@ -1,20 +1,10 @@
 package com.epam.jf.dementyev.homework;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
 class Task15Test {
-
-    private static void equals(int[][] expected, int[][] actual) {
-        assertEquals(expected.length, actual.length);
-        for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i].length, actual[i].length);
-            for (int j = 0; j < expected[i].length; j++) {
-                assertEquals(expected[i][j], actual[i][j]);
-            }
-        }
-    }
 
     @Test
     void testVerticalCyclicShift1() {
@@ -34,7 +24,7 @@ class Task15Test {
         };
 
         int[][] newMatrix = new Task15().verticalCyclicShift(matrix, 7);
-        equals(expected, newMatrix);
+        assertArrayEquals(expected, newMatrix);
     }
 
     @Test
@@ -55,7 +45,7 @@ class Task15Test {
         };
 
         int[][] newMatrix = new Task15().verticalCyclicShift(matrix, -7);
-        equals(expected, newMatrix);
+        assertArrayEquals(expected, newMatrix);
     }
 
     @Test
@@ -70,9 +60,9 @@ class Task15Test {
         };
 
         int[][] newMatrix = obj.verticalCyclicShift(matrix, 9999995);
-        equals(matrix, newMatrix);
+        assertArrayEquals(matrix, newMatrix);
         newMatrix = obj.verticalCyclicShift(matrix, -644213575);
-        equals(matrix, newMatrix);
+        assertArrayEquals(matrix, newMatrix);
     }
 
     @Test
@@ -87,7 +77,7 @@ class Task15Test {
         };
 
         int[][] newMatrix = new Task15().horizontalCyclicShift(matrix, 5);
-        equals(expected, newMatrix);
+        assertArrayEquals(expected, newMatrix);
     }
 
     @Test
@@ -102,7 +92,7 @@ class Task15Test {
         };
 
         int[][] newMatrix = new Task15().horizontalCyclicShift(matrix, -5);
-        equals(expected, newMatrix);
+        assertArrayEquals(expected, newMatrix);
     }
 
     @Test
@@ -113,9 +103,9 @@ class Task15Test {
         };
 
         int[][] newMatrix = new Task15().horizontalCyclicShift(matrix, 513428151);
-        equals(matrix, newMatrix);
+        assertArrayEquals(matrix, newMatrix);
         newMatrix = new Task15().horizontalCyclicShift(matrix, -93245499);
-        equals(matrix, newMatrix);
+        assertArrayEquals(matrix, newMatrix);
     }
 
 }

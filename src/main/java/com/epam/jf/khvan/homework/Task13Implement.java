@@ -6,7 +6,6 @@ public class Task13Implement extends Task13 {
 
     public static void main(String[] args) {
         int [][] massive = new Task13Implement().createSquareMatrix(7);
-
         for (int i = 0; i < massive[0].length; i++) {
             for (int j = 0; j < massive[0].length; j++) {
                 System.out.print(massive[i][j] + " ");

@@ -13,7 +13,6 @@ public class Task14Implement extends Task14 {
         }
         System.out.println();
         int [][] sortedMatrix = new Task14Implement().sortMatrixByValuesInColumn(matrixExample,4);
-
         for (int i = 0; i < sortedMatrix[0].length; i++) {
             for (int j = 0; j < sortedMatrix[0].length; j++) {
                 System.out.print(sortedMatrix[i][j] + " ");
@@ -21,6 +20,7 @@ public class Task14Implement extends Task14 {
             System.out.println();
         }
     }
+
     @Override
     public int[][] sortMatrixByValuesInColumn(int[][] matrix, int indexColumn) {
         for (int i = 0; i < matrix.length - 1; i++) {

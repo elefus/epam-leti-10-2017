@@ -1,9 +1,8 @@
 package com.epam.jf.dementyev.homework;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 class Task14Test {
@@ -30,13 +29,7 @@ class Task14Test {
         };
 
         int[][] newMatrix = obj.sortMatrixByValuesInColumn(matrix, 1);
-        assertEquals(expected.length, newMatrix.length);
-        for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i].length, newMatrix[i].length);
-            for (int j = 0; j < expected[i].length; j++) {
-                assertEquals(expected[i][j], newMatrix[i][j]);
-            }
-        }
+        assertArrayEquals(expected, newMatrix);
     }
 
     @Test
@@ -54,13 +47,7 @@ class Task14Test {
         };
 
         int[][] newMatrix = obj.sortMatrixByValuesInColumn(matrix, 0);
-        assertEquals(expected.length, newMatrix.length);
-        for (int i = 0; i < expected.length; i++) {
-            assertEquals(expected[i].length, newMatrix[i].length);
-            for (int j = 0; j < expected[i].length; j++) {
-                assertEquals(expected[i][j], newMatrix[i][j]);
-            }
-        }
+        assertArrayEquals(expected, newMatrix);
     }
 
 }

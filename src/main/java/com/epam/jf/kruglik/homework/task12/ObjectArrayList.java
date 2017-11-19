@@ -187,9 +187,4 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
         values = buffer;
     }
-
-    public static void main(String[] args) {
-        ObjectArrayList list = new ObjectArrayList();
-        System.out.println(list.isEmpty());
-    }
 }

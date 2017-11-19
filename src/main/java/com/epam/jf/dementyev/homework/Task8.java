@@ -36,7 +36,7 @@ public class Task8 {
 
     private static boolean isPalindrome(String word) {
         int len = word.length();
-        int start = (word.charAt(0) == '-' || word.charAt(0) == '+') ? 1 : 0;
+        int start = (word.length() > 1 && (word.charAt(0) == '-' || word.charAt(0) == '+')) ? 1 : 0;
         int end = len - 1;
         for (; start <= end; start++, end--) {
             char c1 = word.charAt(start);

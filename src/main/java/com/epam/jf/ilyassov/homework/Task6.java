@@ -1,4 +1,4 @@
-package com.epam.jf.ilyassov.homework;
+package epam.jf.ilyassov.homework;
 
 public class Task6 {
 

@@ -1,3 +1,4 @@
+package com.epam.jf.ilyassov.homework;
 public class Task3 {
 
     public static void main(String[] args) {

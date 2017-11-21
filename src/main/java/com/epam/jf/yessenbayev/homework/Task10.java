@@ -1,6 +1,7 @@
 package com.epam.jf.yessenbayev.homework;
 
 public class Task10 extends  com.epam.jf.common.homework.Task10 {
+
     /**
      * Вычисляет сумму цифр, составляющих указанное число с использованием рекурсии.
      * @param value натуральное число.

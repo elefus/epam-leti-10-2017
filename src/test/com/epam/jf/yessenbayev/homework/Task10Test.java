@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task10Test {
+
     @Test
     void testZeroValue() {
         Task10 solver = new Task10();

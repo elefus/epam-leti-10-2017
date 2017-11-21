@@ -1,6 +1,6 @@
 package main.java.com.epam.jf.yessenbayev.homework;
 
-public class Task_2 {
+public class Task2 {
     public static void main(String[] args) {
 
 

@@ -1,6 +1,6 @@
-package main.java.com.epam.jf.yessenbayev.homework;
+package com.epam.jf.yessenbayev.homework;
 
-public class Task_8 {
+public class Task8 {
     /**
      *
      * @param args анализируемые строки

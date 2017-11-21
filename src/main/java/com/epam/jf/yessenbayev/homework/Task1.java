@@ -1,6 +1,6 @@
-package main.java.com.epam.jf.yessenbayev.homework;
+package com.epam.jf.yessenbayev.homework;
 
-public class Task_1 {
+public class Task1 {
     public static void main(String[] args) {
         String[] names = { "Elena", "Thomas", "Hamilton", "Suzie", "Phil", "Matt", "Alex", "Emma",
                 "John", "James", "Jane", "Emily", "Daniel", "Neda", "Aaron", "Kate" };

@@ -14,7 +14,7 @@ package main.java.com.epam.jf.yessenbayev.homework;
  * Выходные данные:
  * 2
  */
-public class Task_5 {
+public class Task5 {
 
     /**
      * @param args анализируемые строки.

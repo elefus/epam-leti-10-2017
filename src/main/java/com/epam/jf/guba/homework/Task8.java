@@ -54,6 +54,6 @@ public class Task8 {
     }
 
     private static boolean isDigit(String string) {
-        return string.matches("[0-9]*");
+        return string.matches("[0-9]+");
     }
 }

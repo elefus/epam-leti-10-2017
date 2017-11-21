@@ -6,6 +6,7 @@ public class Task10 extends  com.epam.jf.common.homework.Task10 {
      * @param value натуральное число.
      * @return Сумма цифр, составляющих число.
      */
+
     @Override
     public long getSumDigits(long value) {
         if (value > 0) {

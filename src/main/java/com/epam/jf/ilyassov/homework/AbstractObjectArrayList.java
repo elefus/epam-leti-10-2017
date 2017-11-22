@@ -7,22 +7,37 @@ package com.epam.jf.ilyassov.homework;
 public abstract class AbstractObjectArrayList {
 
     protected Object[] values;
+    protected int size;
 
     public AbstractObjectArrayList() {
         // TODO values (на 10 элементов)
         this.values=new Object[10];
+        size=0;
     }
 
     public AbstractObjectArrayList(int capacity) {
         // TODO value[capacity]
         this.values=new Object[capacity];
+        size=0;
     }
 
     public AbstractObjectArrayList(AbstractObjectArrayList list) {
         // TODO конструктор копирования
-        values=new Object[list.size()];
+        values=new Object[list.values.length];
+        size=list.size();
         System.arraycopy(list.values,0,values,0,list.size());
         }
+
+
+    protected void ensureCappacity(int n){
+        if(n>values.length)
+        {
+            System.out.println("enter");
+            Object[] objects = new Object[values.length*2];
+            System.arraycopy(values,0,objects,0,size);
+            values=objects;
+        }
+    }
 
     public abstract boolean add(Object value);
 

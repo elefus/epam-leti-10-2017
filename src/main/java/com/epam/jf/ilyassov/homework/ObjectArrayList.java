@@ -2,46 +2,6 @@ package com.epam.jf.ilyassov.homework;
 
 public class ObjectArrayList extends AbstractObjectArrayList {
 
-    public static void main(String[] args) {
-        ObjectArrayList objectArrayList = new ObjectArrayList(25);
-        for (int i = 0; i < objectArrayList.size(); i++) {
-            objectArrayList.values[i]=i;
-        }
-
-        for (int i = 0; i < objectArrayList.size(); i++) {
-            System.out.print(objectArrayList.values[i] + " ");
-        }
-        System.out.println();
-        AbstractObjectArrayList list = objectArrayList.subList(2,10);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.values[i] + " ");
-        }
-
-//        System.out.println();
-//        System.out.println(objectArrayList.lastIndexOf("zero"));
-//        System.out.println(objectArrayList.lastIndexOf(11));
-//        System.out.println(objectArrayList.lastIndexOf(5.4));
-//        System.out.println(objectArrayList.contains("zero"));
-//        System.out.println(objectArrayList.contains("3"));
-//        System.out.println(objectArrayList.contains(25));
-//        System.out.println(objectArrayList.contains(100));
-//        System.out.println(objectArrayList.contains(5.4));
-
-
-//        System.out.println(objectArrayList.get(objectArrayList.size() - 1));
-//        for (int i = 0; i < objectArrayList.size(); i++) {
-//            System.out.print(objectArrayList.values[i] + " ");
-//        }
-//        ObjectArrayList objectArrayList2= new ObjectArrayList(objectArrayList);
-//        for (int i = 0; i < objectArrayList2.size(); i++) {
-//            System.out.println(objectArrayList2.values[i]);
-//        }
-//        objectArrayList.values[0]="er";
-//        System.out.println(objectArrayList.containsAll(objectArrayList2));
-
-
-
-    }
 
     public ObjectArrayList() {
         super();
@@ -58,20 +18,18 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean add(Object value) {
-        ObjectArrayList objectArrayList = new ObjectArrayList(this.size()+1);
-        System.arraycopy(values,0,objectArrayList.values,0,values.length);
-        objectArrayList.values[this.size()]=value;
-        values=objectArrayList.values;
+        ensureCappacity(size+1);
+        this.values[size]=value;
+        size++;
         return true;
     }
 
     @Override
     public boolean add(Object value, int index) {
-        ObjectArrayList objectArrayList = new ObjectArrayList(this.size()+1);
-        System.arraycopy(values,0,objectArrayList.values,0,index);
-        objectArrayList.values[index]=value;
-        System.arraycopy(values,index,objectArrayList.values,index+1,this.size()-index);
-        values=objectArrayList.values;
+        ensureCappacity(size+1);
+        System.arraycopy(values,index,values,index+1,size-index);
+        this.values[index]=value;
+        size++;
         return true;
     }
 
@@ -93,8 +51,9 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean containsAll(AbstractObjectArrayList list) {
-        if(this.size()!=list.size())
+        if(this.size()!=list.size()) {
             return false;
+        }
         for (int i = 0; i < list.size(); i++) {
             if(!contains(list.values[i]))
                 return false;
@@ -104,22 +63,28 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public Object remove(int index) {
-        ObjectArrayList objectArrayList = new ObjectArrayList(this.size()-1);
-        System.arraycopy(values,0,objectArrayList.values,0,index);
-        System.arraycopy(values,index+1,objectArrayList.values,index,size()-index-1);
-        values=objectArrayList.values;
-        return this;
+        Object temp=get(index);
+        System.arraycopy(values,index+1,values,index,size()-index);
+        size--;
+        return temp;
     }
 
     @Override
     public Object remove(Object value) {
-        return null;
+        for(int i=0;i<size();++i){
+            if(values[i].equals(value))
+            {
+                return remove(i);
+            }
+        }
+        return "object is not fined";
     }
 
     @Override
     public boolean removeAll(AbstractObjectArrayList list) {
-        Object[] objects=new Object[0];
-        values=objects;
+        for (int i = 0; i < list.size(); i++) {
+            remove(list.values[i]);
+        }
         return true;
     }
 
@@ -131,20 +96,21 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public boolean addAll(AbstractObjectArrayList list) {
-        ObjectArrayList objectArrayList = new ObjectArrayList(this.size()+list.size());
-        System.arraycopy(values,0,objectArrayList,0,this.size());
-        System.arraycopy(list.values,0,objectArrayList,this.size(),objectArrayList.size());
+        for (int i = 0; i < list.size(); i++) {
+            add(list.values[i]);
+        }
         return true;
     }
 
     @Override
     public void clear() {
-
+        values=new Object[10];
+        size=10;
     }
 
     @Override
     public int size() {
-        return this.values.length;
+        return size;
     }
 
     @Override
@@ -155,8 +121,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     @Override
     public int indexOf(Object value) {
         for (int i = 0; i < this.size(); i++) {
-            if(this.values[i].equals(value))
-            {
+            if(this.values[i].equals(value)) {
                 return i;
             }
         }
@@ -178,13 +143,17 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     @Override
     public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
         AbstractObjectArrayList list = new ObjectArrayList(toInclusive-fromInclusive+1);
+        list.size=toInclusive-fromInclusive+1;
         System.arraycopy(values,fromInclusive,list.values,0,list.size());
+
         return list;
     }
 
     @Override
     public void trimToSize() {
-
+        Object[] objects= new Object[size];
+        System.arraycopy(values,0,objects,0,size);
+        values=objects;
     }
 
 

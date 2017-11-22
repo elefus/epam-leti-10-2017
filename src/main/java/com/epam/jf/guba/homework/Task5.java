@@ -51,6 +51,4 @@ public class Task5 {
         int withoutVowels = temp.length();
         return withoutVowels == fullLength / 2;
     }
-
-
 }

@@ -1,23 +1,26 @@
-package com.epam.jf.common.homework.task12;
+package com.epam.jf.khvan.homework;
 
 /**
  * Список, построенный на основе массива.
  * Позволяет хранить значения любых ссылочных типов.
  */
 public abstract class AbstractObjectArrayList {
-
+    protected int size;
     protected Object[] values;
 
     public AbstractObjectArrayList() {
         // TODO values (на 10 элементов)
+        values = new Object[10];
     }
 
     public AbstractObjectArrayList(int capacity) {
         // TODO value[capacity]
+        values = new Object[capacity];
     }
 
     public AbstractObjectArrayList(AbstractObjectArrayList list) {
         // TODO конструктор копирования
+        values = list.values.clone();
     }
 
     public abstract boolean add(Object value);
@@ -52,5 +55,5 @@ public abstract class AbstractObjectArrayList {
 
     public abstract AbstractObjectArrayList subList(int fromInclusive, int toInclusive);
 
-    public abstract void trimToSize();
+
 }

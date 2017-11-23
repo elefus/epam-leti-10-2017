@@ -24,9 +24,6 @@ public class Task5 {
      */
     public static void main(String[] args) {
         int result = 0;
-        System.out.println(VOWEL_MASK);
-        System.out.println(CONSONANT_MASK);
-
 
         for (String ctr : args) {
             if(isAppropriateWord(ctr)) {
@@ -53,7 +50,6 @@ public class Task5 {
                 consonantCtr++;
             }
         }
-
 
         return vowelCtr == consonantCtr;
     }

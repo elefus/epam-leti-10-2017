@@ -1,9 +1,8 @@
 package com.epam.jf.vasiliev.homework.task7;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class IntArrayList extends AbstractIntArrayList {
-
     private final int DEFAULT_CAPACITY = 10;
 
     private int size;
@@ -114,6 +113,7 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public void clear() {
+        //TODO new memory in clear
         size = 0;
     }
 

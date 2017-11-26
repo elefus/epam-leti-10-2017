@@ -36,7 +36,8 @@ public class Task8 {
                 if (  m == 2) { firstPalindrom = Integer.parseInt(word);}
             }
         }
-        System.out.println( firstPalindrom);
+        if ( firstPalindrom != -123){
+        System.out.println( firstPalindrom);}
     }
 }
 

@@ -42,7 +42,7 @@ public class Task5 {
                 } else {
                     consonantNumber = 0;
                     vowelNumber = 0;
-                    continue;
+                    break;
                 }
             }
         }

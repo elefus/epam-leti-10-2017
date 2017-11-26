@@ -2,9 +2,7 @@ package com.epam.jf.khvan.homework;
 
 import com.epam.jf.common.homework.Task11;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 class Task10 {
@@ -22,7 +20,12 @@ class Task10 {
         array;
         array.subList(1,3).subList().subList()
         array.subList(1,3).add("h");
-        LinkedList
+        LinkedList linkedlist = new LinkedList();
+        linkedlist.addAll(array);
+        linkedlist.sort();
+        linkedlist.containsAll();
+        Arrays.sort(array,Comparator.comparing(o -> o));
+        ArrayList;
 
         for (Object a:
                 array.subList(1,8)) {

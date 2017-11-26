@@ -19,10 +19,8 @@ public class IntArrayList extends AbstractIntArrayList {
     }
 
     IntArrayList(AbstractIntArrayList list) {
-        values = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            this.add(list.get(i));
-        }
+        System.arraycopy(list.values,0,values,0,list.size());
+        size = list.size();
     }
 
     @Override

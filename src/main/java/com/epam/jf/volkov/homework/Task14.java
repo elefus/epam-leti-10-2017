@@ -14,7 +14,9 @@ public class Task14 extends com.epam.jf.common.homework.Task14 {
      */
     public int[][] sortMatrixByValuesInColumn(int[][] matrix, int indexColumn) {
         int[][] newMatrix = new int[matrix.length][matrix[0].length];
-        System.arraycopy(matrix, 0, newMatrix, 0, matrix.length);
+        for (int i = 0; i < matrix.length; i++) {
+            System.arraycopy(matrix[i], 0, newMatrix[i], 0, matrix[i].length);
+        }
         Arrays.sort(newMatrix, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {

@@ -51,7 +51,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
             } else {
                 return false;
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }
@@ -65,8 +65,8 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     public boolean contains(Object value) {
-        for (int i = 0; i < values.length; i++) {
-            if (values[i].equals(value)) {
+        for (Object value1 : values) {
+            if (value1.equals(value)) {
                 return true;
             }
         }
@@ -74,7 +74,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     public boolean containsAll(AbstractObjectArrayList list) {
-        for(int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (!contains(list.get(i))) {
                 return false;
             }
@@ -125,7 +125,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     public boolean addAll(AbstractObjectArrayList list) {
         Object[] valuesBackup = new Object[values.length];
         int pointerBackup = pointer;
-        System.arraycopy(values, 0, valuesBackup, 0 , pointer);
+        System.arraycopy(values, 0, valuesBackup, 0, pointer);
         try {
             for (int i = 0; i < list.size(); i++) {
                 add(list.get(i));
@@ -181,15 +181,22 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         } else {
             return index;
         }
-
     }
 
     public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
-        return new ObjectArrayList(666);
+        if (!isEmpty()) {
+            ObjectArrayList newList = new ObjectArrayList(toInclusive - fromInclusive + 1);
+            System.arraycopy(values, fromInclusive, newList.values, 0, toInclusive - fromInclusive + 1);
+            return newList;
+        } else {
+            return new ObjectArrayList(toInclusive - fromInclusive + 1);
+        }
     }
 
     public void trimToSize() {
-
+        Object[] newValues = new Object[pointer - 1];
+        System.arraycopy(values, 0, newValues, 0, pointer);
+        values = newValues;
     }
 
     private void grow() {

@@ -22,5 +22,6 @@ public class Task13 extends com.epam.jf.common.homework.Task13 {
                 matrix[i][j] = element++;
             }
         }
+        return matrix;
     }
 }

@@ -16,12 +16,12 @@ public class Task11 extends com.epam.jf.common.homework.Task11 {
     private void overflowCheck(int value){
         if(value > 1_000_000_000) {
             if(reverse(value % 100_000) > 21474){
-                    throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
         }
         if(value < -1_000_000_000){
             if(Math.abs(reverse(value % 100_000)) > 21474){
-                    throw new IllegalArgumentException();
+                throw new IllegalArgumentException();
             }
         }
     }

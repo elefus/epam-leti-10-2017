@@ -40,5 +40,3 @@ public class Task11Test {
         assertEquals(new Task11().reverse(8), 8);
     }
 }
-
-

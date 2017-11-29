@@ -9,7 +9,7 @@ import java.util.Comparator;
  * В нем следует определить методы, общие для различных реализаций списков.
  * @param <E> Тип элементов, хранящихся в списке.
  */
-public interface GenericListImplementation<E> {
+public interface GenericListImplementation<E>{
 
      boolean add(E value);
 
@@ -23,7 +23,7 @@ public interface GenericListImplementation<E> {
 
      E remove(int index);
 
-     E remove(E value);
+     boolean remove(E value);
 
      boolean removeAll(GenericListImplementation< ? extends E> list);
 
@@ -40,10 +40,5 @@ public interface GenericListImplementation<E> {
      int indexOf(E value);
 
      int lastIndexOf(E value);
-
-     GenericList<E> subList(int fromInclusive, int toInclusive);
-
-     Object[] toArray();
-
-     void sort(Comparator<? super E> c);
 }
+

@@ -1,9 +1,11 @@
 package com.epam.jf.common.homework;
 
 import com.epam.jf.common.homework.Task9;
+import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task9Test {

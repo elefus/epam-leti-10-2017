@@ -16,16 +16,25 @@ class Task10 {
         array.add("c");//2
         array.add("d");//3
         array.add("e");
+        ArrayListImplement<Integer> test = new ArrayListImplement<>();
 
-        array;
+        test.add(1);
+        test.add(1);
+        test.add(1);
+        test.add(1);
+
+        test.subList(1,3).addAll()
+        Comparator.comparing();
+
         array.subList(1,3).subList().subList()
         array.subList(1,3).add("h");
         LinkedList linkedlist = new LinkedList();
         linkedlist.addAll(array);
         linkedlist.sort();
         linkedlist.containsAll();
-        Arrays.sort(array,Comparator.comparing(o -> o));
-        ArrayList;
+        Comparator.comparing()
+
+
 
         for (Object a:
                 array.subList(1,8)) {

@@ -1,24 +1,35 @@
 package com.epam.jf.khvan.homework;
 
+import com.epam.jf.common.homework.task16.GenericList;
+
 import java.util.Objects;
 
-public class ObjectArrayList extends AbstractObjectArrayList {
+public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
+    private int size;
+    private E[] values;
 
-    public ObjectArrayList() {
-        super();
+    public ArrayListImplement() {
+        values = (E[]) (new Object[10]);
     }
 
-    public ObjectArrayList(int capacity) {
-        super(capacity);
+    public ArrayListImplement(int capacity) {
+        if (capacity > 0) {
+            values = (E[]) (new Object[capacity]);
+        } else {
+            throw new IllegalArgumentException("Illegal Capacity: " + capacity);
+        }
     }
 
-    public ObjectArrayList(ObjectArrayList list) {
-        super(list);
-        size = list.size;
+    public ArrayListImplement(GenericListImplementation<? extends E> list) {
+        size = list.size();
+        values = (E[]) new Object[size];
+        for (int i = 0; i < size; i++) {
+            values[i] =  list.get(i);
+        }
     }
 
     @Override
-    public boolean add(Object value) {
+    public boolean add(E value) {
         size++;
         checkCapacityOfArray(size);
         values[size - 1] = value;
@@ -26,7 +37,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean add(Object value, int index) {
+    public boolean add(E value, int index) {
         if (index < 0 || index >= size){
             return false;}
         size++;
@@ -38,13 +49,13 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public Object get(int index) {
+    public E get(int index) {
         checkIndex(index);
         return values[index];
     }
 
     @Override
-    public boolean contains(Object value) {
+    public boolean contains(E value) {
         for (Object value1 : values) {
             if (Objects.equals(value1 ,value)) {
                 return true;
@@ -54,30 +65,29 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean containsAll(AbstractObjectArrayList list) {
-        boolean flag = true;
+    public boolean containsAll(GenericListImplementation<? extends E> list) {
         for (int i = 0; i < list.size(); i++) {
             if ( this.contains( list.get(i))){
-                flag = true;
+                continue;
             } else {
                 return false;
             }
         }
-        return flag;
+        return true;
     }
 
     @Override
-    public Object remove(int index) {
+    public E remove(int index) {
         Object [] temp = values;
         Object removedObj = values[index];
         System.arraycopy(temp ,index + 1 , values, index,size - index - 1);
         values[size] = null;
         size--;
-        return removedObj;
+        return (E) removedObj;
     }
 
     @Override
-    public Object remove(Object value) {
+    public boolean remove(E value) {
         if (value == null) {
             for (int index = 0; index < size; index++)
                 if (values[index] == null) {
@@ -95,26 +105,28 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean removeAll(AbstractObjectArrayList list) {
+    public boolean removeAll(GenericListImplementation< ? extends E> list){
         for (int i = 0; i < list.size(); i++) {
-            if ( indexOf(list.values[i]) != -1){
-               remove(indexOf(list.values[i]));
+            if ( indexOf(list.get(i)) != -1){
+                remove(indexOf(list.get(i)));
             }
         }
         return true;
     }
 
     @Override
-    public Object set(Object value, int index) {
+    public E set(E value, int index) {
         Object oldValue = values[index];
         values[index] = value;
-        return oldValue;
+        return (E) oldValue;
     }
 
     @Override
-    public boolean addAll(AbstractObjectArrayList list) {
+    public boolean addAll(GenericListImplementation<? extends E> list) {
         checkCapacityOfArray(list.size() + size);
-        System.arraycopy( list.values,0, values, size, list.size());
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
+        }
         size = size + list.size();
         return true;
     }
@@ -127,47 +139,45 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         size = 0;
     }
 
-    @Override
-    public int size() {
-        return size;
-    }
 
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    @Override
-    public int indexOf(Object value) {
+    public int indexOf(E value) {
         if (value == null) {
             for (int i = 0; i < size; i++)
                 if (values[i] == null)
                     return i;
         } else {
             for (int i = 0; i < size; i++)
-                if (value.equals(values[i]))
+                if (Objects.equals(value, values[i]))
                     return i;
         }
         return -1;
 
     }
 
+    public Object[] toArray() {
+        Object[] object = new Object[size];
+        for (int i = 0; i < size; i++) {
+            object[i] = get(i);
+        }
+        return object;
+    }
+
     @Override
-    public int lastIndexOf(Object value) {
+    public int lastIndexOf(E value) {
         if (value == null) {
             for (int i = size-1; i >= 0; i--)
                 if (values[i] == null)
                     return i;
         } else {
             for (int i = size-1; i >= 0; i--)
-                if (value.equals(values[i]))
+                if (Objects.equals(value, values[i]))
                     return i;
         }
         return -1;
     }
 
-    @Override
-    public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+    public ArrayListImplement<E> subList(int fromInclusive, int toInclusive) {
         subListRangeCheck(fromInclusive, toInclusive, size);
         return new Sublist(this, 0, fromInclusive, toInclusive);
     }
@@ -183,22 +193,23 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     public void trimToSize() {
-         if ( size < values.length){
-             Object [] temp = values;
-             values = new Object[size];
-             System.arraycopy( temp, 0, values, 0, size);
-         }
+        if ( size < values.length){
+            Object [] temp = values;
+            values = (E[]) new Object[size];
+            System.arraycopy( temp, 0, values, 0, size);
+        }
     }
 
     private void checkCapacityOfArray(int size ) {
-        if ( size > values.length){
+        if ( size >= values.length){
             Object [] temp = values;
             int capacity = size;
             while (capacity < values.length){
                 capacity = (int) (values.length * 1.5 + 1);
             }
-            values = new Object[capacity];
-            System.arraycopy(temp,0, values, 0, size);
+            values = (E[]) new Object[capacity];
+            System.arraycopy( temp,0, values, 0, size);
+
         }
     }
 
@@ -208,14 +219,15 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
     }
 
-    private class Sublist extends AbstractObjectArrayList{
-        AbstractObjectArrayList parent;
+
+    private class Sublist extends ArrayListImplement<E>{
+        ArrayListImplement<E> parent;
         int size;
         int offset;
         int fromIndex;
         int toIndex;
 
-        public Sublist (AbstractObjectArrayList parent, int fromIndex, int toIndex, int offset) {
+        public Sublist (ArrayListImplement<E> parent, int fromIndex, int toIndex, int offset) {
             super();
             size = toIndex - fromIndex;
             this.parent = parent;
@@ -225,26 +237,26 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public boolean add(Object value) {
+        public boolean add(E value) {
             parent.add( value, offset + size);
             this.size++;
             return true;
         }
 
         @Override
-        public boolean add(Object value, int index) {
+        public boolean add(E value, int index) {
             parent.add( value, offset + index);
             this.size++;
             return true;
         }
 
         @Override
-        public Object get(int index) {
+        public E get(int index) {
             return parent.values[offset + index];
         }
 
         @Override
-        public boolean contains(Object value) {
+        public boolean contains(E value) {
             for(int i = fromIndex; i < toIndex; i++){
                 if ( Objects.equals(parent.values[i] ,value)){
                     return true;
@@ -254,7 +266,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public boolean containsAll(AbstractObjectArrayList list) {
+        public boolean containsAll(GenericListImplementation<? extends E> list) {
             boolean flag = true;
             for (int i = 0; i < list.size(); i++){
                 if ( this.contains( list.get(i))){
@@ -267,38 +279,36 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public Object remove(int index) {
+        public E remove(int index) {
             Object result = parent.remove(offset + index);
             size--;
-            return result;
+            return (E) result;
         }
 
-        @Override
-        public Object remove(Object value) {
-            return null;
-        }
 
         @Override
-        public boolean removeAll(AbstractObjectArrayList list) {
+        public boolean removeAll(GenericListImplementation<? extends E> list) {
             return false;
         }
 
         @Override
-        public Object set(Object value, int index) {
+        public E set(E value, int index) {
             Object oldValue = parent.get(offset + index);
             parent.values[offset + index] = value;
-            return oldValue;
+            return (E) oldValue;
         }
 
         @Override
-        public boolean addAll(AbstractObjectArrayList list) {
+        public boolean addAll(GenericListImplementation<? extends E> list) {
             checkCapacityOfArray(list.size() + parent.size);
-            System.arraycopy( parent.values , toIndex + 1, parent.values, toIndex + list.size() + 1, parent.size - toIndex - 1 );
-            System.arraycopy( list.values,0, parent.values, toIndex, list.size());
+            for (int i = 0; i < list.size(); i++) {
+                add(list.get(i));
+            }
             size = size + list.size();
             parent.size = parent.size + list.size();
             return true;
         }
+
 
         @Override
         public void clear() {
@@ -313,17 +323,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public int size() {
-            return size;
-        }
-
-        @Override
-        public boolean isEmpty() {
-            return size == 0;
-        }
-
-        @Override
-        public int indexOf(Object value) {
+        public int indexOf(E value) {
             for ( int i = fromIndex; i < toIndex; i++){
                 if ( Objects.equals(parent.values[i] ,value)){
                     return i;
@@ -333,7 +333,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public int lastIndexOf(Object value) {
+        public int lastIndexOf(E value) {
             for ( int i = toIndex - 1; i >= fromIndex; i--){
                 if ( Objects.equals(parent.values[i] ,value)){
                     return i;
@@ -343,10 +343,11 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+        public ArrayListImplement<E> subList(int fromInclusive, int toInclusive) {
             subListRangeCheck(fromInclusive, toInclusive, size);
             return new Sublist(this, 0, fromInclusive, toInclusive);
         }
+
+
     }
 }
-

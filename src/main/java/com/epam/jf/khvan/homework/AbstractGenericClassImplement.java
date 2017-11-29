@@ -26,19 +26,12 @@ public class AbstractGenericClassImplement<E> implements GenericListImplementati
 
     @Override
     public boolean contains(E value) {
-        return indexOf(value) != -1;
+        return false;
     }
 
     @Override
     public boolean containsAll(GenericListImplementation<? extends E> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            if (contains(list.get(i))) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
+        return false;
     }
 
     @Override
@@ -47,8 +40,8 @@ public class AbstractGenericClassImplement<E> implements GenericListImplementati
     }
 
     @Override
-    public E remove(E value) {
-        return null;
+    public boolean remove(E value) {
+        return false;
     }
 
     @Override
@@ -67,9 +60,7 @@ public class AbstractGenericClassImplement<E> implements GenericListImplementati
     }
 
     @Override
-    public void clear() {
-
-    }
+    public void clear() {}
 
     @Override
     public int size() {
@@ -91,24 +82,5 @@ public class AbstractGenericClassImplement<E> implements GenericListImplementati
         return 0;
     }
 
-    @Override
-    public GenericList<E> subList(int fromInclusive, int toInclusive) {
-        return null;
-    }
-
-    @Override
-    public Object[] toArray() {
-
-        return new Object[0];
-    }
-
-    public void sort(Comparator<? super E> c) {
-        Object[] a = this.toArray();
-        Arrays.sort(a, (Comparator) c);
-        for (int i = 0; i < size; i++) {
-            set((E) a[i], i);
-        }
-    }
-
-
 }
+

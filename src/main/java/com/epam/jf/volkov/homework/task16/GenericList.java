@@ -41,7 +41,7 @@ public interface GenericList<E> /*extends com.epam.jf.common.homework.task16.Gen
 
     int lastIndexOf(E value);
 
-    GenericList<? super E> subList(int from, int to);
+    GenericList<E> subList(int from, int to);
 
     Object[] toArray();
 }

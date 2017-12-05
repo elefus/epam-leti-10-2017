@@ -14,7 +14,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     @Override
     public boolean add(E value) {
-        return add(value, pointer);
+        return add(value, listPointer);
     }
 
     public abstract boolean add(E value, int index);

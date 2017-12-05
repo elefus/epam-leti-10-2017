@@ -6,23 +6,23 @@ import com.epam.jf.volkov.homework.task16.GenericList;
  * Реализация динамически расширяемого списка на основе массива.
  * @param <E> Тип элементов, хранящихся в списке.
  */
-public class GenericArrayList<E> extends AbstractGenericList<E> {
+public class KissGenericArrayList<E> extends AbstractGenericList<E> {
 
     protected Object[] values;
     private int pointer;
 
-    GenericArrayList (int capacity) {
+    KissGenericArrayList(int capacity) {
         values = new Object[capacity];
         pointer = 0;
     }
 
-    GenericArrayList (GenericArrayList list) {
+    KissGenericArrayList(KissGenericArrayList<E> list) {
         values = new Object[list.values.length];
         pointer = list.size();
         System.arraycopy(list.values, 0, values, 0, pointer);
     }
 
-    GenericArrayList () {
+    KissGenericArrayList() {
         values = new Object[10];
         pointer = 0;
     }
@@ -204,9 +204,9 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         return -1;
     }
 
-    public GenericArrayList<E> subList(int from, int to) {
+    public KissGenericArrayList<E> subList(int from, int to) {
         if (isCorrectIndex(from) && isCorrectIndex(to)) {
-            GenericArrayList<E> subList = new GenericArrayList<E>(to - from);
+            KissGenericArrayList<E> subList = new KissGenericArrayList<E>(to - from);
             System.arraycopy(values, from, subList.values, 0, to - from);
             subList.pointer = to - from;
             return subList;
@@ -256,7 +256,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         return isWritable() && (getAvailableSpace() >= amount);
     }
 
-    public static boolean isWritable(GenericArrayList list, int amount) { //Почему бы и да
+    public static boolean isWritable(KissGenericArrayList list, int amount) { //Почему бы и да
         return list.isWritable(amount);
     }
 }

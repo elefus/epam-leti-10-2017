@@ -1,6 +1,8 @@
 package com.epam.jf.volkov.homework.task17;
 
 import com.epam.jf.volkov.homework.task16.GenericList;
+import java.util.Iterator;
+import java.util.Arrays;
 
 /**
  * Базовая реализация интерфейса {@link GenericList}.
@@ -8,11 +10,18 @@ import com.epam.jf.volkov.homework.task16.GenericList;
  */
 public abstract class AbstractGenericList<E> implements GenericList<E> {
 
-    public abstract boolean add(E value);
+    private int listPointer;
+
+    @Override
+    public boolean add(E value) {
+        return add(value, pointer);
+    }
 
     public abstract boolean add(E value, int index);
 
-    public abstract boolean addAll(GenericList<? extends E> list);
+    public boolean addAll(GenericList<? extends E> list) {
+
+    }
 
     public abstract E get(int index);
 
@@ -45,4 +54,29 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     public abstract GenericList<E> subList(int from, int to);
 
     public abstract Object[] toArray();
+
+    private class GenericListIterator implements Iterator<E> { //Честно украдено у Oracle
+
+        int iterPointer;
+        int prevIterPointer;
+
+        GenericListIterator(int index) {
+            iterPointer = index;
+            prevIterPointer = -1;
+        }
+
+        public E next() {
+            try {
+                int index = iterPointer;
+                E value = get(index);
+                prevIterPointer = index++;
+            } catch () {
+
+            }
+        }
+
+        public boolean hasNext() {
+
+        }
+    }
 }

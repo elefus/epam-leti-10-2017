@@ -43,5 +43,5 @@ public interface GenericList<E> /*extends com.epam.jf.common.homework.task16.Gen
 
     GenericList<? super E> subList(int from, int to);
 
-    E[] toArray();
+    Object[] toArray();
 }

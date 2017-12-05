@@ -44,5 +44,5 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     public abstract GenericList<? super E> subList(int from, int to);
 
-    public abstract E[] toArray();
+    public abstract Object[] toArray();
 }

@@ -162,7 +162,6 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         }
         return true;
     }
-    }
 
     public E set(E value, int index) {
         if (isCorrectIndex(index)) {
@@ -205,7 +204,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         return -1;
     }
 
-    public GenericList<? super E> subList(int from, int to) {
+    public GenericArrayList<E> subList(int from, int to) {
         if (isCorrectIndex(from) && isCorrectIndex(to)) {
             GenericArrayList<E> subList = new GenericArrayList<E>(to - from);
             System.arraycopy(values, from, subList.values, 0, to - from);

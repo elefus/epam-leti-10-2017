@@ -42,7 +42,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     public abstract int lastIndexOf(E value);
 
-    public abstract GenericList<? super E> subList(int from, int to);
+    public abstract GenericList<E> subList(int from, int to);
 
     public abstract Object[] toArray();
 }

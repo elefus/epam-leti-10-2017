@@ -1,8 +1,5 @@
 package com.epam.jf.bavtovich.homework;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class Task15 {
 
     /**
@@ -12,7 +9,7 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public int[][] verticalCyclicShift(int[][] matrix, int numberShifts) {
-        numberShifts = numberShifts % matrix.length;       
+        numberShifts = -numberShifts % matrix.length;
         int[][] temp = new int[matrix.length][];
         for (int i = 0; i < matrix.length; i++) {
             int newIndex = getShiftIndex(i, numberShifts, matrix.length);

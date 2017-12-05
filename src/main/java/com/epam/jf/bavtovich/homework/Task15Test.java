@@ -2,9 +2,7 @@ package com.epam.jf.bavtovich.homework;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 class Task15Test {
     @Test
@@ -14,9 +12,9 @@ class Task15Test {
         int[][] matr1 = {{5,6,4,3,8}, {8,5,6,4,1}, {1,2,5,4,9}, {8,6,1,5,9}};
         int[][] matr2 = {{8,6,1,5,9}, {5,6,4,3,8}, {8,5,6,4,1}, {1,2,5,4,9}};
 
-        assertArrayEquals(obj.verticalCyclicShift(matr, 2), matr1);
-        assertArrayEquals(obj.verticalCyclicShift(matr, -3), matr2);
-        assertArrayEquals(obj.verticalCyclicShift(matr, -7), matr2);
+        assertArrayEquals(obj.verticalCyclicShift(matr, -2), matr1);
+        assertArrayEquals(obj.verticalCyclicShift(matr, 3), matr2);
+        assertArrayEquals(obj.verticalCyclicShift(matr, 7), matr2);
     }
 
     @Test

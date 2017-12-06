@@ -96,6 +96,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         return -1;
     }
 
+    @Override
     public GenericList<E> subList(int from, int to) {
         if (isCorrectIndex(from) && isCorrectIndex(to)) {
             GenericArrayList<E> sub = new GenericArrayList<E>(to - from);
@@ -107,11 +108,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         }
     }
 
-    ////////////////////////////////////////////////////////
-
-    private boolean isCorrectIndex(int index) {
-        return (index < size && index >= 0);
-    }
+    ///////////////////////////////////////////////////
 
     private boolean grow() {
         return grow(1);

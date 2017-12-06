@@ -93,7 +93,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     @Override
     public int indexOf(E value) {
-        GenericListIterator iter = listIterator();
+        GenericListIterator<E> iter = listIterator();
         while (iter.hasNext()) {
             if (iter.next().equals(value)) {
                 return iter.getLastRet();
@@ -118,12 +118,18 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         return array;
     }
 
-    public GenericListIterator listIterator() {
+    protected boolean isCorrectIndex(int index) {
+        return (index < size && index >= 0);
+    }
+
+    /////////////////////////////////////
+
+    public GenericListIterator<E> listIterator() {
         return listIterator(0);
     }
 
-    public GenericListIterator listIterator(int startIndex) {
-        return new GenericListIterator(startIndex);
+    public GenericListIterator<E> listIterator(int startIndex) {
+        return new GenericListIterator<E>(startIndex);
     }
 
     public Iterator<E> iterator() {
@@ -131,17 +137,17 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     public Iterator<E> iterator(int startIindex) {
-        return new GenericListIterator(startIindex);
+        return new GenericListIterator<E>(startIindex);
     }
 
-    private class GenericListIterator implements Iterator<E> {
+    private class GenericListIterator<E> implements Iterator<E> { //Затенение параметризации, костыль ниже
 
         int cursor;
         int lastRet;
 
         final int STEP;
 
-        GenericListIterator(int startIndex) {
+        GenericListIterator (int startIndex) {
             cursor = startIndex;
             lastRet = -1;
             STEP = 1;
@@ -150,10 +156,10 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         public E next() {
             try {
                 int index = cursor;
-                E value = get(index);
+                Object value = get(index); //Костыль
                 lastRet = index;
                 index += STEP;
-                return value;
+                return (E) value; //Костыль
             } catch (IndexOutOfBoundsException e) {
                 throw new NoSuchElementException();
             }

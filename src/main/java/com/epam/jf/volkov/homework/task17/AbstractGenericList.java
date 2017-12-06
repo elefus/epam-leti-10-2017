@@ -39,13 +39,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     @Override
     public boolean contains(E value) {
-        Iterator<E> iter = iterator();
-        while (iter.hasNext()) {
-            if (iter.next().equals(value)) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(value) >= 0;
     }
 
     @Override

@@ -1,12 +1,11 @@
 package com.epam.jf.volkov.homework.task17;
 
-import com.epam.jf.volkov.homework.task16.GenericList;
 
 /**
  * Реализация динамически расширяемого списка на основе массива.
  * @param <E> Тип элементов, хранящихся в списке.
  */
-public class KissGenericArrayList<E> extends AbstractGenericList<E> {
+public class KissGenericArrayList<E> {
 
     protected Object[] values;
     private int pointer;
@@ -65,7 +64,7 @@ public class KissGenericArrayList<E> extends AbstractGenericList<E> {
         }
     }
 
-    public boolean addAll(GenericList<? extends E> list) {
+    public boolean addAll(KissGenericArrayList<E> list) {
         int pointerBackup = pointer;
         for (int i = 0; i < list.size(); i++) {
             if (!add(list.get(i))) {
@@ -89,7 +88,7 @@ public class KissGenericArrayList<E> extends AbstractGenericList<E> {
         return false;
     }
 
-    public boolean containsAll(GenericList<? extends E> list) {
+    public boolean containsAll(KissGenericArrayList<E> list) {
         for (int i = 0; i < list.size(); i++) {
             if (!contains(list.get(i))) {
                 return false;
@@ -149,7 +148,7 @@ public class KissGenericArrayList<E> extends AbstractGenericList<E> {
         return removeB(indexOf((E) value));
     }
 
-    public boolean removeAll(GenericList<? extends E> list) {
+    public boolean removeAll(KissGenericArrayList<E> list) {
         Object[] valuesBackup = new Object[values.length];
         System.arraycopy(values, 0, valuesBackup, 0, pointer);
         int pointerBackup = pointer;
@@ -254,6 +253,12 @@ public class KissGenericArrayList<E> extends AbstractGenericList<E> {
 
     public boolean isWritable(int amount) {
         return isWritable() && (getAvailableSpace() >= amount);
+    }
+
+    KissGenericArrayList<Integer> a = new KissGenericArrayList<Integer>(20);
+    private void method (){
+        KissGenericArrayList<Integer> b = new KissGenericArrayList<>(33);
+        b.addAll(a);
     }
 
     public static boolean isWritable(KissGenericArrayList list, int amount) { //Почему бы и да

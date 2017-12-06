@@ -1,5 +1,7 @@
 package com.epam.jf.volkov.homework.task16;
 
+import java.util.Iterator;
+
 /**
  * Необходимо в своем пакете создать типизированный интерфейс GenericList.
  * В нем следует определить методы, общие для различных реализаций списков.
@@ -11,23 +13,19 @@ public interface GenericList<E> /*extends com.epam.jf.common.homework.task16.Gen
 
     boolean add(E value, int index);
 
-    boolean addAll(GenericList<? extends E> list);
+    boolean addAll(GenericList<E> list);
 
     E get(int index);
 
     boolean contains(E value);
 
-    boolean containsAll(GenericList<? extends E> list);
+    boolean containsAll(GenericList<E> list);
 
     E remove(int index);
 
-    boolean removeB(int index); //Решил добавить также реализации с return bool
-
     E remove(E value);
 
-    boolean removeB(Object value);
-
-    boolean removeAll(GenericList<? extends E> list);
+    boolean removeAll(GenericList<E> list);
 
     E set(E value, int index);
 
@@ -44,4 +42,8 @@ public interface GenericList<E> /*extends com.epam.jf.common.homework.task16.Gen
     GenericList<E> subList(int from, int to);
 
     Object[] toArray();
+
+    Iterator<E> iterator();
+
+    Iterator<E> iterator(int startIindex);
 }

@@ -19,6 +19,9 @@ public class Task15Solution extends Task15 {
      */
     @Override
     public int[][] verticalCyclicShift(int[][] matrix, int shift) {
+        if (shift < 0) {
+            shift += matrix.length;
+        }
         shift %= matrix.length;
         int[][] b = new int[matrix.length][];
         System.arraycopy(matrix, 0, b, shift, matrix.length - shift);
@@ -36,6 +39,9 @@ public class Task15Solution extends Task15 {
      */
     @Override
     public int[][] horizontalCyclicShift(int[][] matrix, int shift) {
+        if (shift < 0) {
+            shift += matrix.length;
+        }
         for (int i = 0; i < matrix.length; i++) {
             int shiftInner = shift % matrix[i].length;
             int[] dest = new int[matrix[i].length];

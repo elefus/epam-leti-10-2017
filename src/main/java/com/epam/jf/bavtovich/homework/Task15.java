@@ -9,20 +9,14 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public int[][] verticalCyclicShift(int[][] matrix, int numberShifts) {
-        numberShifts = -numberShifts % matrix.length;
-        int[][] temp = new int[matrix.length][];
-        for (int i = 0; i < matrix.length; i++) {
-            int newIndex = getShiftIndex(i, numberShifts, matrix.length);
-            temp[newIndex] = matrix[i];            
+        numberShifts = numberShifts % matrix.length;
+        if (numberShifts < 0) {
+            numberShifts += matrix.length;
         }
+        int[][] temp = new int[matrix.length][];
+        System.arraycopy(matrix,matrix.length - numberShifts, temp, 0, numberShifts);
+        System.arraycopy(matrix,0, temp, numberShifts, matrix.length - numberShifts);
         return temp;
-    }
-
-    private int getShiftIndex(int indexRow, int numberShifts, int matrixSize) {
-        return (numberShifts >= 0) ? indexRow - numberShifts < 0 ? matrixSize + indexRow - numberShifts
-                                                                 : indexRow - numberShifts
-                                   : indexRow - numberShifts >= matrixSize ? indexRow - numberShifts - matrixSize
-                                                                           : indexRow - numberShifts;
     }
 
     /**
@@ -32,13 +26,16 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public int[][] horizontalCyclicShift(int[][] matrix, int numberShifts) {
-        int[][] temp = new int[matrix.length][matrix[0].length];
-        numberShifts = -numberShifts % matrix[0].length;
-        for (int k = 0; k < matrix.length; k++) {
-            for (int i = 0; i < matrix[k].length; i++) {
-                int newIndex = getShiftIndex(i, numberShifts, matrix[k].length);
-                temp[k][newIndex] = matrix[k][i];
-            }
+        numberShifts = numberShifts % matrix[0].length;
+        if (numberShifts < 0) {
+            numberShifts += matrix[0].length;
+        }
+        int[][] temp = new int[matrix.length][];
+        for (int i = 0; i < matrix.length; i++) {
+            int[] tmpRow = new int[matrix[i].length];
+            System.arraycopy(matrix[i],matrix[i].length - numberShifts, tmpRow, 0, numberShifts);
+            System.arraycopy(matrix[i],0, tmpRow, numberShifts, matrix[i].length - numberShifts);
+            temp[i] = tmpRow;
         }
         return temp;
     }

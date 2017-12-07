@@ -16,7 +16,11 @@ public class Task14Solution extends Task14 {
      */
     @Override
     public int[][] sortMatrixByValuesInColumn(int[][] matrix, int indexColumn) {
-        Arrays.sort(matrix, Comparator.comparingInt(o -> o[indexColumn]));
-        return matrix;
+        int[][] cp = new int[matrix.length][];
+        for (int i = 0; i < matrix.length; i++) {
+            cp[i] = matrix[i].clone();
+        }
+        Arrays.sort(cp, Comparator.comparingInt(o -> o[indexColumn]));
+        return cp;
     }
 }

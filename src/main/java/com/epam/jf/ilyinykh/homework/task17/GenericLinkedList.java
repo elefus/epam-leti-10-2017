@@ -27,8 +27,8 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
             while (node.right != null) {
                 node = node.right;
             }
+            node.right = new Node(value, node);
         }
-        node.right = new Node(value, node);
         size++;
         return true;
     }

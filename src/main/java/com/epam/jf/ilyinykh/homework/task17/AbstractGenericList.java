@@ -2,6 +2,7 @@ package com.epam.jf.ilyinykh.homework.task17;
 
 import com.epam.jf.ilyinykh.homework.task16.GenericList;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -16,7 +17,6 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         }
         return true;
     }
-
 
     @Override
     public int indexOf(E value) {

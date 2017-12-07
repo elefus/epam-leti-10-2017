@@ -38,6 +38,8 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         System.arraycopy(data, 0, newData, 0, index);
         System.arraycopy(data, index, newData, index + 1, size - index);
 
+        size++;
+        data = newData;
         return true;
     }
 
@@ -60,11 +62,18 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         checkIndex(index);
         E old = data[index];
 
+        if (index == size - 1) {
+            size--;
+            return old;
+        }
+
         E[] newData = allocate(size - 1);
 
         System.arraycopy(data, 0, newData, 0, index);
-        System.arraycopy(data, index + 1, newData, index, size - index);
+        System.arraycopy(data, index + 1, newData, index, size - index - 1);
 
+        size--;
+        data = newData;
         return old;
     }
 

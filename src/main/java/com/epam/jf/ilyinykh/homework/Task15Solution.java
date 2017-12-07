@@ -19,7 +19,7 @@ public class Task15Solution extends Task15 {
      */
     @Override
     public int[][] verticalCyclicShift(int[][] matrix, int shift) {
-        if (shift < 0) {
+        while (shift < 0) {
             shift += matrix.length;
         }
         shift %= matrix.length;
@@ -39,7 +39,7 @@ public class Task15Solution extends Task15 {
      */
     @Override
     public int[][] horizontalCyclicShift(int[][] matrix, int shift) {
-        if (shift < 0) {
+        while (shift < 0) {
             shift += matrix.length;
         }
         for (int i = 0; i < matrix.length; i++) {

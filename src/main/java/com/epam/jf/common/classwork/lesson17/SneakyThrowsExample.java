@@ -12,7 +12,11 @@ public class SneakyThrowsExample {
 
     @SneakyThrows
     private static void throwable() {
-        throw new IOException();
+        try {
+            throw new IOException();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //        throwChecked(new IOException());
     }
 

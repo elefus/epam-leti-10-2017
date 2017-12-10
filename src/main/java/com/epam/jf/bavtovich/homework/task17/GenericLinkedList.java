@@ -127,8 +127,9 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public E set(int index, E element) {
         isValidIndex(index);
+        E temp = node(index).item;
         node(index).item = element;
-        return element;
+        return temp;
     }
 
     @Override

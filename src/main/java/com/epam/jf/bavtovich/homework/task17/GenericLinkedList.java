@@ -50,15 +50,21 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
 
     @Override
     public boolean add(int index, E element) {
-        if (size == 0) {
-            first = new Node<>(null, element, null);
-            last = first;
-        } else if (index == size - 1) {
+        if (index < 0 || size < index) {
+            return false;
+        }
+        if (index == 0) {
+            Node<E> firstElement = new Node<>(null, element, first);
+            if (first != null) {
+                first.prev = firstElement;
+                first = firstElement;
+            } else {
+                first = firstElement;
+                last = first;
+            }
+        } else if (index == size) {
             last = new Node<>(last, element, null);
             last.prev.next = last;
-        } else if (index == 0) {
-            first = new Node<>(null, element, first);
-            first.next.prev = first;
         } else {
             isValidIndex(index);
             Node<E> oldNode = node(index);
@@ -66,7 +72,6 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
             newNode.next.prev = newNode;
         }
         size++;
-
         return true;
     }
 

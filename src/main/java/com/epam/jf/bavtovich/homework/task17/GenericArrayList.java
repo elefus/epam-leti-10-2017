@@ -44,16 +44,12 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public boolean add(int index, E element) {
-        if (size == 0) {
-            values[0] = element;
-        } else if (index == size - 1) {
-            values[index + 1] = element;
-        } else {
-            isValidIndex(index);
-            checkSizeAndResize(1);
-            System.arraycopy(values, index, values, index + 1, size - index + 1);
-            values[index] = element;
-            }
+        if (index < 0 || size < index) {
+            return false;
+        }
+        checkSizeAndResize(1);
+        System.arraycopy(values, index, values, index + 1, size - index + 1);
+        values[index] = element;
         size++;
         return true;
     }

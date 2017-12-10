@@ -24,7 +24,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     public boolean add(E elem) {
-        add(size - 1, elem);
+        add(size, elem);
         return true;
     }
 

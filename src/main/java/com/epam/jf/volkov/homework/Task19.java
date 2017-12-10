@@ -11,9 +11,24 @@ public class Task19 {
         int[][] newMatrix = new int[source[0].length][source.length];
         for (int i = 0; i < source.length; i++) {
             for (int j = 0; j < source[0].length; j++) {
-                newMatrix[j][i] = source[i][j];
+                newMatrix[source[0].length - j - 1][i] = source[i][j];
             }
         }
         return newMatrix;
     }
 }
+
+/*
+1 2 3
+4 5 6
+7 8 9
+_____
+
+  |
+  v
+_____
+
+3 6 9
+2 5 8
+1 4 7
+ */

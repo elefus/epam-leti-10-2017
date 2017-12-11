@@ -18,7 +18,6 @@ class Task18Test {
     @Test
     void getSublistOfMaximumIncreasingSequenceTest2() {
         List<Integer> seq = new Task18().getSublistOfMaximumIncreasingSequence(new ArrayList<>(Arrays.asList(3, 2, 1, 1, 1, 1, 0)));
-        System.out.println(seq);
         assertEquals(0, seq.size());
     }
 

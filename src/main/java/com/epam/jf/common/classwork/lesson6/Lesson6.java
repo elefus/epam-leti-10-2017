@@ -18,11 +18,11 @@ public class Lesson6 {
 
 
     public static void main(String[] args) {
-//        nullableExample();
-//        for (int i : getValues()) {
-//            System.out.println(i);
-//        }
-//        Optional<Integer> integer = Optional.of(1);
+        nullableExample();
+        for (int i : getValues()) {
+            System.out.println(i);
+        }
+        Optional<Integer> integer = Optional.of(1);
 
         Lesson6 obj = null;
         obj.getValues();
@@ -32,7 +32,7 @@ public class Lesson6 {
     private static void nullableExample() {
         Scanner scanner = new Scanner(System.in);
         @NotNull String string = scanner.nextLine();
-//        @NotNull String str1 = method(string);
+        @NotNull String str1 = method(string);
     }
 
     /**

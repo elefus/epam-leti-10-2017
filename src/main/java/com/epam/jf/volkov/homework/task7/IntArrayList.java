@@ -43,6 +43,7 @@ public class IntArrayList extends AbstractIntArrayList {
             grow();
             System.arraycopy(values, index, values, index + 1, pointer - index);
             values[index] = value;
+            pointer++;
             return true;
         }
     }

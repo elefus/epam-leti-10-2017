@@ -20,7 +20,7 @@ public class Task11 extends com.epam.jf.common.homework.Task11 {
             }
             return ret;
         } else {
-            throw new IllegalArgumentException("Value must be more or equal to 0");
+            return -1 * reverse(-value);
         }
     }
 }

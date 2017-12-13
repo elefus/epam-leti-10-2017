@@ -84,7 +84,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
     }
 
     @Override
-    public GenericList<? extends E> sublist(int fromIndex, int toIndex) {
+    public GenericList<E> sublist(int fromIndex, int toIndex) {
         CheckIndex(toIndex);
         CheckIndex(fromIndex);
         GenericList<E> genericList=new GenericArrayList<>(toIndex-fromIndex+1);

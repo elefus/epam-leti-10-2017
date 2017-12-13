@@ -35,6 +35,6 @@ public interface GenericList<E> {
 
     int lastIndexOf(E value);
 
-    GenericList<? extends E> sublist(int fromIndex,int toIndex);
+    GenericList<E> sublist(int fromIndex,int toIndex);
 
 }

@@ -44,9 +44,11 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
     @Override
     public boolean removeAll(E value) {
+
         for (int i = 0; i < size(); i++) {
             if(contains(value)){
                 remove(indexOf(value));
+
             }
 
         }

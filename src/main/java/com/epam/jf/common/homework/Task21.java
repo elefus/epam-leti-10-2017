@@ -8,7 +8,7 @@ import java.util.List;
  * Для повышения точности вычислений использовать класс {@link java.math.BigDecimal}
  * Гарантировать точность не менее 1e-6.
  */
-public abstract class Task21 {
+public abstract class   Task21 {
 
     /**
      * Вычисляет сопротивление методом наименьших квадратов.

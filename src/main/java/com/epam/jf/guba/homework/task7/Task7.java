@@ -1,28 +1,22 @@
 package com.epam.jf.guba.homework.task7;
 
 import com.epam.jf.common.homework.task7.AbstractIntArrayList;
+import java.util.NoSuchElementException;
 
 public class Task7 extends AbstractIntArrayList {
 
     protected int size;
-    protected int capacity;
+
 
     public Task7() {
-        super();
-        this.size = 0;
-        capacity = values.length;
     }
 
     public Task7(int capacity) {
         super(capacity);
-        this.size = 0;
-        this.capacity = values.length;
     }
 
     public Task7(AbstractIntArrayList list) {
         super(list);
-        this.size = 0;
-        capacity = values.length;
     }
 
     @Override
@@ -39,10 +33,7 @@ public class Task7 extends AbstractIntArrayList {
             throw new ArrayIndexOutOfBoundsException("Exception from add(). Index " + index + " actual size " + size);
         }
         int oldSize = size;
-        if (size == 0) {
-            values[0] = value;
-            size++;
-        } else if (index == size) {
+      if (index == size) {
             if (isNeedExpand(size + 1)) {
                 expand();
             }
@@ -52,7 +43,6 @@ public class Task7 extends AbstractIntArrayList {
             shifftRight(index, 1);
             values[index] = value;
         }
-        capacity = values.length;
         return size > oldSize;
     }
 
@@ -170,13 +160,10 @@ public class Task7 extends AbstractIntArrayList {
         while (isNeedExpand(size + positions)) {
             expand();
         }
-        for (int i = size - 1; i >= fromInclusive; i--) {
-            values[i + positions] = values[i];
-        }
+        System.arraycopy(values, fromInclusive, values, fromInclusive + positions, size - fromInclusive);
         for (int i = fromInclusive; i < (fromInclusive + positions); i++) {
             values[i] = 0;
         }
-        capacity = values.length;
         size += positions;
     }
 
@@ -184,31 +171,26 @@ public class Task7 extends AbstractIntArrayList {
         if (fromInclusive - position < 0) {
             throw new ArrayIndexOutOfBoundsException("Left shift till: " + (fromInclusive - position));
         }
-        for (int i = fromInclusive; i < size; i++) {
-            values[i - position] = values[i];
-        }
+        System.arraycopy(values, fromInclusive, values, fromInclusive - position, size - fromInclusive);
         for (int i = size - position; i < size; i++) {
             values[i] = 0;
         }
-        capacity = values.length;
         size -= position;
     }
 
     private void expand() {
-        int[] newValues = new int[(int) (capacity * 1.5)];
-        for (int i = 0; i < size; i++) {
-            newValues[i] = values[i];
+        if(values.length == 0){
+            values = new int[1];
         }
+        int[] newValues = new int[(int) (values.length * 1.5)];
+        System.arraycopy(values, 0, newValues, 0, size);
         values = newValues;
     }
 
     private boolean isNeedExpand(int newSize) {
-        return newSize > capacity * 0.75;
+        return newSize > values.length;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
 
 
 }

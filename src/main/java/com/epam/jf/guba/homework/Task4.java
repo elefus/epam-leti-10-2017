@@ -31,6 +31,7 @@ public class Task4 {
             for (Character letter : candidat.toCharArray()) {
                 if (!temp.toString().contains(letter.toString())) temp.append(letter);
             }
+
             int currentWordLength = temp.toString().length();
             if (currentWordLength < minDiff) {
                 minDiff = currentWordLength;

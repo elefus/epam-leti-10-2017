@@ -1,7 +1,5 @@
 package com.epam.jf.common.classwork.lesson13;
 
-import com.epam.jf.common.classwork.lesson11.compare.Person;
-
 import java.util.Arrays;
 
 public class EnumExample {
@@ -40,7 +38,7 @@ enum PersonFactoryImpl implements PersonFactory {
     INSTANCE {
         @Override
         public Person create(String name, String surName, int age) {
-            return new Person(name, surName, age);
+            return new Person();
         }
     }
 }

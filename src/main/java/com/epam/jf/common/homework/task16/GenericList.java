@@ -7,4 +7,10 @@ package com.epam.jf.common.homework.task16;
  */
 public interface GenericList<E> {
 
+
+
+
+
+
+
 }

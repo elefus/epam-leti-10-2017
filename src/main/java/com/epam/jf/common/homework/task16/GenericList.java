@@ -10,4 +10,7 @@ public interface GenericList<E> {
 
 
 
+
+
+
 }

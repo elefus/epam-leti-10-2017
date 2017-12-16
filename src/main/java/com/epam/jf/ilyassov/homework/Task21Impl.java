@@ -23,7 +23,7 @@ public class Task21Impl extends Task21 {
     }
 
     @Override
-    public BigDecimal calcResistance(List<IMeasurement> measurements) {
+    public double calcResistance(List<IMeasurement> measurements) {
         double UI = 0;
         double I=0;
         for (int i = 0; i < measurements.size(); i++) {
@@ -33,6 +33,6 @@ public class Task21Impl extends Task21 {
         BigDecimal bigDecimal=new BigDecimal(UI/I);
         BigDecimal decimal = bigDecimal.setScale(6, BigDecimal.ROUND_DOWN);
 
-        return decimal;
+        return decimal.doubleValue();
     }
 }

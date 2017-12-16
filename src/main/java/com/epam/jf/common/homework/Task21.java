@@ -1,6 +1,5 @@
 package com.epam.jf.common.homework;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ public abstract class Task21 {
      * @param measurements Измерения в ходе эксперимента.
      * @return Вычисленное по исходным данным сопротивление.
      */
-    public abstract BigDecimal calcResistance(List<IMeasurement> measurements);
+    public abstract double calcResistance(List<IMeasurement> measurements);
 
     /** Измерение. */
     public interface IMeasurement {

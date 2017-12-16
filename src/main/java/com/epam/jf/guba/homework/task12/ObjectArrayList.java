@@ -52,13 +52,13 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     private void expandCapacity() {
-        Object[] newVal = new Object[capacity + (capacity >> 1)];
+        Object[] newVal = new Object[values.length + (values.length >> 1)];
         System.arraycopy(values, 0, newVal, 0, size);
         values = newVal;
     }
 
     private boolean ensureCapacity(int requestedSpace) {
-        return capacity > size + requestedSpace;
+        return values.length > size + requestedSpace;
     }
 
     @Override
@@ -152,7 +152,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public void clear() {
-        values = new Object[capacity];
+        values = new Object[values.length];
         size = 0;
     }
 
@@ -197,7 +197,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public void trimToSize() {
-        if(size < capacity){
+        if(size < values.length){
             values = (size == 0) ? new Object[0] : Arrays.copyOf(values, size);
         }
     }

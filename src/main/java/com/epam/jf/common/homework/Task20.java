@@ -1,5 +1,7 @@
 package com.epam.jf.common.homework;
 
+import com.epam.jf.ilyassov.homework.IPoemImpl;
+
 import java.util.List;
 import java.util.Set;
 
@@ -11,7 +13,7 @@ public abstract class Task20 {
      * @param author Автор, стихотворения которого необходимо выбрать.
      * @return Список, упорядоченных по длине строк, составляющих стихотворения автора.
      */
-    public abstract List<String> sortPoems(Set<IPoem> poems, String author);
+    public abstract List<String> sortPoems(Set<IPoemImpl> poems, String author);
 
 
     /**

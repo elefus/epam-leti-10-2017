@@ -1,5 +1,7 @@
 package com.epam.jf.kozlov.homework.task7;
 
+import java.util.Arrays;
+
 public abstract class AbstractIntArrayList {
 
     protected int[] values;
@@ -13,10 +15,7 @@ public abstract class AbstractIntArrayList {
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
-        values = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            values[i] = list.get(i);
-        }
+        values = Arrays.copyOf(list.values, list.values.length);
     }
 
     public abstract boolean add(int value);

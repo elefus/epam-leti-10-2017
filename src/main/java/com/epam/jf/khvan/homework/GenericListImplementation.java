@@ -9,7 +9,7 @@ public interface GenericListImplementation<E>{
 
      boolean add(E value);
 
-     boolean add(E value, int index);
+     boolean add(int index, E value);
 
      E get(int index);
 
@@ -36,5 +36,7 @@ public interface GenericListImplementation<E>{
      int indexOf(E value);
 
      int lastIndexOf(E value);
+
+     GenericListImplementation<E> subList(int fromInclusive, int toExclusive);
 }
 

@@ -27,6 +27,9 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean add(int value, int index) {
+        if (index < 0 || index > size()) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
         int[] newArray = new int[size() + 1];
         System.arraycopy(values, 0, newArray, 0, index - 1);
         newArray[index - 1] = value;
@@ -62,10 +65,10 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public int remove(int index) {
-        int result = values[index];
-        int[] newArray = new int[size() + 1];
+        int[] newArray = new int[size() - 1];
         System.arraycopy(values, 0, newArray, 0, index - 1);
         System.arraycopy(values, index, newArray, index - 1, size() - index);
+        int result = values[index];
         values = newArray;
         return result;
     }

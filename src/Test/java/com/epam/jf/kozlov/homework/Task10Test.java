@@ -7,55 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class Task10Test {
     @Test
     void testZero() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(0);
-
-        assertEquals(0, result);
+        assertEquals(0, new Task10().getSumDigits(0));
     }
 
     @Test
     void testTen() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(10);
-
-        assertEquals(1, result);
+        assertEquals(1, new Task10().getSumDigits(10));
     }
 
     @Test
     void testBigNumber() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(1234567890);
-
-        assertEquals(45, result);
+        assertEquals(45, new Task10().getSumDigits(1234567890));
     }
 
     @Test
     void testNegativeBigNumber() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(-1234567890);
-
-        assertEquals(45, result);
+        assertEquals(45, new Task10().getSumDigits(-1234567890));
     }
 
     @Test
     void testNegativeOne() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(-1);
-
-        assertEquals(1, result);
+        assertEquals(1, new Task10().getSumDigits(-1));
     }
 
     @Test
     void testMemeNumber() {
-        Task10 solver = new Task10();
-
-        long result = solver.getSumDigits(42);
-
-        assertEquals(6, result);
+        assertEquals(6, new Task10().getSumDigits(42));
     }
 }

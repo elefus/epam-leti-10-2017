@@ -1,8 +1,4 @@
-package com.epam.jf.khvan.homework;
-
-import com.epam.jf.common.homework.task16.GenericList;
-
-import java.util.Comparator;
+package task17;
 
 /**
  * Необходимо в своем пакете создать типизированный интерфейс GenericList.
@@ -19,17 +15,17 @@ public interface GenericListImplementation<E>{
 
      boolean contains(E value);
 
-     boolean containsAll(GenericListImplementation< ? extends E> list);
+     boolean containsAll(GenericListImplementation<? extends E> list);
 
      E remove(int index);
 
      boolean remove(E value);
 
-     boolean removeAll(GenericListImplementation< ? extends E> list);
+     boolean removeAll(GenericListImplementation<? extends E> list);
 
      E set(E value, int index);
 
-     boolean addAll(GenericListImplementation< ? extends E> list);
+     boolean addAll(GenericListImplementation<? extends E> list);
 
      void clear();
 

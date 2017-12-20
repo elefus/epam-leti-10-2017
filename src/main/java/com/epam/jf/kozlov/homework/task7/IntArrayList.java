@@ -43,7 +43,7 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public boolean contains(int value) {
         for (int val:values) {
-            if(val == value) {
+            if (val == value) {
                 return  true;
             }
         }
@@ -53,10 +53,10 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public boolean containsAll(AbstractIntArrayList list) {
         for (int value: list.values) {
-            if(!contains(value)) {
+            if (!contains(value)) {
                 return false;
             }
-        };
+        }
         return true;
     }
 
@@ -81,7 +81,7 @@ public class IntArrayList extends AbstractIntArrayList {
     public boolean addAll(AbstractIntArrayList list) {
         for (int value: list.values) {
             add(value);
-        };
+        }
         return true;
     }
 
@@ -102,8 +102,8 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public int indexOf(int value) {
-        for (int i = 0; i < size() ; i++) {
-            if(values[i] == value) {
+        for (int i = 0; i < size(); i++) {
+            if (values[i] == value) {
                 return i;
             }
         }
@@ -113,8 +113,8 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public int lastIndexOf(int value) {
         int result = -1;
-        for (int i = 0; i < size() ; i++) {
-            if(values[i] == value) {
+        for (int i = 0; i < size(); i++) {
+            if (values[i] == value) {
                 result = i;
             }
         }

@@ -14,7 +14,7 @@ public abstract class AbstractIntArrayList {
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
         values = new int[list.size()];
-        for (int i = 0; i < list.size() ; i++) {
+        for (int i = 0; i < list.size(); i++) {
             values[i] = list.get(i);
         }
     }

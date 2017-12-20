@@ -6,73 +6,41 @@ import static org.junit.jupiter.api.Assertions.*;
 class Task9Test {
     @Test
     void testZero() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(0);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(0));
     }
 
     @Test
     void testOne() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(1);
-
-        assertTrue(result);
+        assertTrue(new Task9().isPowerOfTwo(1));
     }
 
     @Test
     void testFour() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(4);
-
-        assertTrue(result);
+        assertTrue(new Task9().isPowerOfTwo(4));
     }
 
     @Test
     void testSeven() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(7);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(7));
     }
 
     @Test
     void testNumberWhichIsDefinitelyNotPowerOfTwo() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(872193984);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(872193984));
     }
 
     @Test
     void testNegativeTwo() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(-2);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(-2));
     }
 
     @Test
     void testNegativeOne() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(-1);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(-1));
     }
 
     @Test
     void testNegativeNumber() {
-        Task9 solver = new Task9();
-
-        boolean result = solver.isPowerOfTwo(-872193984);
-
-        assertFalse(result);
+        assertFalse(new Task9().isPowerOfTwo(-872193984));
     }
 }

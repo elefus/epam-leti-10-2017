@@ -1,11 +1,8 @@
-package com.epam.jf.khvan.homework;
-
-import com.epam.jf.common.homework.task16.GenericList;
+package task17;
 
 import java.util.Objects;
 
 public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
-    private int size;
     private E[] values;
 
     public ArrayListImplement() {
@@ -38,13 +35,16 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
     @Override
     public boolean add(E value, int index) {
+        ++size;
+        Object [] temp = values;
         if (index < 0 || index >= size){
             return false;}
-        size++;
+
         checkCapacityOfArray(size);
-        Object [] temp = values;
-        values[index] = value;
+
         System.arraycopy( temp, index , values,index + 1, size - index - 1);
+        values[index] = value;
+
         return true;
     }
 
@@ -56,12 +56,7 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
     @Override
     public boolean contains(E value) {
-        for (Object value1 : values) {
-            if (Objects.equals(value1 ,value)) {
-                return true;
-            }
-        }
-        return false;
+        return indexOf(value) != -1;
     }
 
     @Override
@@ -78,12 +73,12 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
     @Override
     public E remove(int index) {
-        Object [] temp = values;
         Object removedObj = values[index];
-        System.arraycopy(temp ,index + 1 , values, index,size - index - 1);
-        values[size] = null;
+        System.arraycopy(values ,index + 1 , values, index,size - index - 1);
+        values[size - 1] = null;
         size--;
         return (E) removedObj;
+
     }
 
     @Override
@@ -123,13 +118,14 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
     @Override
     public boolean addAll(GenericListImplementation<? extends E> list) {
-        checkCapacityOfArray(list.size() + size);
         for (int i = 0; i < list.size(); i++) {
-            add(list.get(i));
+            values[size + i] = list.get(i);
         }
-        size = size + list.size();
+        size += list.size();
         return true;
     }
+
+
 
     @Override
     public void clear() {
@@ -177,10 +173,21 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         return -1;
     }
 
+    public void trimToSize() {
+        if ( size < values.length){
+            values = (E[]) new Object[size];
+            Object [] temp = values;
+            System.arraycopy( temp, 0, values, 0, size);
+        }
+    }
+
+
+
     public ArrayListImplement<E> subList(int fromInclusive, int toInclusive) {
         subListRangeCheck(fromInclusive, toInclusive, size);
-        return new Sublist(this, 0, fromInclusive, toInclusive);
+        return new Sublist(this,  fromInclusive, toInclusive);
     }
+
 
     static void subListRangeCheck(int fromIndex, int toIndex, int size) {
         if (fromIndex < 0)
@@ -192,14 +199,6 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
                     ") > toIndex(" + toIndex + ")");
     }
 
-    public void trimToSize() {
-        if ( size < values.length){
-            Object [] temp = values;
-            values = (E[]) new Object[size];
-            System.arraycopy( temp, 0, values, 0, size);
-        }
-    }
-
     private void checkCapacityOfArray(int size ) {
         if ( size >= values.length){
             Object [] temp = values;
@@ -208,13 +207,13 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
                 capacity = (int) (values.length * 1.5 + 1);
             }
             values = (E[]) new Object[capacity];
-            System.arraycopy( temp,0, values, 0, size);
+            System.arraycopy( temp,0, values, 0, temp.length);
 
         }
     }
 
     private void checkIndex(int index){
-        if ( index < 0 || index > size - 1 ){
+        if ( index < 0 && index > size - 1 ){
             throw new IndexOutOfBoundsException();
         }
     }
@@ -222,18 +221,22 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
     private class Sublist extends ArrayListImplement<E>{
         ArrayListImplement<E> parent;
-        int size;
+         int size;
         int offset;
         int fromIndex;
         int toIndex;
 
-        public Sublist (ArrayListImplement<E> parent, int fromIndex, int toIndex, int offset) {
-            super();
-            size = toIndex - fromIndex;
+        public Sublist (ArrayListImplement<E> parent, int fromIndex, int toIndex) {
+            size =  toIndex - fromIndex;
             this.parent = parent;
-            this.offset = offset + fromIndex;
+            this.offset =  fromIndex;
             this.fromIndex = fromIndex;
             this.toIndex = toIndex;
+        }
+
+        @Override
+        public int size() {
+            return size;
         }
 
         @Override
@@ -252,6 +255,7 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
         @Override
         public E get(int index) {
+            if (index > size - 1){throw new ArrayIndexOutOfBoundsException();}
             return parent.values[offset + index];
         }
 
@@ -310,6 +314,9 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         }
 
 
+
+
+
         @Override
         public void clear() {
             if( fromIndex < toIndex) {
@@ -345,9 +352,17 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         @Override
         public ArrayListImplement<E> subList(int fromInclusive, int toInclusive) {
             subListRangeCheck(fromInclusive, toInclusive, size);
-            return new Sublist(this, 0, fromInclusive, toInclusive);
+            return new Sublist(this, fromInclusive, toInclusive);
         }
 
-
+        @Override
+        public Object[] toArray() {
+            Object[] object = new Object[size];
+            for (int i = 0; i < size; i++) {
+                object[i] = get(i);
+            }
+            return object;
+        }
     }
 }
+

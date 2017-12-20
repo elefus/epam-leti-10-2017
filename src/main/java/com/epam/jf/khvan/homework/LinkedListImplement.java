@@ -1,46 +1,56 @@
-package com.epam.jf.khvan.homework;
+package task17;
 
-import com.epam.jf.common.homework.task16.GenericList;
-
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
     Node<E> first;
     Node<E> last;
-    private int size = 0;
 
     public LinkedListImplement() {}
 
     public LinkedListImplement(GenericListImplementation<? extends E> list) {
-        size = list.size();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < list.size(); i++) {
             add(list.get(i));
         }
     }
 
     public boolean add(E e){
+        size++;
         linkLast(e);
         return true;
     }
 
-    public void add(int index,E element){
+    public boolean add(E element, int index){
+
         checkPositionIndex(index);
         if(index == size){
             linkLast(element);
         } else {
-            Node<E> oldNode = nodeAtIndex(index);
-            Node<E> newNode = new Node<>(oldNode.prev, element, oldNode);
-            oldNode.prev = newNode;
+            if (index == 0) {
+                Node<E> firstItem = new Node<>(null, element, first);
+                if (first != null) {
+                    first.prev = firstItem;
+                    first = firstItem;
+                } else {
+                    first = firstItem;
+                    last = first;
+                }
+            } else {
+                Node<E> oldItem = nodeAtIndex(index);
+                Node<E> newItem = new Node<>( oldItem.prev, element, oldItem);
+                newItem.prev.next = newItem;
+                oldItem.prev = newItem;
+
+            }
 
         }
         size++;
+        return true;
     }
 
     public boolean addAll(GenericListImplementation<? extends E> list){
         for (int i = 0; i < list.size() ; i++) {
-            add(size + i, list.get(i));
+            add( list.get(i));
         }
         return true;
     }
@@ -52,13 +62,14 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
     public E remove(int index){
         checkElementIndex(index);
+
         return unlink(nodeAtIndex(index));
     }
 
     public boolean remove(E element){
         for (int i = 0; i < size ; i++) {
             if (Objects.equals(get(i),element)){
-                remove(get(i));
+                remove(i);
                 return true;
             }
         }
@@ -67,12 +78,12 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
     public boolean removeAll(GenericListImplementation< ? extends E> list){
         for (int i = 0; i < list.size() ; i++) {
-            list.remove(i);
+            remove(list.get(i));
         }
         return true;
     }
 
-    public E set(int index, E element){
+    public E set( E element, int index){
         checkElementIndex(index);
         E oldElement = nodeAtIndex(index).item;
         nodeAtIndex(index).item = element;
@@ -96,7 +107,7 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
     @Override
     public boolean containsAll(GenericListImplementation<? extends E> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
+        for (int i = 0; i < list.size(); i++) {
             if (contains(list.get(i))) {
                 continue;
             } else {
@@ -106,20 +117,15 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         return true;
     }
 
-    public int indexOf(E element){
+    public int indexOf(E element) {
+        Node start = first;
         int index = 0;
-        if (element == null){
-            for (Node<E> x = first; x != null; x = x.next) {
-                if (x.item == null)
-                    return index;
-                index++;
+        while (start != null) {
+            if (Objects.equals(start.item, element)) {
+                return index;
             }
-        } else {
-            for (Node<E> x = first; x != null; x = x.next) {
-                if (x.item == element)
-                    return index;
-                index++;
-            }
+            index++;
+            start = start.next;
         }
         return -1;
     }
@@ -128,14 +134,12 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         int index = size - 1;
         if (element == null){
             for (Node<E> x = last; x != null; x = x.prev) {
-                if (x.item == null)
-                    return index;
+                if (Objects.equals(x.item,null)) return index;
                 index--;
             }
         } else {
             for (Node<E> x = last; x != null; x = x.prev) {
-                if (x.item == element)
-                    return index;
+                if (Objects.equals(x.item,element)) return index;
                 index--;
             }
         }
@@ -154,7 +158,7 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
     public LinkedListImplement<E> subList(int fromIndex, int toIndex) {
         subListRangeCheck(fromIndex, toIndex, size);
-        return new Sublist<E>(this, 0, fromIndex, toIndex);
+        return new Sublist<E>(this, fromIndex, toIndex);
     }
 
     static void subListRangeCheck(int fromIndex, int toIndex, int size) {
@@ -175,31 +179,32 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         int fromIndex;
         int toIndex;
 
-        public Sublist (LinkedListImplement<E> parent, int fromIndex, int toIndex, int offset) {
-            super();
+        public Sublist (LinkedListImplement<E> parent, int fromIndex, int toIndex) {
+
             size = toIndex - fromIndex;
             this.parent = parent;
-            this.offset = offset + fromIndex;
+            this.offset = fromIndex;
             this.fromIndex = fromIndex;
             this.toIndex = toIndex;
         }
 
         @Override
         public boolean add(E value) {
-            parent.add(offset + size,value);
+            parent.add(value, offset + size);
             this.size++;
             return true;
         }
 
         @Override
         public boolean add(E value, int index) {
-            parent.add(offset + index, value);
+            parent.add( value, offset + index);
             this.size++;
             return true;
         }
 
         @Override
         public E get(int index) {
+            if (index > size - 1){throw new ArrayIndexOutOfBoundsException();}
             return parent.get(offset + index);
         }
 
@@ -244,7 +249,7 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         @Override
         public boolean addAll(GenericListImplementation<? extends E> list){
             for (int i = 0; i < list.size() ; i++) {
-                add(fromIndex + i, list.get(i));
+                add( list.get(i), fromIndex + i);
             }
             size = size + list.size();
             parent.size = parent.size + list.size();
@@ -293,20 +298,32 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
             }
             return -1;
         }
+
+        @Override
+        public Object[] toArray() {
+            Object[] object = new Object[size];
+            for (int i = 0; i < size; i++) {
+                object[i] = get(i);
+            }
+            return object;
+        }
     }
 
-    void linkLast(E e) {
-        Node<E> l = last;
-        Node<E> newNode = new Node<>(l, e, null);
+
+
+    void linkLast(E element) {
+        final Node<E> l = last;
+        final Node<E> newNode = new Node<>(l, element, null);
         last = newNode;
         if (l == null)
             first = newNode;
         else
             l.next = newNode;
-        size++;
-    }
+        }
+
 
     E unlink(Node<E> node){
+        size--;
       E deletedElement = node.item;
       Node<E> prev = node.prev;
       Node<E> next = node.next;
@@ -324,28 +341,27 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
           prev.next = next;
           node.next = null;
       }
+        node.item = null;
 
-      node.item = null;
-      size--;
         return deletedElement;
     }
 
-    Node<E> nodeAtIndex(int index) {
+    public Node<E> nodeAtIndex(int index) {
+        Node<E> x;
         if (index < (size / 2)) {
-            Node<E> x = first;
-            for (int i = 0; i < index; i++)
+            x = first;
+            for (int i = 0; i < index ; i++)
                 x = x.next;
-            return x;
         } else {
-            Node<E> x = last;
+            x = last;
             for (int i = size - 1; i > index; i--)
                 x = x.prev;
-            return x;
         }
+        return x;
     }
 
 
-    private static class Node<E> {
+    public static class Node<E> {
         E item;
         Node<E> next;
         Node<E> prev;
@@ -367,11 +383,12 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
     private void checkElementIndex(int index) {
         if (!isElementIndex(index))
-            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+size);
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
     }
 
     private void checkPositionIndex(int index) {
         if (!isPositionIndex(index))
-            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+size);
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
     }
 }
+

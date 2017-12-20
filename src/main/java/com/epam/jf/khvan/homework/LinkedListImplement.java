@@ -14,13 +14,7 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         }
     }
 
-    public boolean add(E e){
-        size++;
-        linkLast(e);
-        return true;
-    }
-
-    public boolean add(E element, int index){
+    public boolean add(int index, E element){
 
         checkPositionIndex(index);
         if(index == size){
@@ -76,12 +70,6 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         return false;
     }
 
-    public boolean removeAll(GenericListImplementation< ? extends E> list){
-        for (int i = 0; i < list.size() ; i++) {
-            remove(list.get(i));
-        }
-        return true;
-    }
 
     public E set( E element, int index){
         checkElementIndex(index);
@@ -104,48 +92,6 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
     public boolean contains(E value) {
         return indexOf(value) != -1;
     }
-
-    @Override
-    public boolean containsAll(GenericListImplementation<? extends E> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if (contains(list.get(i))) {
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public int indexOf(E element) {
-        Node start = first;
-        int index = 0;
-        while (start != null) {
-            if (Objects.equals(start.item, element)) {
-                return index;
-            }
-            index++;
-            start = start.next;
-        }
-        return -1;
-    }
-
-    public int lastIndexOf(E element){
-        int index = size - 1;
-        if (element == null){
-            for (Node<E> x = last; x != null; x = x.prev) {
-                if (Objects.equals(x.item,null)) return index;
-                index--;
-            }
-        } else {
-            for (Node<E> x = last; x != null; x = x.prev) {
-                if (Objects.equals(x.item,element)) return index;
-                index--;
-            }
-        }
-        return -1;
-    }
-
 
     public Object[] toArray() {
         Object[] object = new Object[size];
@@ -190,14 +136,14 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
 
         @Override
         public boolean add(E value) {
-            parent.add(value, offset + size);
+            parent.add(offset + size, value);
             this.size++;
             return true;
         }
 
         @Override
-        public boolean add(E value, int index) {
-            parent.add( value, offset + index);
+        public boolean add(int index, E value) {
+            parent.add(offset + index, value);
             this.size++;
             return true;
         }
@@ -249,7 +195,7 @@ public class LinkedListImplement<E> extends AbstractGenericClassImplement<E> {
         @Override
         public boolean addAll(GenericListImplementation<? extends E> list){
             for (int i = 0; i < list.size() ; i++) {
-                add( list.get(i), fromIndex + i);
+                add(fromIndex + i, list.get(i));
             }
             size = size + list.size();
             parent.size = parent.size + list.size();

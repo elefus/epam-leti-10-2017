@@ -14,7 +14,7 @@ public abstract class AbstractGenericClassImplement<E> implements GenericListImp
     }
 
     public boolean add(E elem) {
-        add( elem,size - 1);
+        add(size , elem);
         return true;
     }
 
@@ -56,6 +56,5 @@ public abstract class AbstractGenericClassImplement<E> implements GenericListImp
         }
         return -1;
     }
-
 }
 

@@ -25,16 +25,9 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         }
     }
 
-    @Override
-    public boolean add(E value) {
-        size++;
-        checkCapacityOfArray(size);
-        values[size - 1] = value;
-        return true;
-    }
 
     @Override
-    public boolean add(E value, int index) {
+    public boolean add(int index, E value) {
         ++size;
         Object [] temp = values;
         if (index < 0 || index >= size){
@@ -57,18 +50,6 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
     @Override
     public boolean contains(E value) {
         return indexOf(value) != -1;
-    }
-
-    @Override
-    public boolean containsAll(GenericListImplementation<? extends E> list) {
-        for (int i = 0; i < list.size(); i++) {
-            if ( this.contains( list.get(i))){
-                continue;
-            } else {
-                return false;
-            }
-        }
-        return true;
     }
 
     @Override
@@ -100,16 +81,6 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
     }
 
     @Override
-    public boolean removeAll(GenericListImplementation< ? extends E> list){
-        for (int i = 0; i < list.size(); i++) {
-            if ( indexOf(list.get(i)) != -1){
-                remove(indexOf(list.get(i)));
-            }
-        }
-        return true;
-    }
-
-    @Override
     public E set(E value, int index) {
         Object oldValue = values[index];
         values[index] = value;
@@ -135,22 +106,6 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         size = 0;
     }
 
-
-    @Override
-    public int indexOf(E value) {
-        if (value == null) {
-            for (int i = 0; i < size; i++)
-                if (values[i] == null)
-                    return i;
-        } else {
-            for (int i = 0; i < size; i++)
-                if (Objects.equals(value, values[i]))
-                    return i;
-        }
-        return -1;
-
-    }
-
     public Object[] toArray() {
         Object[] object = new Object[size];
         for (int i = 0; i < size; i++) {
@@ -159,19 +114,6 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
         return object;
     }
 
-    @Override
-    public int lastIndexOf(E value) {
-        if (value == null) {
-            for (int i = size-1; i >= 0; i--)
-                if (values[i] == null)
-                    return i;
-        } else {
-            for (int i = size-1; i >= 0; i--)
-                if (Objects.equals(value, values[i]))
-                    return i;
-        }
-        return -1;
-    }
 
     public void trimToSize() {
         if ( size < values.length){
@@ -241,14 +183,14 @@ public class ArrayListImplement<E> extends AbstractGenericClassImplement<E>{
 
         @Override
         public boolean add(E value) {
-            parent.add( value, offset + size);
+            parent.add(offset + size, value);
             this.size++;
             return true;
         }
 
         @Override
-        public boolean add(E value, int index) {
-            parent.add( value, offset + index);
+        public boolean add(int index, E value) {
+            parent.add(offset + index, value);
             this.size++;
             return true;
         }

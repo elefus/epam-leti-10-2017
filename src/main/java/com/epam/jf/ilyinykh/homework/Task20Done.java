@@ -45,7 +45,7 @@ class Poem implements Task20.IPoem {
      */
     @Override
     public List<String> getLines() {
-        return null;
+        return strings;
     }
 
     /**
@@ -53,6 +53,6 @@ class Poem implements Task20.IPoem {
      */
     @Override
     public String getAuthor() {
-        return null;
+        return author;
     }
 }

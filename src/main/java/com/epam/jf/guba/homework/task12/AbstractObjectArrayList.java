@@ -7,25 +7,21 @@ public abstract class AbstractObjectArrayList {
 
     protected Object[] values;
     protected int size;
-    protected int capacity;
 
     public AbstractObjectArrayList() {
         values = new Object[10];
         size = 0;
-        capacity = 10;
     }
 
     public AbstractObjectArrayList(int capacity) {
         values = new Object[capacity];
         size = 0;
-        this.capacity = capacity;
     }
 
     public AbstractObjectArrayList(AbstractObjectArrayList list) {
         values = new Object[list.size() + (list.size >> 1)];
         System.arraycopy(list.values, 0, this.values, 0, list.size());
         size = list.size;
-        capacity = list.size + (list.size >> 1);
     }
 
     public abstract boolean add(Object value);

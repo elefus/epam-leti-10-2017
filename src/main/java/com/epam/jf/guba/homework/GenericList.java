@@ -12,17 +12,17 @@ public interface GenericList<E> {
 
     boolean isEmpty();
 
-    boolean contains(E element);
+    boolean contains(Object element);
 
     Iterator<E> iterator();
 
-    E[] toArray();
+    Object[] toArray();
 
-    boolean add(E element);
+    void add(E element);
 
-    boolean add(int index, E element);
+    void add(int index, E element);
 
-    E remove(E element);
+    boolean remove(Object element);
 
     E remove(int index);
 
@@ -40,9 +40,9 @@ public interface GenericList<E> {
 
     E set(int index, E element);
 
-    int indexOf(E element);
+    int indexOf(Object element);
 
-    int lastIndexOf(E element);
+    int lastIndexOf(Object element);
 
     GenericList<E> sublist(int fromIndex, int toIndex);
 

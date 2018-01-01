@@ -19,15 +19,13 @@ class IntArrayList extends AbstractIntArrayList {
     public boolean add(int value) {
         try{
             int[] newValues = new int[size()+1];
-            for(int i = 0; i < size(); i++) {
-                newValues[i] = values[i];
-            }
+            System.arraycopy(values, 0, newValues, 0, size());
             newValues[newValues.length-1] = value;
             values = newValues;
             return true;
         }
         catch (Throwable t) {
-            t.getMessage();
+            t.printStackTrace();
             return false;
         }
     }
@@ -35,13 +33,15 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public boolean add(int value, int index) {
         try {
-            add(value);
-            values[size()-1] = values[index];
-            values[index] = value;
+            int[] newValues = new int[size()+1];
+            System.arraycopy(values, 0, newValues, 0, index);
+            System.arraycopy(values, index, newValues, index+1, size()-index);
+            newValues[index] = value;
+            values = newValues;
             return true;
         }
-        catch (Throwable e){
-            e.getStackTrace();
+        catch (Throwable t){
+            t.printStackTrace();
             return false;
         }
     }
@@ -70,7 +70,7 @@ class IntArrayList extends AbstractIntArrayList {
         if(size() < list.size()) {
             return false;
         }
-        for(int digit: list.values) {
+        for(int digit : list.values) {
             if(!contains(digit)) {
                 return false;
             }
@@ -86,12 +86,9 @@ class IntArrayList extends AbstractIntArrayList {
 
         int copy = values[index];
         int[] newValues = new int[size()-1];
-        for(int i = 0; i < index; i++) {
-            newValues[i] = values[i];
-        }
-        for(int i = index+1; i < newValues.length; i++) {
-            newValues[i] = values[i];
-        }
+        System.arraycopy(values, 0, newValues, 0, index);
+        System.arraycopy(values, index + 1, newValues, index, newValues.length - index);
+        values = newValues;
         return copy;
     }
 
@@ -110,16 +107,13 @@ class IntArrayList extends AbstractIntArrayList {
     public boolean addAll(@NotNull AbstractIntArrayList list) {
         try {
             int[] newValues = new int[size()+list.size()];
-            for(int i = 0; i < values.length; i++) {
-                newValues[i] = values[i];
-            }
-            for(int i = values.length; i < newValues.length; i++) {
-                newValues[i] = list.values[i];
-            }
+            System.arraycopy(values, 0, newValues, 0, size());
+            System.arraycopy(list.values, 0, newValues, size(), list.size());
+            values = newValues;
             return true;
         }
         catch (Throwable t) {
-            t.getMessage();
+            t.printStackTrace();
             return false;
         }
     }
@@ -146,7 +140,7 @@ class IntArrayList extends AbstractIntArrayList {
                 return i;
             }
         }
-        throw new Error("Значение не найдено");
+        return -1;
     }
 
     @Override
@@ -156,7 +150,7 @@ class IntArrayList extends AbstractIntArrayList {
                 return i;
             }
         }
-        throw new Error("Значение не найдено");
+        return -1;
     }
 
     @Override
@@ -172,17 +166,11 @@ class IntArrayList extends AbstractIntArrayList {
         }
 
         AbstractIntArrayList newList = new IntArrayList(toInclusive - fromInclusive + 1);
-        for(int i = fromInclusive; i <= toInclusive; i++) {
-            newList.values[i] = values[i];
-        }
+        System.arraycopy(values, fromInclusive, newList.values, 0, toInclusive + 1 - fromInclusive);
         return newList;
     }
 
     public void show() {
-        /*if(size() == 0) {
-            System.out.println("Массив пуст");
-            return;
-        }*/
         System.out.print("{ ");
         for (int digit: values) {
             System.out.print(digit + " ");
@@ -191,10 +179,18 @@ class IntArrayList extends AbstractIntArrayList {
     }
 
     public static void main(String[] args) {
-        IntArrayList Array = new IntArrayList();
-        Array.show();
-        Array.add(5, 11);
-        Array.show();
-        System.out.println("Size = " + Array.size());
+        IntArrayList array = new IntArrayList();
+        array.show();
+        array.add(5, 5);
+        array.set(1, 10);
+        array.set(10, 0);
+        array.show();
+        System.out.println("Size = " + array.size());
+        System.out.println(array.lastIndexOf(0));
+        System.out.println(array.indexOf(0));
+        System.out.println(array.indexOf(1));
+        System.out.println(array.remove(0));
+        System.out.println(array.remove(array.indexOf(5)));
+        array.show();
     }
 }

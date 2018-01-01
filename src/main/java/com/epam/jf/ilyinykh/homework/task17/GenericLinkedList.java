@@ -78,22 +78,6 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
         size = 0;
     }
 
-    @Override
-    public GenericList<E> subList(int fromInclusive, int toInclusive) {
-        Node left = getNode(fromInclusive);
-        Node right = getNode(toInclusive);
-        if (toInclusive < fromInclusive) {
-            throw new IllegalArgumentException("to greater than from");
-        }
-
-        GenericLinkedList<E> list = new GenericLinkedList<>();
-        while (right.right != left) {
-            list.add(left.data);
-            left = left.right;
-        }
-        return list;
-    }
-
     private Node head;
 
     private Node getNode(int index) {

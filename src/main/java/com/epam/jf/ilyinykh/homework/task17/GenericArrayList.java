@@ -83,21 +83,6 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
         data = allocate(DEFAULT_CAPACITY);
     }
 
-    @Override
-    public GenericList<E> subList(int fromInclusive, int toInclusive) {
-        checkIndexes(fromInclusive, toInclusive);
-        if (toInclusive < fromInclusive) {
-            throw new IllegalArgumentException("to greater than from");
-        }
-
-        GenericArrayList<E> list = new GenericArrayList<>();
-        for (int i = fromInclusive; i <= toInclusive; i++) {
-            list.add(get(i));
-        }
-
-        return list;
-    }
-
     public void trimToSize() {
         E[] newData = allocate(size);
 

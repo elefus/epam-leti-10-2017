@@ -90,12 +90,9 @@ public class Task7 extends AbstractIntArrayList {
     @Override
     public boolean addAll(AbstractIntArrayList list) {
         int oldSize = size;
-        for (int i = 0; i < list.size(); i++) {
-
-            add(list.get(i));
-
-        }
-
+        while (expandIfNeed(size+list.size())) {}
+        System.arraycopy(((Task7)list).values, 0, values, size, list.size());
+        size += list.size();
         return size > oldSize;
     }
 
@@ -163,12 +160,14 @@ public class Task7 extends AbstractIntArrayList {
         }
     }
 
-    private void expandIfNeed(int newSize) {
+    private boolean expandIfNeed(int newSize) {
         if (newSize > values.length) {
             if (values.length == 0) {
                 values = new int[1];
             }
             values = Arrays.copyOf(values, values.length * 2);
+            return true;
         }
+        return false;
     }
 }

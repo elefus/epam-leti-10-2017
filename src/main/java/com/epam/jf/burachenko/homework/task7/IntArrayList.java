@@ -3,9 +3,7 @@ package com.epam.jf.burachenko.homework.task7;
 import com.sun.istack.internal.NotNull;
 
 class IntArrayList extends AbstractIntArrayList {
-    public IntArrayList() {
-        super();
-    }
+    public IntArrayList() {}
 
     public IntArrayList(int capacity) {
         super(capacity);
@@ -17,33 +15,27 @@ class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean add(int value) {
-        try{
-            int[] newValues = new int[size()+1];
+        int[] newValues = new int[size()+1];
+        if(values != null) {
             System.arraycopy(values, 0, newValues, 0, size());
-            newValues[newValues.length-1] = value;
-            values = newValues;
-            return true;
         }
-        catch (Throwable t) {
-            t.printStackTrace();
-            return false;
-        }
+        newValues[newValues.length-1] = value;
+        values = newValues;
+        return true;
     }
 
     @Override
     public boolean add(int value, int index) {
-        try {
-            int[] newValues = new int[size()+1];
-            System.arraycopy(values, 0, newValues, 0, index);
-            System.arraycopy(values, index, newValues, index+1, size()-index);
-            newValues[index] = value;
-            values = newValues;
-            return true;
+        if(index < 0 || index >= size()) {
+            throw new IndexOutOfBoundsException();
         }
-        catch (Throwable t){
-            t.printStackTrace();
-            return false;
-        }
+
+        int[] newValues = new int[size()+1];
+        System.arraycopy(values, 0, newValues, 0, index);
+        System.arraycopy(values, index, newValues, index+1, size()-index);
+        newValues[index] = value;
+        values = newValues;
+        return true;
     }
 
     @Override
@@ -67,9 +59,6 @@ class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean containsAll(AbstractIntArrayList list) {
-        if(size() < list.size()) {
-            return false;
-        }
         for(int digit : list.values) {
             if(!contains(digit)) {
                 return false;
@@ -105,17 +94,13 @@ class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean addAll(@NotNull AbstractIntArrayList list) {
-        try {
-            int[] newValues = new int[size()+list.size()];
+        int[] newValues = new int[size()+list.size()];
+        if(values != null) {
             System.arraycopy(values, 0, newValues, 0, size());
-            System.arraycopy(list.values, 0, newValues, size(), list.size());
-            values = newValues;
-            return true;
         }
-        catch (Throwable t) {
-            t.printStackTrace();
-            return false;
-        }
+        System.arraycopy(list.values, 0, newValues, size(), list.size());
+        values = newValues;
+        return true;
     }
 
     @Override
@@ -125,7 +110,12 @@ class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public int size() {
-        return values.length;
+        if(values != null) {
+            return values.length;
+        }
+        else {
+            return 0;
+        }
     }
 
     @Override
@@ -168,29 +158,5 @@ class IntArrayList extends AbstractIntArrayList {
         AbstractIntArrayList newList = new IntArrayList(toInclusive - fromInclusive + 1);
         System.arraycopy(values, fromInclusive, newList.values, 0, toInclusive + 1 - fromInclusive);
         return newList;
-    }
-
-    public void show() {
-        System.out.print("{ ");
-        for (int digit: values) {
-            System.out.print(digit + " ");
-        }
-        System.out.println("}");
-    }
-
-    public static void main(String[] args) {
-        IntArrayList array = new IntArrayList();
-        array.show();
-        array.add(5, 5);
-        array.set(1, 10);
-        array.set(10, 0);
-        array.show();
-        System.out.println("Size = " + array.size());
-        System.out.println(array.lastIndexOf(0));
-        System.out.println(array.indexOf(0));
-        System.out.println(array.indexOf(1));
-        System.out.println(array.remove(0));
-        System.out.println(array.remove(array.indexOf(5)));
-        array.show();
     }
 }

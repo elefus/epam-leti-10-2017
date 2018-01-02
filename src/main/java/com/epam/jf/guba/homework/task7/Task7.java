@@ -90,7 +90,6 @@ public class Task7 extends AbstractIntArrayList {
     @Override
     public boolean addAll(AbstractIntArrayList list) {
         int oldSize = size;
-
         for (int i = 0; i < list.size(); i++) {
 
             add(list.get(i));

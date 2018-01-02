@@ -235,6 +235,11 @@ public class TestForTask7 {
             System.err.println(ex.getMessage());
         }
 
+        System.out.println();
+        System.out.println();
+        Task7 task71 = new Task7(0);
+        task7.add(1);
+
     }
 
     private static void printList(Task7 task7) {
@@ -242,9 +247,7 @@ public class TestForTask7 {
             System.out.print(task7.get(i) + " ");
         }
         System.out.println();
-        System.out.println();
-        Task7 task71 = new Task7(0);
-        task7.add(1);
+
     }
 
 }

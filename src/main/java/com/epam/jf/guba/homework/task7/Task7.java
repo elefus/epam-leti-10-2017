@@ -1,6 +1,7 @@
 package com.epam.jf.guba.homework.task7;
 
 import com.epam.jf.common.homework.task7.AbstractIntArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Task7 extends AbstractIntArrayList {
@@ -21,37 +22,29 @@ public class Task7 extends AbstractIntArrayList {
 
     @Override
     public boolean add(int value) {
-        int olldSize = size;
-        add(value, size);
-        return size > olldSize;
+        return add(value, size);
     }
 
 
     @Override
     public boolean add(int value, int index) {
-        if (index > size || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Exception from add(). Index " + index + " actual size " + size);
-        }
+        checkBounds(index, "Exception from add(). Index " + index + " actual size " + size);
         int oldSize = size;
-      if (index == size) {
-            if (isNeedExpand(size + 1)) {
-                expand();
-            }
+        expandIfNeed(size + 1);
+        if (index == size) {
             values[index] = value;
-            size++;
         } else {
-            shifftRight(index, 1);
+            shiftRight(index);
             values[index] = value;
         }
+        size++;
         return size > oldSize;
     }
 
 
     @Override
     public int get(int index) {
-        if (index >= size || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Exception from get(). Index " + index + " actual size " + size);
-        }
+        checkBounds(index, "Exception from get(). Index " + index + " actual size " + size);
         return values[index];
     }
 
@@ -77,24 +70,18 @@ public class Task7 extends AbstractIntArrayList {
 
     @Override
     public int remove(int index) {
-        if (index >= size || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Exception from remove(). Index " + index + " actual size " + size);
-        }
+        checkBounds(index, "Exception from remove(). Index " + index + " actual size " + size);
         int oldValue = values[index];
-        if (index == size - 1) {
-            values[index] = 0;
-            size--;
-        } else {
-            shiftLeft(index + 1, 1);
+        if (index != size - 1) {
+            shiftLeft(index + 1);
         }
+        size--;
         return oldValue;
     }
 
     @Override
     public int set(int value, int index) {
-        if (index >= size || index < 0) {
-            throw new ArrayIndexOutOfBoundsException("Exception from set(). Index " + index + " actual size " + size);
-        }
+        checkBounds(index, "Exception from set(). Index " + index + " actual size " + size);
         int oldValue = values[index];
         values[index] = value;
         return oldValue;
@@ -111,20 +98,17 @@ public class Task7 extends AbstractIntArrayList {
 
     @Override
     public void clear() {
-        for (int element : values) {
-            element = 0;
-        }
         size = 0;
     }
 
     @Override
     public int size() {
-        return this.size;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return this.size == 0;
+        return size == 0;
     }
 
     @Override
@@ -156,41 +140,39 @@ public class Task7 extends AbstractIntArrayList {
         return newList;
     }
 
-    private void shifftRight(int fromInclusive, int positions) {
-        while (isNeedExpand(size + positions)) {
-            expand();
-        }
-        System.arraycopy(values, fromInclusive, values, fromInclusive + positions, size - fromInclusive);
-        for (int i = fromInclusive; i < (fromInclusive + positions); i++) {
-            values[i] = 0;
-        }
-        size += positions;
+    private void shiftRight(int fromInclusive) {
+        checkBounds(fromInclusive - 1, "Right shift till: " + (fromInclusive - 1));
+        System.arraycopy(values, fromInclusive, values, fromInclusive + 1, size - fromInclusive);
     }
 
-    private void shiftLeft(int fromInclusive, int position) {
-        if (fromInclusive - position < 0) {
-            throw new ArrayIndexOutOfBoundsException("Left shift till: " + (fromInclusive - position));
-        }
-        System.arraycopy(values, fromInclusive, values, fromInclusive - position, size - fromInclusive);
-        for (int i = size - position; i < size; i++) {
-            values[i] = 0;
-        }
-        size -= position;
+    private void shiftLeft(int fromInclusive) {
+        checkBounds(fromInclusive - 1, "Left shift till: " + (fromInclusive - 1));
+        System.arraycopy(values, fromInclusive, values, fromInclusive - 1, size - fromInclusive);
     }
 
-    private void expand() {
-        if(values.length == 0){
-            values = new int[1];
+//    private void expand() {
+//        if (values.length == 0) {
+//            values = new int[1];
+//        }
+//        values = Arrays.copyOf(values, values.length * 2);
+//    }
+//
+//    private boolean isNeedExpand(int newSize) {
+//        return newSize > values.length;
+//    }
+
+    private void checkBounds(int index, String s) {
+        if (index < 0 || index > size) {
+            throw new ArrayIndexOutOfBoundsException(s);
         }
-        int[] newValues = new int[(int) (values.length * 1.5)];
-        System.arraycopy(values, 0, newValues, 0, size);
-        values = newValues;
     }
 
-    private boolean isNeedExpand(int newSize) {
-        return newSize > values.length;
+    private void expandIfNeed(int newSize) {
+        if (newSize > values.length) {
+            if (values.length == 0) {
+                values = new int[1];
+            }
+            values = Arrays.copyOf(values, values.length * 2);
+        }
     }
-
-
-
 }

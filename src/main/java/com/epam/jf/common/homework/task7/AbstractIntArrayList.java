@@ -1,5 +1,7 @@
 package com.epam.jf.common.homework.task7;
 
+import java.util.Arrays;
+
 public abstract class AbstractIntArrayList {
 
     private static final int DEFAULT_SIZE = 10;
@@ -7,7 +9,7 @@ public abstract class AbstractIntArrayList {
     protected int[] values;
 
     public AbstractIntArrayList() {
-        this.values = new int[DEFAULT_SIZE];
+        values = new int[DEFAULT_SIZE];
     }
 
     public AbstractIntArrayList(int capacity) {
@@ -15,8 +17,7 @@ public abstract class AbstractIntArrayList {
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
-        values = new int[(int) (list.values.length)];
-        System.arraycopy(list.values, 0, values, 0, list.size());
+        values = Arrays.copyOf(list.values, list.size());
     }
 
     public abstract boolean add(int value);

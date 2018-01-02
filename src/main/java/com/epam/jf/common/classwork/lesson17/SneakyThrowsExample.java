@@ -1,6 +1,6 @@
 package com.epam.jf.common.classwork.lesson17;
 
-import lombok.SneakyThrows;
+//import lombok.SneakyThrows;
 
 import java.io.IOException;
 
@@ -10,9 +10,9 @@ public class SneakyThrowsExample {
         throwable();
     }
 
-    @SneakyThrows
+    //@SneakyThrows
     private static void throwable() {
-        throw new IOException();
+        //throw new IOException();
 //        throwChecked(new IOException());
     }
 

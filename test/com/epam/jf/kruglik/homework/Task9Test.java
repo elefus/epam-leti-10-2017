@@ -23,6 +23,6 @@ class Task9Test {
 
     @Test
     void zeroBoundaryСheckResultTrue(){
-        Assertions.assertTrue(Task9.isPowerOfTwo(0));
+        Assertions.assertFalse(Task9.isPowerOfTwo(0));
     }
 }

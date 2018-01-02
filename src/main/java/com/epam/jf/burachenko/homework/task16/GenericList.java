@@ -26,7 +26,7 @@ public interface GenericList<E> {
 
     E remove(int index);
 
-    E remove(E value);
+    boolean remove(E value);
 
     boolean removeAll(GenericList<? extends E> list);
 

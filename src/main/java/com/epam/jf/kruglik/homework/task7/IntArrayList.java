@@ -16,8 +16,8 @@ public class IntArrayList extends AbstractIntArrayList {
 
     public IntArrayList(AbstractIntArrayList list) {
         values = new int[list.size()];
-        this.capacity = list.size() - 1;
-        this.size = list.size() - 1;
+        this.capacity = list.size();
+        this.size = list.size();
 
         for (int i = 0; i < list.size(); i++) {
             values[i] = list.get(i);
@@ -27,8 +27,8 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean add(int value) {
-       if (capacity<=(size)){
-          increaseCapacity();
+        if (capacity<=(size)){
+            increaseCapacity();
         }
         values[size] = value;
         ++size;
@@ -40,9 +40,7 @@ public class IntArrayList extends AbstractIntArrayList {
         if (capacity<=size){
             increaseCapacity();
         }
-        for (int i = size;i>index;--i){
-            values[i] = values[i-1];
-        }
+        System.arraycopy(values, index, values, index + 1, size - index);
         values[index] = value;
         ++size;
         return false;
@@ -68,11 +66,11 @@ public class IntArrayList extends AbstractIntArrayList {
         for (int i = 0;i<list.size();++i){
             for (int j = 0;j<size;++j)
                 if (list.get(i) == values[j]){
-                flag = true;
-                break;
+                    flag = true;
+                    break;
                 }
             if (!flag){
-                 return false;
+                return false;
             }
         }
         return true;
@@ -81,9 +79,7 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public int remove(int index) {
         int returnValue = values[index];
-        for (int i = index;i<size;++i){
-            values[i] = values[i+1];
-        }
+        System.arraycopy(values, index + 1, values, index, size - index);
         --size;
         return returnValue;
     }
@@ -119,11 +115,7 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean isEmpty() {
-        if (size>0){
-            return true;
-        } else {
-            return false;
-        }
+        return size > 0;
     }
 
     @Override
@@ -159,9 +151,7 @@ public class IntArrayList extends AbstractIntArrayList {
     private void increaseCapacity(){
         capacity *= 2;
         int[] buffer = new int[capacity];
-        for (int i = 0; i<size; ++i){
-            buffer[i] = values[i];
-        }
+        System.arraycopy(values, 0, buffer, 0, size);
         values = buffer;
     }
 }

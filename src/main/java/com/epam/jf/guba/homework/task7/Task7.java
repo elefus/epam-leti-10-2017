@@ -90,9 +90,13 @@ public class Task7 extends AbstractIntArrayList {
     @Override
     public boolean addAll(AbstractIntArrayList list) {
         int oldSize = size;
+
         for (int i = 0; i < list.size(); i++) {
+
             add(list.get(i));
+
         }
+
         return size > oldSize;
     }
 
@@ -134,9 +138,13 @@ public class Task7 extends AbstractIntArrayList {
     @Override
     public AbstractIntArrayList subList(int fromInclusive, int toInclusive) {
         Task7 newList = new Task7();
+
         for (int i = fromInclusive; i <= toInclusive; i++) {
+
             newList.add(get(i));
+
         }
+
         return newList;
     }
 
@@ -149,17 +157,6 @@ public class Task7 extends AbstractIntArrayList {
         checkBounds(fromInclusive - 1, "Left shift till: " + (fromInclusive - 1));
         System.arraycopy(values, fromInclusive, values, fromInclusive - 1, size - fromInclusive);
     }
-
-//    private void expand() {
-//        if (values.length == 0) {
-//            values = new int[1];
-//        }
-//        values = Arrays.copyOf(values, values.length * 2);
-//    }
-//
-//    private boolean isNeedExpand(int newSize) {
-//        return newSize > values.length;
-//    }
 
     private void checkBounds(int index, String s) {
         if (index < 0 || index > size) {

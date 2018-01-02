@@ -23,7 +23,7 @@ public abstract class Task21 {
         /** @return Измеренное значение тока. */
         double getCurrent();
 
-        /** @return Измеренное значение напряжения. */
+         /** @return Измеренное значение напряжения. */
         double getVoltage();
     }
 }

@@ -1,6 +1,7 @@
 package com.epam.jf.guba.homework;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -15,21 +16,23 @@ public interface GenericList<E> {
 
     Iterator<E> iterator();
 
-    E[] toArray();
+    Object[] toArray();
 
-    boolean add(E element);
+    void add(E element);
 
-    boolean add(int index, E element);
+    void add(int index, E element);
 
     boolean remove(Object element);
 
     E remove(int index);
 
-    boolean containsAll(Collection<?> collection);
+    boolean removeAll(GenericList<? extends E> list);
 
-    boolean addAll(Collection<? extends E> elements);
+    boolean containsAll(GenericList<? extends E> collection);
 
-    boolean addAll(int index, Collection<? extends E> elements);
+    boolean addAll(GenericList<? extends E> elements);
+
+    boolean addAll(int index, GenericList<? extends E> elements);
 
     void clear();
 
@@ -42,5 +45,8 @@ public interface GenericList<E> {
     int lastIndexOf(Object element);
 
     GenericList<E> sublist(int fromIndex, int toIndex);
+
+    void sort(Comparator<? super E> list);
+
 
 }

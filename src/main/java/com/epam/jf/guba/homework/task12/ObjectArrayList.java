@@ -40,25 +40,25 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         if (index == size) {
             values[index] = value;
         } else {
-            shiftRight(index, 1);
+            shiftRight(index);
             values[index] = value;
         }
         size++;
         return size > oldSize;
     }
 
-    private void shiftRight(int from, int positionsAmount) {
-        System.arraycopy(values, from, values, from + positionsAmount, size - from);
+    private void shiftRight(int from) {
+        System.arraycopy(values, from, values, from + 1, size - from);
     }
 
     private void expandCapacity() {
-        Object[] newVal = new Object[capacity + (capacity >> 1)];
+        Object[] newVal = new Object[values.length + (values.length >> 1)];
         System.arraycopy(values, 0, newVal, 0, size);
         values = newVal;
     }
 
     private boolean ensureCapacity(int requestedSpace) {
-        return capacity > size + requestedSpace;
+        return values.length > size + requestedSpace;
     }
 
     @Override
@@ -96,14 +96,14 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
         Object oldVal = values[index];
         if (index != size - 1) {
-            shiftLeft(index, 1);
+            shiftLeft(index);
         }
         size--;
         return oldVal;
     }
 
-    private void shiftLeft(int from, int positionsAmount) {
-        System.arraycopy(values, from + positionsAmount, values, from, size - (from + positionsAmount));
+    private void shiftLeft(int from) {
+        System.arraycopy(values, from + 1, values, from, size - (from + 1));
     }
 
     @Override
@@ -114,7 +114,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
         Object oldVal = values[index];
         if (index != size - 1) {
-            shiftLeft(index, 1);
+            shiftLeft(index);
         }
         size--;
         return oldVal;
@@ -152,7 +152,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public void clear() {
-        values = new Object[capacity];
+        values = new Object[values.length];
         size = 0;
     }
 
@@ -197,7 +197,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public void trimToSize() {
-        if(size < capacity){
+        if(size < values.length){
             values = (size == 0) ? new Object[0] : Arrays.copyOf(values, size);
         }
     }

@@ -27,7 +27,7 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public boolean add(int value, int index) {
         if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         int[] newValues = new int[size()+1];
@@ -41,7 +41,7 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public int get(int index) {
         if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         return values[index];
@@ -70,7 +70,7 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public int remove(int index) {
         if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         int copy = values[index];
@@ -84,7 +84,7 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public int set(int value, int index) {
         if(index < 0 || index >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
         int copy = values[index];
@@ -146,17 +146,15 @@ class IntArrayList extends AbstractIntArrayList {
     @Override
     public AbstractIntArrayList subList(int fromInclusive, int toInclusive) {
         if(fromInclusive < 0 || fromInclusive >= size() || toInclusive < 0 || toInclusive >= size()) {
-            throw new IndexOutOfBoundsException();
+            throw new ArrayIndexOutOfBoundsException();
         }
 
-        if(toInclusive < fromInclusive) {
-            int temp = fromInclusive;
-            fromInclusive = toInclusive;
-            toInclusive = temp;
+        if(fromInclusive > toInclusive) {
+            throw new IllegalArgumentException("Left border must be less or equal than right border");
         }
 
         AbstractIntArrayList newList = new IntArrayList(toInclusive - fromInclusive + 1);
-        System.arraycopy(values, fromInclusive, newList.values, 0, toInclusive + 1 - fromInclusive);
+        System.arraycopy(values, fromInclusive, newList.values, 0, toInclusive - fromInclusive + 1);
         return newList;
     }
 }

@@ -10,24 +10,21 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public static int[][] verticalCyclicShift(int[][] matrix, int numberShifts) {
-        numberShifts = numberShifts % matrix[0].length;
-        int[] temp = new int[matrix.length];
+        numberShifts = numberShifts % matrix.length;
+        int[][] resultMatrix = new int[matrix.length][matrix[0].length];
 
-        for (int k = 0; k < numberShifts; ++k){
-            for (int p = 0; p < matrix.length; ++p){
-                temp[p] = matrix[p][matrix[0].length - 1];
+        if (numberShifts < 0) {
+            numberShifts = Math.abs(numberShifts);
+            for (int i = numberShifts; i < (matrix.length + numberShifts); ++i) {
+                System.arraycopy(matrix[i % matrix.length], 0, resultMatrix[i - numberShifts], 0, matrix[0].length);
             }
-                for (int i = matrix[0].length - 2; i >= 0; --i){
-                    for (int p = 0; p < matrix.length; ++p){
-                        matrix[p][i+1] = matrix[p][i];
-                }
-            }
-            for (int p = 0; p < matrix.length; ++p){
-                matrix[p][0] = temp[p];
+        } else {
+            for (int i = numberShifts; i < (matrix.length + numberShifts); ++i) {
+                System.arraycopy(matrix[i - numberShifts], 0, resultMatrix[i % matrix.length], 0, matrix[0].length);
             }
         }
 
-        return matrix;
+        return resultMatrix;
     }
 
     /**
@@ -38,15 +35,25 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public static int[][] horizontalCyclicShift(int[][] matrix, int numberShifts) {
-        numberShifts = numberShifts % matrix.length;
+        numberShifts = numberShifts % matrix[0].length;
+        int[][] resultMatrix = new int[matrix.length][matrix[0].length];
 
-        for (int k = 0; k < numberShifts; ++k){
-            int temp[] = matrix[matrix.length - 1];
-            System.arraycopy(matrix, 0, matrix, 1, matrix.length - 2 + 1);
-            matrix[0] = temp;
+        if (numberShifts<0) {
+            numberShifts = Math.abs(numberShifts);
+            for (int i = 0; i < matrix.length; ++i) {
+                for (int j = numberShifts; j < matrix[0].length + numberShifts; ++j) {
+                    resultMatrix[i][j - numberShifts] = matrix[i][j % matrix[0].length];
+                }
+            }
+        } else {
+            for (int i = 0; i < matrix.length; ++i) {
+                for (int j = numberShifts; j < matrix[0].length + numberShifts; ++j) {
+                    resultMatrix[i][j % matrix[0].length] = matrix[i][j - numberShifts];
+                }
+            }
         }
 
-        return matrix;
-    }
+        return resultMatrix;
 
+    }
 }

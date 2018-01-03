@@ -3,6 +3,8 @@ package com.epam.jf.ilyinykh.homework.task17;
 import com.epam.jf.ilyinykh.homework.task16.GenericList;
 import org.junit.jupiter.api.Test;
 
+import javax.naming.OperationNotSupportedException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GenericArrayListTest {
@@ -47,7 +49,7 @@ class GenericArrayListTest {
     }
 
     @Test
-    void subList() {
+    void subList() throws OperationNotSupportedException {
         GenericArrayList<Integer> list = new GenericArrayList<>();
         list.add(2);
         list.add(0);

@@ -2,6 +2,7 @@ package com.epam.jf.ilyinykh.homework.task17;
 
 import com.epam.jf.ilyinykh.homework.task16.GenericList;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -96,7 +97,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     @Override
-    public GenericList<E> subList(int fromInclusive, int toInclusive) {
+    public GenericList<E> subList(int fromInclusive, int toInclusive) throws OperationNotSupportedException {
         return new SubList(fromInclusive,toInclusive);
     }
 
@@ -116,13 +117,13 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         }
 
         @Override
-        public boolean add(Object value) {
-            return AbstractGenericList.this.add((E) value, to);
+        public boolean add(E value) {
+            return AbstractGenericList.this.add(value, to);
         }
 
         @Override
-        public boolean add(Object value, int index) {
-            return AbstractGenericList.this.add((E) value, index + from);
+        public boolean add(E value, int index) {
+            return AbstractGenericList.this.add(value, index + from);
         }
 
         @Override
@@ -131,8 +132,8 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         }
 
         @Override
-        public E set(Object value, int index) {
-            return AbstractGenericList.this.set((E) value, index + from);
+        public E set(E value, int index) {
+            return AbstractGenericList.this.set(value, index + from);
         }
 
         @Override
@@ -145,6 +146,89 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
             for (int i = from; i < to; i++) {
                 AbstractGenericList.this.remove(i);
             }
+        }
+
+        @Override
+        public boolean addAll(GenericList<? extends E> list) {
+            for (int i = 0; i < list.size(); i++) {
+                AbstractGenericList.this.add(list.get(i), to + i);
+            }
+            return true;
+        }
+
+        @Override
+        public int indexOf(E value) {
+            int index = AbstractGenericList.this.indexOf(value) - from;
+            return index < 0 || index >= size() ? -1 : index;
+        }
+
+        @Override
+        public boolean contains(E value) {
+            for (int i = from; i < to; i++) {
+                if (AbstractGenericList.this.get(i).equals(value)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(GenericList<? extends E> list) {
+            for (int i = 0; i < list.size(); i++) {
+                if (!contains(list.get(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        @Override
+        public int lastIndexOf(E value) {
+            int index = -1;
+            for (int i = from; i < to; i++) {
+                if (AbstractGenericList.this.get(i).equals(value)) {
+                    index = i;
+                }
+            }
+            return index;
+        }
+
+        @Override
+        public E remove(E value) {
+            return AbstractGenericList.this.remove(from + indexOf(value));
+        }
+
+        @Override
+        public boolean removeAll(GenericList<? extends E> list) {
+            for (int i = 0; i < list.size(); i++) {
+                remove(list.get(i));
+            }
+            return true;
+        }
+
+        @Override
+        public int size() {
+            return to - from;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return to - from == 0;
+        }
+
+        @Override
+        protected void checkIndex(int index) {
+            super.checkIndex(index);
+        }
+
+        @Override
+        protected void checkIndexes(int... indexes) {
+            super.checkIndexes(indexes);
+        }
+
+        @Override
+        public GenericList<E> subList(int fromInclusive, int toInclusive) throws OperationNotSupportedException {
+            throw new OperationNotSupportedException();
         }
     }
 }

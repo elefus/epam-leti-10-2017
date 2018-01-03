@@ -1,19 +1,23 @@
 package com.epam.jf.common.homework.task7;
 
+import java.util.Arrays;
+
 public abstract class AbstractIntArrayList {
+
+    private static final int DEFAULT_SIZE = 10;
 
     protected int[] values;
 
     public AbstractIntArrayList() {
-        // TODO values (на 10 элементов)
+        values = new int[DEFAULT_SIZE];
     }
 
     public AbstractIntArrayList(int capacity) {
-        // TODO value[capacity]
+        this.values = new int[capacity];
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
-        // TODO конструктор копирования
+        values = Arrays.copyOf(list.values, list.size());
     }
 
     public abstract boolean add(int value);
@@ -43,4 +47,6 @@ public abstract class AbstractIntArrayList {
     public abstract int lastIndexOf(int value);
 
     public abstract AbstractIntArrayList subList(int fromInclusive, int toInclusive);
+
+
 }

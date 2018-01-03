@@ -3,12 +3,21 @@ package com.epam.jf.burachenko.homework.task17;
 import com.epam.jf.burachenko.homework.task16.GenericList;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Базовая реализация интерфейса {@link GenericList}.
  * @param <E> Тип элементов, хранящихся в списке.
  */
 public abstract class AbstractGenericList<E> implements GenericList<E> {
     protected int size;
+
+    public AbstractGenericList() {}
+
+    public AbstractGenericList(GenericList<? extends E> c) {
+        addAll(c);
+    }
 
     @Override
     public int size() {
@@ -21,9 +30,9 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     @Override
-    public boolean remove(E value) {
-        while(contains(value)) {
-            remove(indexOf(value));
+    public boolean remove(@NotNull E value) {
+        for(int index = indexOf(value); index != -1; index = indexOf(value)) {
+            remove(index);
         }
         return true;
     }
@@ -37,7 +46,7 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     @Override
-    public boolean removeAll(GenericList<? extends E> list) {
+    public boolean removeAll(@NotNull GenericList<? extends E> list) {
         for (int i = 0; i < list.size(); i++) {
             remove(list.get(i));
         }
@@ -45,12 +54,12 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
     }
 
     @Override
-    public boolean contains(E value) {
+    public boolean contains(@NotNull E value) {
         return indexOf(value) != -1;
     }
 
     @Override
-    public boolean containsAll(GenericList<? extends E> list) {
+    public boolean containsAll(@NotNull GenericList<? extends E> list) {
         for (int i = 0; i < list.size(); i++) {
             if(!contains(list.get(i))) {
                 return false;
@@ -59,4 +68,12 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
         return true;
     }
 
+    @Override
+    public void sort(@NotNull Comparator<? super E> c) {
+        Object[] array = toArray();
+        Arrays.sort((E[]) array, c);
+        for (int i = 0; i < size; i++) {
+            set((E) array[i], i);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package com.epam.jf.burachenko.homework.task16;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 /**
@@ -17,8 +18,6 @@ public interface GenericList<E> {
     E set(E value, int index);
 
     Object[] toArray();
-
-    <T> T[] toArray(T[] a);
 
     boolean contains(E value);
 

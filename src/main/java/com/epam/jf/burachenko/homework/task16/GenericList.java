@@ -18,8 +18,6 @@ public interface GenericList<E> {
 
     Object[] toArray();
 
-    <T> T[] toArray(T[] a);
-
     boolean contains(E value);
 
     boolean containsAll(GenericList<? extends E> list);

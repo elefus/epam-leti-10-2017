@@ -1,6 +1,5 @@
 package com.epam.jf.burachenko.homework.task16;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 
 /**

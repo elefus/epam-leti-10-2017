@@ -24,13 +24,12 @@ class Task11Test {
     }
 
     @Test
-    void testMaxInt() {
-//        assertEquals(7463847412, ref.reverse(Integer.MAX_VALUE));
+    void testBigNumber() {
+        assertEquals(87654321, ref.reverse(12345678));
     }
 
     @Test
-    void testMinInt() {
-//        assertEquals(1,ref.reverse(Integer.MIN_VALUE));
+    void testSmallNumber() {
+        assertEquals(-87654321, ref.reverse(-12345678));
     }
-
 }

@@ -14,6 +14,7 @@ public class Task13 extends com.epam.jf.common.homework.Task13 {
      * @param dimension Размерность матрицы.
      * @return Созданная матрица.
      */
+    @Override
     public int[][] createSquareMatrix(int dimension) {
         if (dimension <= 0) {
             return null;

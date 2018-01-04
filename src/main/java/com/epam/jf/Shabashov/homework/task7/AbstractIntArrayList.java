@@ -35,6 +35,8 @@ public abstract class AbstractIntArrayList {
 
     public abstract boolean addAll(AbstractIntArrayList list);
 
+    public abstract boolean addAll(int index,AbstractIntArrayList list);
+
     public abstract void clear();
 
     public abstract int size();

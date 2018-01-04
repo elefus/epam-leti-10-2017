@@ -8,6 +8,7 @@ public class Task11 extends com.epam.jf.common.homework.Task11 {
      * @param value исходное значение.
      * @return Число, содержащее цифры в порядке обратном исходному.
      */
+    @Override
     public int reverse(int value) {
         if (value < 0) {
             value = Math.abs(value);

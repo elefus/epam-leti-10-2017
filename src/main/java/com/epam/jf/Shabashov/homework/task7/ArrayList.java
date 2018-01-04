@@ -71,6 +71,14 @@ public class ArrayList extends AbstractIntArrayList {
         return previous;
     }
 
+    @Override
+    public void remove(int index, int length) {
+        checkIndex(index);
+        checkIndex(index+length);
+        System.arraycopy(values, index, values,index+length, size-(index+length));
+        size-=length;
+    }
+
     private void checkIndex(int index) {
         if (index < 0 || index >= size) throw new IndexOutOfBoundsException(IndexOutException(index));
     }
@@ -205,6 +213,14 @@ public class ArrayList extends AbstractIntArrayList {
         }
 
         @Override
+        public void remove(int index, int length) {
+            checkIndex(index);
+            checkIndex(index+length);
+            parent.remove(index+offset,length);
+            size-=length;
+        }
+
+        @Override
         public int set(int value, int index) {
             checkIndex(index);
             return parent.set(value,index+offset);
@@ -225,7 +241,8 @@ public class ArrayList extends AbstractIntArrayList {
 
         @Override
         public void clear() {
-            throw new UnsupportedOperationException();
+            parent.remove(offset,size);
+            size=0;
         }
 
         @Override

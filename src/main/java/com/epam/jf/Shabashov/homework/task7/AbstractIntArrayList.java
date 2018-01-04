@@ -31,6 +31,8 @@ public abstract class AbstractIntArrayList {
 
     public abstract int remove(int index);
 
+    public abstract void remove(int index,int length);
+
     public abstract int set(int value, int index);
 
     public abstract boolean addAll(AbstractIntArrayList list);

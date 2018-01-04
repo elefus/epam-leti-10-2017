@@ -15,14 +15,14 @@ public class Task6 {
             System.out.println("Error: No arguments fount");
             return;
         }
-        for (int i = 0; i < args.length ; i++) {
-            for (int j = 0; j < args.length ; j++) {
-                if(args[i].length() < args[j].length()) {
+        for (int i = 0; i < args.length; i++) {
+            for (int j = 0; j < args.length; j++) {
+                if (args[i].length() < args[j].length()) {
                     String tempString = args[i];
                     args[i] = args[j];
                     args[j] = tempString;
-                } else if(args[i].length() == args[j].length()) {
-                    if(args[i].compareTo(args[j]) < 0) {
+                } else if (args[i].length() == args[j].length()) {
+                    if (args[i].compareTo(args[j]) < 0) {
                         String tempString = args[i];
                         args[i] = args[j];
                         args[j] = tempString;

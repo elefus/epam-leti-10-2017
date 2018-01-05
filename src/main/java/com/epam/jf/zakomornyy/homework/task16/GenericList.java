@@ -1,24 +1,17 @@
 package com.epam.jf.zakomornyy.homework.task16;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.util.Iterator;
-
-
 /**
  * Необходимо в своем пакете создать типизированный интерфейс GenericList.
  * В нем следует определить методы, общие для различных реализаций списков.
  * @param <E> Тип элементов, хранящихся в списке.
  */
-public interface GenericList<E> extends Iterable<E> {
+public interface GenericList<E> {
 
     int size();
 
     boolean isEmpty();
 
     boolean contains(Object o);
-
-    @NotNull Iterator<E> iterator();
 
     Object[] toArray();
 

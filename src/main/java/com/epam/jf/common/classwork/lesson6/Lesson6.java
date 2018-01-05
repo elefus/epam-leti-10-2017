@@ -3,6 +3,7 @@ package com.epam.jf.common.classwork.lesson6;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 /**
@@ -40,9 +41,6 @@ public class Lesson6 {
      * Value = {@value Lesson6#value}
      * asdsad {@link Lesson6#getValues()}
      * @param string
-     * @param a
-     * @param b
-     * @param j
      * @return
      * @throws IllegalAccessError
      * @throws NullPointerException
@@ -50,7 +48,7 @@ public class Lesson6 {
      * @see Lesson6#isCellEditable(int)
      *
      */
-    public static @Nullable String method(@NotNull String string, int a, double b, int j) throws IllegalAccessError, NullPointerException {
+    public static @Nullable String method(@NotNull String string) throws IllegalAccessError, NullPointerException {
         System.out.println(string);
         return "123";
     }

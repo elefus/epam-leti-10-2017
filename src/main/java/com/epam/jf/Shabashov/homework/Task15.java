@@ -14,7 +14,7 @@ public class Task15 {
         for (int i = 0; i < matrix.length; i++) {
             n = i+numberShifts;
             if (n<0) n=matrix.length+n;
-            matr[n%matrix.length]=matrix[i];
+            System.arraycopy(matrix[i],0,matr[n%matrix.length],0,matrix[i].length);
         }
         return matr;
     }
@@ -28,11 +28,11 @@ public class Task15 {
     public int[][] horizontalCyclicShift(int[][] matrix, int numberShifts){
         int[][] matr = new int[matrix.length][matrix[0].length];
         int n;
-        numberShifts%=matrix.length;
+        numberShifts%=matrix[0].length;
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
                 n = j+numberShifts;
-                if (n<0) n=matrix.length+n;
+                if (n<0) n=matrix[i].length+n;
                 matr[i][n%matrix[i].length] =matrix[i][j];
             }
         }

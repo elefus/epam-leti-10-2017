@@ -39,3 +39,4 @@ public class Task18 extends com.epam.jf.common.homework.Task18 {
         return source.subList(maxFromIndex, maxToIndex + 1);
     }
 }
+

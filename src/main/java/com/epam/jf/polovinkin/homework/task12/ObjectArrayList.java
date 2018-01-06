@@ -68,7 +68,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     @Override
     public boolean containsAll(AbstractObjectArrayList list) {
         for (int i = 0; i < list.size(); i++) {
-            if (!list.contains(list.get(i))) {
+            if (!contains(list.get(i))) {
                 return false;
             }
         }
@@ -162,19 +162,173 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
-        //TODO
-        return null;
-    }
-
-    @Override
     public void trimToSize() {
-        //TODO
+        Object[] temp = new Object[pointer];
+        System.arraycopy(values, 0, temp, 0, pointer);
+        values = temp;
     }
 
     private void increaseCapacity() {
         Object[] temp = new Object[values.length*2 + 1];
         System.arraycopy(values, 0, temp, 0, pointer);
         values = temp;
+    }
+
+    @Override
+    public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+        if (fromInclusive < 0)
+            throw new IndexOutOfBoundsException("fromIndex = " + fromInclusive);
+        if (toInclusive > pointer)
+            throw new IndexOutOfBoundsException("toIndex = " + toInclusive);
+        if (fromInclusive > toInclusive)
+            throw new IllegalArgumentException("fromIndex(" + fromInclusive +
+                    ") > toIndex(" + toInclusive + ")");
+        return new SubList(this, 0, fromInclusive, toInclusive);
+    }
+
+    private class SubList extends AbstractObjectArrayList {
+        private final AbstractObjectArrayList parent;
+        private final int parentOffset;
+        private final int offset;
+        int size;
+
+
+        SubList(AbstractObjectArrayList  parent, int offset, int fromIndex, int toIndex) {
+            this.parent = parent;
+            this.parentOffset = fromIndex;
+            this.offset = offset + fromIndex;
+            this.size = toIndex - fromIndex + 1;
+        }
+
+        @Override
+        public boolean add(Object value) {
+            parent.add(value);
+            ++size;
+            return true;
+
+        }
+
+        @Override
+        public boolean add(Object value, int index) {
+            if (index < 0 || index > size) {
+                throw new IllegalArgumentException("index is out of range");
+            }
+            parent.add(value, parentOffset + index);
+            size++;
+            return true;
+        }
+
+        @Override
+        public Object get(int index) {
+            if (index < 0 || index >= size) {
+                throw new IllegalArgumentException("index is out of range");
+            }
+            return ObjectArrayList.this.values[offset + index];
+    }
+
+        @Override
+        public boolean contains(Object value) {
+            for (int i = 0; i < size; i++) {
+                if (Objects.equals(parent.get(i + offset), value)) return true;
+            }
+            return false;
+        }
+
+        @Override
+        public boolean containsAll(AbstractObjectArrayList list) {
+            for (int i = 0; i < list.size(); i++) {
+                if (!contains(list.get(i))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        @Override
+        public Object remove(int index) {
+            if (index < 0 || index >= size) {
+                throw new IllegalArgumentException("index is out of range");
+            }
+            Object value = parent.remove(parentOffset + index);
+            size--;
+            return value;
+        }
+
+        @Override
+        public Object remove(Object value) {
+            throw new UnsupportedOperationException("CHECK JAVADOCS!");
+        }
+
+        @Override
+        public boolean removeAll(AbstractObjectArrayList list) {
+            return false;
+        }
+
+        @Override
+        public Object set(Object value, int index) {
+            if (index < 0 || index >= pointer) {
+                throw new IllegalArgumentException("index is out of range");
+            }
+            Object temp = ObjectArrayList.this.values[offset + index];
+            ObjectArrayList.this.values[offset + index] = value;
+            return temp;
+
+        }
+
+        @Override
+        public boolean addAll(AbstractObjectArrayList list) {
+            parent.addAll(list);
+            this.size += list.size();
+            return true;
+        }
+
+        @Override
+        public void clear() {
+            size = 0;
+        }
+
+        @Override
+        public int size() {
+            return size;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return size == 0;
+        }
+
+        @Override
+        public int indexOf(Object value) {
+            for (int i = 0; i < size; i++) {
+                if (Objects.equals(get(i), value)) return i;
+            }
+            return -1;
+        }
+
+        @Override
+        public int lastIndexOf(Object value) {
+            for (int i = size - 1; i >= 0; i--) {
+                if (Objects.equals(get(i), value)) return i;
+            }
+            return -1;
+
+        }
+
+        @Override
+        public void trimToSize() {
+            parent.trimToSize();
+        }
+
+        @Override
+        public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+            if (fromInclusive < 0)
+                throw new IndexOutOfBoundsException("fromIndex = " + fromInclusive);
+            if (toInclusive > pointer)
+                throw new IndexOutOfBoundsException("toIndex = " + toInclusive);
+            if (fromInclusive > toInclusive)
+                throw new IllegalArgumentException("fromIndex(" + fromInclusive +
+                        ") > toIndex(" + toInclusive + ")");
+            return new SubList(this, offset, fromInclusive, toInclusive);
+        }
     }
 }

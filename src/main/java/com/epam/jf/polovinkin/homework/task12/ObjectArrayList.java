@@ -1,11 +1,31 @@
 package com.epam.jf.polovinkin.homework.task12;
 
 import com.epam.jf.common.homework.task12.AbstractObjectArrayList;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ObjectArrayList extends AbstractObjectArrayList {
     protected Object[] values;
     protected int pointer;
+
+    static class Lol {
+        public static void main(String[] args) {
+            ArrayList<Integer> lol = new ArrayList<>();
+            lol.add(1);
+            lol.add(2);
+            lol.add(3);
+            lol.add(4);
+            lol.add(5);
+            lol.add(6);
+
+            List<Integer> temp = lol.subList(0, 5);
+            temp.remove(new Integer(2));
+            System.out.println(temp);
+        }
+    }
+
     public ObjectArrayList() {
         values = new Object[10];
     }
@@ -30,7 +50,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         if (pointer >= values.length) {
             increaseCapacity();
         }
-        values[++pointer] = value;
+        values[pointer++] = value;
         return true;
 
     }
@@ -255,8 +275,23 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public Object remove(Object value) {
-            throw new UnsupportedOperationException("CHECK JAVADOCS!");
+        public Object remove(Object o) {
+            if (o==null) {
+                for (int i = 0; i < size; i++) {
+                    if (get(i) == null) {
+                        remove(i);
+                        return true;
+                    }
+                }
+            } else {
+                for (int i = 0; i < size; i++) {
+                    if (o.equals(get(i))) {
+                        remove(i);
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         @Override

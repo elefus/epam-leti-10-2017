@@ -12,6 +12,7 @@ public class Task13Implement extends Task13 {
             System.out.println();
         }
     }
+
     @Override
     public int[][] createSquareMatrix(int dimension) {
         int diff = 1;

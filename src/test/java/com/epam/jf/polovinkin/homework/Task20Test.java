@@ -15,7 +15,7 @@ class Task20Test {
         poems.add(new Task20.Poem(Arrays.asList("Sas", "sadasd", "asdasd"), "author2"));
         poems.add(new Task20.Poem(Arrays.asList("qqqq", "qqqqqqq", "aqqqqqsdasd"), "author1"));
 
-        String[] actualStrings = {"aqqqqqsdasd", "qqqqqqq", "asdas1d", "sadasd", "qqqq", "Sa1s"};
-        assertArrayEquals(actualStrings, new Task20().sortPoems(poems, "author1").toArray());
+        String[] actualStrings = {"Sa1s", "qqqq", "sadasd", "asdas1d", "qqqqqqq", "aqqqqqsdasd"};
+        assertArrayEquals( actualStrings, new Task20().sortPoems(poems, "author1").toArray());
     }
 }

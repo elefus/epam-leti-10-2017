@@ -14,7 +14,7 @@ public class Task20 extends com.epam.jf.common.homework.Task20 {
                                             .collect(Collectors.toList()))
                     .orElse(Collections.emptyList())
                     .stream()
-                    .sorted((a, b) -> b.length() - a.length())
+                    .sorted(Comparator.comparingInt(String::length))
                     .collect(Collectors.toList());
     }
 

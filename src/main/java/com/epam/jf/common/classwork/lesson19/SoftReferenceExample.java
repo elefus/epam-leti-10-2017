@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class SoftReferenceExample {
 
     @SneakyThrows
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         B ref = new B();
         SoftReference<B> softReference = new SoftReference<>(ref);
 

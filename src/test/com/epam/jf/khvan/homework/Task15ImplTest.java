@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class Task15ImplementTest  {
+public class Task15ImplTest {
     @Test
     void verticalShiftTest() {
         int[][] matrix = {{1,2,6},
@@ -14,7 +14,7 @@ public class Task15ImplementTest  {
                                 {7,8,9},
                                 {1,2,6}};
 
-        int [][] matrixTest = new Task15Implement().verticalCyclicShift(matrix,2);
+        int [][] matrixTest = new Task15Impl().verticalCyclicShift(matrix,2);
         assertArrayEquals(matrixTest,resultMatrix);
     }
 
@@ -27,7 +27,7 @@ public class Task15ImplementTest  {
                                         {7,8,9},
                                         {1,2,6}};
 
-        int [][] matrixTest = new Task15Implement().verticalCyclicShift(matrix,-1);
+        int [][] matrixTest = new Task15Impl().verticalCyclicShift(matrix,-1);
         assertArrayEquals(matrixTest,resultMatrix);
     }
     @Test
@@ -38,7 +38,7 @@ public class Task15ImplementTest  {
         int[][] resultMatrix = {{6,1,8},
                                 {3,4,5},
                                 {9,7,2}};
-        int [][] matrixTest =new Task15Implement().horizontalCyclicShift(matrix,1);
+        int [][] matrixTest =new Task15Impl().horizontalCyclicShift(matrix,1);
         assertArrayEquals(matrixTest,resultMatrix);
 
     }
@@ -51,7 +51,7 @@ public class Task15ImplementTest  {
         int[][] resultMatrix = {{6,1,8},
                                 {3,4,5},
                                 {9,7,2}};
-        int [][] matrixTest =new Task15Implement().horizontalCyclicShift(matrix,-2);
+        int [][] matrixTest =new Task15Impl().horizontalCyclicShift(matrix,-2);
         assertArrayEquals(matrixTest,resultMatrix);
 
     }

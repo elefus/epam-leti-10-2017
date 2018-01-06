@@ -2,7 +2,7 @@ package com.epam.jf.khvan.homework;
 
 import com.epam.jf.common.homework.Task15;
 
-public class Task15Implement extends Task15 {
+public class Task15Impl extends Task15 {
 
     public static void main(String[] args) {
         int [][] matrix = {{1,2,3},{4,5,6},{7,8,9}};
@@ -15,7 +15,7 @@ public class Task15Implement extends Task15 {
         }
         System.out.println();
 
-        int [][] shiftedMatrix = new Task15Implement().verticalCyclicShift(matrix,1);
+        int [][] shiftedMatrix = new Task15Impl().verticalCyclicShift(matrix,1);
 
         for (int i = 0; i < shiftedMatrix[0].length; i++) {
             for (int j = 0; j < shiftedMatrix[0].length; j++) {

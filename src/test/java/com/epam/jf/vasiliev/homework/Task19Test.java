@@ -30,7 +30,6 @@ class Task19Test {
         int[][] expected = new int[0][0];
         int[][] res = ref.rotateMatrixCounterclockwise(src);
 
-        System.out.println(Arrays.deepToString(res));
         assertArrayEquals(expected, res);
     }
 
@@ -46,7 +45,6 @@ class Task19Test {
                 {1, 4, 7}};
         int[][] res = ref.rotateMatrixCounterclockwise(src);
 
-        System.out.println(Arrays.deepToString(res));
         assertArrayEquals(expected, res);
     }
 
@@ -62,7 +60,6 @@ class Task19Test {
                 {1, 4, 7, 10}};
         int[][] res = ref.rotateMatrixCounterclockwise(src);
 
-        System.out.println(Arrays.deepToString(res));
         assertArrayEquals(expected, res);
     }
 }

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class Task14ImplementTest {
+public class Task14Test {
 
     @Test
     void sortByColumnTest1() {

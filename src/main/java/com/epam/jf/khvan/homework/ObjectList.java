@@ -2,17 +2,17 @@ package com.epam.jf.khvan.homework;
 
 import java.util.Objects;
 
-public class ObjectArrayList extends AbstractObjectArrayList {
+public class ObjectList extends AbstractObjectList {
 
-    public ObjectArrayList() {
+    public ObjectList() {
         super();
     }
 
-    public ObjectArrayList(int capacity) {
+    public ObjectList(int capacity) {
         super(capacity);
     }
 
-    public ObjectArrayList(ObjectArrayList list) {
+    public ObjectList(ObjectList list) {
         super(list);
         size = list.size;
     }
@@ -54,7 +54,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean containsAll(AbstractObjectArrayList list) {
+    public boolean containsAll(AbstractObjectList list) {
         boolean flag = true;
         for (int i = 0; i < list.size(); i++) {
             if ( this.contains( list.get(i))){
@@ -95,7 +95,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean removeAll(AbstractObjectArrayList list) {
+    public boolean removeAll(AbstractObjectList list) {
         for (int i = 0; i < list.size(); i++) {
             if ( indexOf(list.values[i]) != -1){
                remove(indexOf(list.values[i]));
@@ -112,7 +112,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public boolean addAll(AbstractObjectArrayList list) {
+    public boolean addAll(AbstractObjectList list) {
         checkCapacityOfArray(list.size() + size);
         System.arraycopy( list.values,0, values, size, list.size());
         size = size + list.size();
@@ -167,7 +167,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     @Override
-    public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+    public AbstractObjectList subList(int fromInclusive, int toInclusive) {
         subListRangeCheck(fromInclusive, toInclusive, size);
         return new Sublist(this, 0, fromInclusive, toInclusive);
     }
@@ -208,14 +208,14 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
     }
 
-    private class Sublist extends AbstractObjectArrayList{
-        AbstractObjectArrayList parent;
+    private class Sublist extends AbstractObjectList {
+        AbstractObjectList parent;
         int size;
         int offset;
         int fromIndex;
         int toIndex;
 
-        public Sublist (AbstractObjectArrayList parent, int fromIndex, int toIndex, int offset) {
+        public Sublist (AbstractObjectList parent, int fromIndex, int toIndex, int offset) {
             super();
             size = toIndex - fromIndex;
             this.parent = parent;
@@ -254,7 +254,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public boolean containsAll(AbstractObjectArrayList list) {
+        public boolean containsAll(AbstractObjectList list) {
             boolean flag = true;
             for (int i = 0; i < list.size(); i++){
                 if ( this.contains( list.get(i))){
@@ -279,7 +279,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public boolean removeAll(AbstractObjectArrayList list) {
+        public boolean removeAll(AbstractObjectList list) {
             return false;
         }
 
@@ -291,7 +291,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public boolean addAll(AbstractObjectArrayList list) {
+        public boolean addAll(AbstractObjectList list) {
             checkCapacityOfArray(list.size() + parent.size);
             System.arraycopy( parent.values , toIndex + 1, parent.values, toIndex + list.size() + 1, parent.size - toIndex - 1 );
             System.arraycopy( list.values,0, parent.values, toIndex, list.size());
@@ -343,7 +343,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
         }
 
         @Override
-        public AbstractObjectArrayList subList(int fromInclusive, int toInclusive) {
+        public AbstractObjectList subList(int fromInclusive, int toInclusive) {
             subListRangeCheck(fromInclusive, toInclusive, size);
             return new Sublist(this, 0, fromInclusive, toInclusive);
         }

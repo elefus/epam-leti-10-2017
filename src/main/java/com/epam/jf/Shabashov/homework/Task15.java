@@ -26,6 +26,7 @@ public class Task15 {
      * @return Новая матрица, содержащая результат применения операции.
      */
     public int[][] horizontalCyclicShift(int[][] matrix, int numberShifts){
+        if (matrix.length==0) return new int[0][0];
         int[][] matr = new int[matrix.length][matrix[0].length];
         int n;
         numberShifts%=matrix[0].length;

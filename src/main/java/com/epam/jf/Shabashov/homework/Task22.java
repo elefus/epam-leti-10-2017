@@ -11,14 +11,24 @@ public class Task22 {
 
     /**
      * Осуществляет сложение двух многочленов.
-     * @param first Первый многочлен.
+     *
+     * @param first  Первый многочлен.
      * @param second Второй многочлен.
      * @return Многочлен, полученный в результате сложения.
      */
-    public HashMap<Integer, Integer> addPolynomials(HashMap<Integer, Integer> first, HashMap<Integer, Integer> second){
-        HashMap<Integer, Integer> map = new HashMap<>();
-        first.forEach(map::put);
-        second.forEach((key,val)->map.put(key,map.containsKey(key)?val+map.get(key): val));
+    public HashMap<Integer, Integer> addPolynomials(HashMap<Integer, Integer> first, HashMap<Integer, Integer> second) {
+        HashMap<Integer, Integer> map = new HashMap<>(first);
+        second.forEach((key, val) -> {
+            if (map.containsKey(key)) {
+                if (val + map.get(key) != 0) {
+                    map.put(key, val + map.get(key));
+                }else{
+                    map.remove(key);
+                }
+            } else {
+                map.put(key, val);
+            }
+        });
         return map;
     }
 }

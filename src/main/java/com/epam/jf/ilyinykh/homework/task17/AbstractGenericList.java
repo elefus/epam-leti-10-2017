@@ -118,12 +118,16 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
         @Override
         public boolean add(E value) {
-            return AbstractGenericList.this.add(value, to);
+            AbstractGenericList.this.add(value, to);
+            to++;
+            return true;
         }
 
         @Override
         public boolean add(E value, int index) {
-            return AbstractGenericList.this.add(value, index + from);
+            AbstractGenericList.this.add(value, index + from);
+            to++;
+            return true;
         }
 
         @Override
@@ -138,19 +142,21 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
         @Override
         public E remove(int index) {
-            return AbstractGenericList.this.remove(index + from);
+            E item = AbstractGenericList.this.remove(index + from);
+            to--;
+            return item;
         }
 
         @Override
         public void clear() {
-            for (int i = from; i < to; i++) {
-                AbstractGenericList.this.remove(i);
+            for (int i = from; i < to; to--) {
+                AbstractGenericList.this.remove(from);
             }
         }
 
         @Override
         public boolean addAll(GenericList<? extends E> list) {
-            for (int i = 0; i < list.size(); i++) {
+            for (int i = 0; i < list.size(); i++, to++) {
                 AbstractGenericList.this.add(list.get(i), to + i);
             }
             return true;
@@ -195,7 +201,9 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
         @Override
         public E remove(E value) {
-            return AbstractGenericList.this.remove(from + indexOf(value));
+            E remove = AbstractGenericList.this.remove(from + indexOf(value));
+            to--;
+            return remove;
         }
 
         @Override
@@ -218,12 +226,16 @@ public abstract class AbstractGenericList<E> implements GenericList<E> {
 
         @Override
         protected void checkIndex(int index) {
-            super.checkIndex(index);
+            if (index < 0 || index >= from - to) {
+                throw new IndexOutOfBoundsException();
+            }
         }
 
         @Override
         protected void checkIndexes(int... indexes) {
-            super.checkIndexes(indexes);
+            for (int index : indexes) {
+                checkIndex(index);
+            }
         }
 
         @Override

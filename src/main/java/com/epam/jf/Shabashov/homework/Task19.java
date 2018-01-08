@@ -8,6 +8,7 @@ class Task19 {
      * @return Новая матрица, элементы которой получены путем поворота исходной.
      */
     int[][] rotateMatrixCounterclockwise(int[][] source) {
+        if (source.length==0) return new int[0][0];
         int[][] matr = new int[source[0].length][source.length];
         for (int i = 0; i < source.length; i++) {
             for (int j = 0; j < source[i].length; j++) {

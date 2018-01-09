@@ -6,6 +6,7 @@ public class Task19 extends com.epam.jf.common.homework.Task19 {
      * @param source Исходная матрица.
      * @return Новая матрица, элементы которой получены путем поворота исходной.
      */
+    @Override
     public int[][] rotateMatrixCounterclockwise(int[][] source) {
         if (source.length == 0) {
             return new int[][]{};

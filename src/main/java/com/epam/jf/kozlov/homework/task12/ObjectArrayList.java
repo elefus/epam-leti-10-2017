@@ -84,6 +84,9 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public Object set(Object value, int index) {
+        if (index < 0 || index >= size) {
+            return null;
+        }
         Object oldObject = values[index];
         values[index] = value;
         return oldObject;
@@ -174,9 +177,9 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     }
 
     public boolean equeals(Object o) {
-        return o == this || o instanceof AbstractObjectArrayList &&
-                ((AbstractObjectArrayList) o).size == size &&
-                containsAll((AbstractObjectArrayList) o);
+        return o == this || o instanceof AbstractObjectArrayList
+                && ((AbstractObjectArrayList) o).size == size
+                && containsAll((AbstractObjectArrayList) o);
     }
 
     private void ensureCapacity(int minCapacity) {

@@ -27,8 +27,7 @@ public class ObjectArrayList extends AbstractObjectArrayList {
             return false;
         }
         ensureCapacity(size + 1);
-        System.arraycopy(values, index, values, index + 1,
-                size - index);
+        System.arraycopy(values, index, values, index + 1, size - index);
         values[index] = value;
         size++;
         return true;

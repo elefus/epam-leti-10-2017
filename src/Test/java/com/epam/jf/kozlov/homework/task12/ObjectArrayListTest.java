@@ -97,17 +97,6 @@ class ObjectArrayListTest {
     }
 
     @Test
-    void setTestNotNull() {
-        ObjectArrayList list = new ObjectArrayList();
-        for (int i = 0; i < 5; i++) {
-            list.add(i);
-        }
-        assertEquals(3, list.set(123, 3));
-        assertEquals(123, list.get(3));
-    }
-
-
-    @Test
     void clearTest() {
         ObjectArrayList list = new ObjectArrayList();
         for (int i = 0; i < 5; i++) {
@@ -152,7 +141,7 @@ class ObjectArrayListTest {
     }
 
     @Test
-    void subListTestTest() {
+    void subListTest() {
         ObjectArrayList list = new ObjectArrayList();
         ObjectArrayList list2 = new ObjectArrayList();
         for (int i = 0; i < 5; i++) {

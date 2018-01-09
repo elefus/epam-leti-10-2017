@@ -13,7 +13,7 @@ public interface GenericList<E> {
     
     boolean contains(E e);
     
-    boolean containsAll(GenericList<? extends E> anotherList);
+    boolean containsAll(GenericList<? extends E> fromList);
 
     E get(int index);
 
@@ -29,9 +29,9 @@ public interface GenericList<E> {
    
     boolean removeAll(E e);
     
-    boolean removeAll(GenericList<? extends E> anotherList);
+    boolean removeAll(GenericList<? extends E> fromList);
     
-    boolean addAll(GenericList<? extends E> anotherList);
+    boolean addAll(GenericList<? extends E> fromList);
     
     void clear();
     

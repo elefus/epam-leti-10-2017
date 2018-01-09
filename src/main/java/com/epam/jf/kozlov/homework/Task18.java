@@ -10,6 +10,7 @@ public class Task18 extends com.epam.jf.common.homework.Task18 {
      * @param source Анализируемый список.
      * @return Подсписок, выделенный из исходного, содержащий найденную подпоследовательность {@link List#subList(int, int)}.
      */
+    @Override
     public  <T extends Comparable<T>> List<T> getSublistOfMaximumIncreasingSequence(List<T> source) {
         if (source.isEmpty()) {
             return Collections.emptyList();

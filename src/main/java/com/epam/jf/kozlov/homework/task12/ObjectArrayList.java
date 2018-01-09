@@ -156,11 +156,14 @@ public class ObjectArrayList extends AbstractObjectArrayList {
 
     @Override
     public ObjectArrayList subList(int fromInclusive, int toInclusive) {
-        if (fromInclusive < 0) {
+        if (fromInclusive < 0 || fromInclusive >= size) {
             fromInclusive = 0;
         }
-        if (toInclusive >= size) {
+        if (toInclusive >= size || toInclusive < 0) {
             toInclusive = size - 1;
+        }
+        if (fromInclusive > toInclusive) {
+            throw new IllegalArgumentException();
         }
         ObjectArrayList list = new ObjectArrayList(toInclusive - fromInclusive + 1);
         list.size = toInclusive - fromInclusive + 1;

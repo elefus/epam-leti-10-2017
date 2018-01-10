@@ -1,5 +1,7 @@
 package com.epam.jf.polovinkin.homework.task16;
 
+import javax.naming.OperationNotSupportedException;
+
 /**
  * Необходимо в своем пакете создать типизированный интерфейс GenericList.
  * В нем следует определить методы, общие для различных реализаций списков.
@@ -19,13 +21,13 @@ public interface GenericList<E> {
 
     boolean remove(E element);
 
-    boolean removeAll(GenericList<E> list);
+    boolean removeAll(GenericList<? extends E> list);
 
     void clear();
 
     boolean contains(E element);
 
-    boolean containsAll(GenericList<E> list);
+    boolean containsAll(GenericList<? extends E> list);
 
     boolean isEmpty();
 
@@ -37,5 +39,5 @@ public interface GenericList<E> {
 
     int lastIndexOf(E element);
 
-    GenericList<? extends E> subList(int fromIndex, int toIndex);
+    GenericList<? extends E> subList(int fromIndex, int toIndex) throws OperationNotSupportedException;
 }

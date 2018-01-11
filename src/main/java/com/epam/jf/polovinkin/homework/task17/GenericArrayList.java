@@ -1,0 +1,116 @@
+package com.epam.jf.polovinkin.homework.task17;
+
+import com.epam.jf.polovinkin.homework.task16.GenericList;
+
+/**
+ * Реализация динамически расширяемого списка на основе массива.
+ * @param <E> Тип элементов, хранящихся в списке.
+ */
+public class GenericArrayList<E> extends AbstractGenericList<E> {
+    public GenericArrayList() {
+        super();
+        data = allocate(DEFAULT_CAPACITY);
+    }
+
+    public GenericArrayList(GenericList<? extends E> list) {
+        this();
+        addAll(list);
+    }
+
+    @Override
+    public boolean add(E value) {
+        ensureCapacity(size + 1);
+
+        data[size] = value;
+        size++;
+
+        return true;
+    }
+
+    @Override
+    public boolean add(int index, E value) {
+        ensureCapacity(size + 1);
+        checkIndex(index);
+
+        E[] newData = allocate(size + 1);
+        newData[index] = value;
+
+        System.arraycopy(data, 0, newData, 0, index);
+        System.arraycopy(data, index, newData, index + 1, size - index);
+
+        size++;
+        data = newData;
+        return true;
+    }
+
+    @Override
+    public E get(int index) {
+        checkIndex(index);
+        return data[index];
+    }
+
+    @Override
+    public E set(int index, E value) {
+        checkIndex(index);
+        E current = data[index];
+        data[index] = value;
+        return current;
+    }
+
+    @Override
+    public E remove(int index) {
+        checkIndex(index);
+        E old = data[index];
+
+        if (index == size - 1) {
+            size--;
+            return old;
+        }
+
+        E[] newData = allocate(size - 1);
+
+        System.arraycopy(data, 0, newData, 0, index);
+        System.arraycopy(data, index + 1, newData, index, size - index - 1);
+
+        size--;
+        data = newData;
+        return old;
+    }
+
+    @Override
+    public void clear() {
+        size = 0;
+        data = allocate(DEFAULT_CAPACITY);
+    }
+
+    public void trimToSize() {
+        E[] newData = allocate(size);
+
+        System.arraycopy(data, 0, newData, 0, size);
+
+        data = newData;
+    }
+
+    private final int DEFAULT_CAPACITY = 4;
+
+    private E[] data;
+
+    @SuppressWarnings("unchecked")
+    private E[] allocate(int n) {
+        return (E[]) new Object[n];
+    }
+
+    private void ensureCapacity(int n) {
+        if (data.length < n) {
+            int newSize = data.length;
+            while (newSize < n) {
+                newSize *= 2;
+            }
+
+            E[] newData = allocate(newSize);
+
+            System.arraycopy(data, 0, newData, 0, size);
+            data = newData;
+        }
+    }
+}

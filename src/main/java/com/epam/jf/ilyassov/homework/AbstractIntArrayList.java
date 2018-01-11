@@ -3,15 +3,18 @@ package com.epam.jf.ilyassov.homework;
 public abstract class AbstractIntArrayList {
 
     protected int[] values;
+    protected int length;
 
     public AbstractIntArrayList() {
         // TODO values (на 10 элементов)
         values=new int[10];
+        length=0;
     }
 
     public AbstractIntArrayList(int capacity) {
         // TODO value[capacity]
         values=new int[capacity];
+        length=0;
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {

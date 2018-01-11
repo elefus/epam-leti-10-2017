@@ -13,26 +13,28 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean add(int value) {
-        int NewArray[]=new int[values.length+1];
-        NewArray[values.length]=value;
-        for (int i = 0; i < values.length; i++) {
+        int NewArray[]=new int[length+1];
+        NewArray[length]=value;
+        for (int i = 0; i < length; i++) {
             NewArray[i]=values[i];
         }
         values=NewArray;
+        length++;
         return true;
     }
 
     @Override
     public boolean add(int value, int index) {
-        int NewArray[]=new int[values.length+1];
+        int NewArray[]=new int[length+1];
         NewArray[index-1]=value;
         for (int i = 0; i < index-1; i++) {
             NewArray[i]=values[i];
         }
-        for (int i = index-1; i < values.length; i++) {
+        for (int i = index-1; i < length; i++) {
             NewArray[i+1]=values[i];
         }
         values=NewArray;
+        length++;
         return true;
     }
 
@@ -52,28 +54,26 @@ public class IntArrayList extends AbstractIntArrayList {
 
     @Override
     public boolean containsAll(AbstractIntArrayList list) {
-        if(this.size()!=list.size())
-            return false;
         for (int i : list.values) {
-            if(contains(i)==false){
+            if(!contains(i)){
                 return false;
             }
-
         }
         return true;
     }
 
     @Override
     public int remove(int index) {
-        int[] NewArray = new int[values.length-1];
+        int[] NewArray = new int[length-1];
         int temp=this.get(index);
         for (int i = 0; i < index - 1; i++) {
             NewArray[i]=values[i];
         }
-        for (int i = index; i <values.length ; i++) {
+        for (int i = index; i <length ; i++) {
             NewArray[i-1]=values[i];
         }
         values=NewArray;
+        length--;
         return temp;
     }
 
@@ -95,21 +95,22 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public void clear() {
         values=new int[0];
+        length=0;
     }
 
     @Override
     public int size() {
-        return this.values.length;
+        return this.length;
     }
 
     @Override
     public boolean isEmpty() {
-        return values.length == 0;
+        return length == 0;
     }
 
     @Override
     public int indexOf(int value) {
-        for (int i = 0; i <values.length ; i++) {
+        for (int i = 0; i <length ; i++) {
             if(value==values[i])
             {
                 return i;
@@ -121,7 +122,7 @@ public class IntArrayList extends AbstractIntArrayList {
     @Override
     public int lastIndexOf(int value) {
         int result=-11;
-        for (int i = 0; i <values.length ; i++) {
+        for (int i = 0; i <length ; i++) {
             if(value==values[i])
             {
                 result=i;
@@ -134,7 +135,7 @@ public class IntArrayList extends AbstractIntArrayList {
     public AbstractIntArrayList subList(int fromInclusive, int toInclusive) {
         IntArrayList intArrayList = new IntArrayList(toInclusive-fromInclusive+1);
         int j=fromInclusive;
-        for (int i = 0; i <intArrayList.values.length; i++) {
+        for (int i = 0; i <intArrayList.length; i++) {
             intArrayList.values[i]=this.values[j];
             j++;
         }

@@ -22,12 +22,11 @@ public class Task8 {
 
     public static boolean Number(String arr)
     {
-        for(int i=0;i<arr.length();++i){
-            if(!arr.matches("\\d+")) {
+
+        if(!arr.matches("\\d+"))
                 return false;
-            }
-        }
-        return true;
+        else
+            return true;
 
     }
 

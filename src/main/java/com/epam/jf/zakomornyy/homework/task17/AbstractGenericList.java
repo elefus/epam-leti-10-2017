@@ -8,8 +8,6 @@ import com.epam.jf.zakomornyy.homework.task16.GenericList;
  */
 public abstract class AbstractGenericList<E> implements GenericList<E> {
     protected int size = 0;
-    protected AbstractGenericList() {
-    }
 
     public boolean isEmpty() {
         return size() == 0;

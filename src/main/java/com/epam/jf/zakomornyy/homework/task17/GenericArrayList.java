@@ -13,12 +13,18 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
     private Object[] values;
 
     public GenericArrayList() {
+        values = new Object[10];
     }
 
     public GenericArrayList(int capacity) {
         values = new Object[capacity];
     }
 
+    public GenericArrayList(GenericArrayList<? extends E> list) {
+        size = list.size;
+        values = new Object[size];
+        System.arraycopy(list.values, 0, values, 0, size);
+    }
 
     @Override
     public Object[] toArray() {
@@ -27,20 +33,24 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public boolean add(E e) {
-        Object[] buffArray = new Object[this.size() + 1];
-        System.arraycopy(this.values, 0, buffArray, 0, this.size());
-        buffArray[this.size()] = e;
-        this.values = buffArray;
+        if(values.length == size) {
+            Object[] buffArray = new Object[size + 1];
+            System.arraycopy(values, 0, buffArray, 0, size);
+            buffArray[size++] = e;
+            values = buffArray;
+        } else {
+            values[size++] = e;
+        }
         return true;
     }
 
     @Override
     public boolean remove(Object o) {
-        for(int i = 0; i < this.size(); i++) {
-            if(this.get(i).equals(o)) {
-                this.remove(i);
+        for(int i = 0; i < size; i++) {
+            if(get(i).equals(o)) {
+                remove(i);
+                size--;
                 return true;
-
             }
         }
         return false;
@@ -54,7 +64,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public E set(int index, E element) {
-        if(index < size()) {
+        if(index < size) {
             E prevElement = get(index);
             values[index] = element;
             return prevElement;
@@ -64,11 +74,11 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public void add(int index, E element) {
-        Object[] buffArray = new Object[this.size() + 1];
-        System.arraycopy(this.values, 0, buffArray, 0, index);
-        System.arraycopy(this.values, index, buffArray, index + 1, buffArray.length - index - 1);
+        Object[] buffArray = new Object[++size];
+        System.arraycopy(values, 0, buffArray, 0, index);
+        System.arraycopy(values, index, buffArray, index + 1, buffArray.length - index - 1);
         buffArray[index] = element;
-        this.values = buffArray;
+        values = buffArray;
     }
 
     @SuppressWarnings("unchecked")
@@ -76,10 +86,10 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
     public E remove(int index) {
         if(index < size()) {
             Object o = this.values[index];
-            Object[] buffArray = new Object[this.size() - 1];
-            System.arraycopy(this.values, 0, buffArray, 0, index);
-            System.arraycopy(this.values, index + 1, buffArray, index, buffArray.length - index);
-            this.values = buffArray;
+            Object[] buffArray = new Object[--size];
+            System.arraycopy(values, 0, buffArray, 0, index);
+            System.arraycopy(values, index + 1, buffArray, index, buffArray.length - index);
+            values = buffArray;
             return (E) o;
         }
         return null;
@@ -87,8 +97,8 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public int indexOf(Object o) {
-        for(int i = 0; i < size(); i++) {
-            if(o.equals(this.values[i])) {
+        for(int i = 0; i < size; i++) {
+            if(o.equals(values[i])) {
                 return i;
             }
         }
@@ -97,22 +107,20 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
 
     @Override
     public int lastIndexOf(Object o) {
-        for(int i = size() - 1; i >= 0; i++) {
-            if(o.equals(this.values[i])) {
+        for(int i = size - 1; i >= 0; i--) {
+            if(o.equals(values[i])) {
                 return i;
             }
         }
         return -1;
     }
 
-
     @Override
     public GenericList<E> subList(int fromIndex, int toIndex) {
         GenericArrayList genericArrayList = new GenericArrayList(toIndex - fromIndex + 1);
-        System.arraycopy(this.values, fromIndex,
+        System.arraycopy(values, fromIndex,
                 genericArrayList.values, 0,
-                genericArrayList.size());
+                genericArrayList.size);
         return genericArrayList;
     }
-
 }

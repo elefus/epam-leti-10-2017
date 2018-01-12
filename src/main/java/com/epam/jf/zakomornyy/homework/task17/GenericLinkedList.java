@@ -16,13 +16,12 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     }
 
     public GenericLinkedList(GenericList<? extends E> c) {
-        this();
         addAll(c);
     }
 
     @Override
     public Object[] toArray() {
-        Object[] array = new Object[size()];
+        Object[] array = new Object[size];
         Node<E> elem = first;
         for(int i = 0; i < size(); i++) {
             array[i] = elem.item;
@@ -80,7 +79,7 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public E set(int index, E element) {
         Node<E> elem = first;
-        for(int i = 0; i < size(); i++) {
+        for(int i = 0; i < size; i++) {
             if(i == index) {
                 E prevElement = elem.item;
                 elem.item = element;
@@ -94,7 +93,7 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public void add(int index, E element) {
         Node<E> elem = first;
-        for(int i = 0; i < size(); i++) {
+        for(int i = 0; i < size; i++) {
             if(i == index) {
                 Node<E> newNode = new Node<>(elem.prev, element, elem);
                 if(index == 0) {
@@ -114,12 +113,12 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public E remove(int index) {
         Node<E> elem = first;
-        for(int i = 0; i < size(); i++) {
+        for(int i = 0; i < size; i++) {
             if(i == index) {
                 if(index == 0) {
                     first = first.next;
                     first.prev = null;
-                } else if(index == size() - 1) {
+                } else if(index == size - 1) {
                     last = last.prev;
                     last.next = null;
                 } else {
@@ -137,7 +136,7 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public int indexOf(Object o) {
         Node<E> elem = first;
-        for(int i = 0; i < size(); i++) {
+        for(int i = 0; i < size; i++) {
             if(elem.item.equals(o)) {
                 return i;
             }
@@ -149,7 +148,7 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
     @Override
     public int lastIndexOf(Object o) {
         Node<E> elem = last;
-        for(int i = size() - 1; i >= 0; i--) {
+        for(int i = size - 1; i >= 0; i--) {
             if(elem.item.equals(o)) {
                 return i;
             }

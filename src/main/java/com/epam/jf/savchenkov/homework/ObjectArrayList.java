@@ -27,11 +27,12 @@ public class ObjectArrayList extends AbstractObjectArrayList {
     @Override
     public boolean add(Object value) {
         add(value, this.size());
+        return true;
     }
 
     @Override
     public boolean add(Object value, int index) {
-        if (index > size || index < 0) {
+        if (index > size() || index < 0) {
             throw new ArrayIndexOutOfBoundsException("Exception from add(). Index " + index + " actual size " + size);
         } else {
             Object[] temp = new Object[this.size() + 1];

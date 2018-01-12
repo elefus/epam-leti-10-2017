@@ -7,17 +7,22 @@ package com.epam.jf.common.homework.task12;
 public abstract class AbstractObjectArrayList {
 
     protected Object[] values;
+    protected int size;
 
     public AbstractObjectArrayList() {
-        // TODO values (на 10 элементов)
+        values = new Object[10];
+        size = 0;
     }
 
     public AbstractObjectArrayList(int capacity) {
-        // TODO value[capacity]
+        values = new Object[capacity];
+        size = 0;
     }
 
     public AbstractObjectArrayList(AbstractObjectArrayList list) {
-        // TODO конструктор копирования
+        values = new Object[list.size()];
+        System.arraycopy(list.values, 0, this.values, 0, list.size());
+        size = list.size;
     }
 
     public abstract boolean add(Object value);

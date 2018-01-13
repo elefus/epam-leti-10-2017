@@ -6,7 +6,7 @@ public interface GenericList<E> {
 
     boolean add(E value, int index);
 
-    int get(int index);
+    E get(int index);
 
     boolean contains(E value);
 
@@ -14,9 +14,13 @@ public interface GenericList<E> {
 
     E remove(int index);
 
+    E remove(E value);
+
+    boolean removeAll(GenericList<? extends E> list);
+
     E set(E value, int index);
 
-    boolean addAll(GenericList<E> list);
+    boolean addAll(GenericList<? extends E> list);
 
     void clear();
 

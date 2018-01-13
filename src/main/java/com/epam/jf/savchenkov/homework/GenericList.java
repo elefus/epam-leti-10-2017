@@ -24,9 +24,9 @@ public interface GenericList<E> {
 
     boolean isEmpty();
 
-    int indexOf(int value);
+    int indexOf(E value);
 
-    int lastIndexOf(int value);
+    int lastIndexOf(E value);
 
     GenericList<E> subList(int fromInclusive, int toInclusive);
 }

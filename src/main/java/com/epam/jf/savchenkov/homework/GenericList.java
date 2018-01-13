@@ -8,7 +8,7 @@ public interface GenericList<E> {
 
     int get(int index);
 
-    boolean contains(int value);
+    boolean contains(E value);
 
     boolean containsAll(GenericList<E> list);
 

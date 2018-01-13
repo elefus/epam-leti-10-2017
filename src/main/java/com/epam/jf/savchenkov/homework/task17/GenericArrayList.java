@@ -83,7 +83,7 @@ public class GenericArrayList<E> extends AbstractGenericList<E> {
     }
 
     @Override
-    public boolean removeAll(GenericArrayList<? extends E> list) {
+    public boolean removeAll(GenericList<? extends E> list) {
         for (int i = 0; i < list.size(); i++) {
             remove(list.get(i));
         }

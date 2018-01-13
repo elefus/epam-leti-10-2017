@@ -8,9 +8,9 @@ import com.epam.jf.zakomornyy.homework.task16.GenericList;
  */
 public class GenericLinkedList<E> extends AbstractGenericList<E> {
 
-    Node<E> first;
+    private Node<E> first;
 
-    Node<E> last;
+    private Node<E> last ;
 
     public GenericLinkedList() {
     }

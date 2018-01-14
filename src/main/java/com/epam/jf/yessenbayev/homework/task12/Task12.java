@@ -168,7 +168,7 @@ public class Task12 extends com.epam.jf.yessenbayev.homework.task12.AbstractObje
         if (size != values.length) {
            Object[] trimedArray = new Object[size];
            System.arraycopy(values,0, trimedArray, 0, size);
-           values = trimedArray;
+           values = trimedArray; //123
         }
     }
 

@@ -1,10 +1,10 @@
 package com.epam.jf.savchenkov.homework;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Task21 extends com.epam.jf.common.homework.Task21 {
-    @Override
+public class Task21 {
     public double calcResistance(List<IMeasurement> measurements) {
         BigDecimal dividend = new BigDecimal(0.0);
         BigDecimal divider = new BigDecimal(0.0);
@@ -19,7 +19,7 @@ public class Task21 extends com.epam.jf.common.homework.Task21 {
             divider = divider.add(current.pow(2));
         }
 
-        return dividend.divide(divider, 6).doubleValue();
+        return dividend.divide(divider, BigDecimal.ROUND_HALF_EVEN).doubleValue();
     }
 
     static class Measurement implements IMeasurement {
@@ -41,5 +41,15 @@ public class Task21 extends com.epam.jf.common.homework.Task21 {
         public double getVoltage() {
             return voltage;
         }
+    }
+
+    /** Измерение. */
+    public interface IMeasurement {
+
+        /** @return Измеренное значение тока. */
+        double getCurrent();
+
+        /** @return Измеренное значение напряжения. */
+        double getVoltage();
     }
 }

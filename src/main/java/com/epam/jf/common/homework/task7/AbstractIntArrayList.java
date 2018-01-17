@@ -5,15 +5,16 @@ public abstract class AbstractIntArrayList {
     protected int[] values;
 
     public AbstractIntArrayList() {
-        // TODO values (на 10 элементов)
+        values = new int[10];
     }
 
     public AbstractIntArrayList(int capacity) {
-        // TODO value[capacity]
+        values = new int[capacity];
     }
 
     public AbstractIntArrayList(AbstractIntArrayList list) {
-        // TODO конструктор копирования
+        values = new int[list.size()];
+        System.arraycopy(list.values, 0, values, 0, values.length);
     }
 
     public abstract boolean add(int value);

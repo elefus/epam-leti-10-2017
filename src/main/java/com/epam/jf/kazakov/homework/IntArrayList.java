@@ -138,7 +138,6 @@ public class IntArrayList extends AbstractIntArrayList {
         for (int i = 0; i < subArrayList.size(); ++i) {
             subArrayList.set(this.values[fromInclusive + i], i);
         }
-
         return subArrayList;
     }
 }

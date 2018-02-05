@@ -1,3 +1,8 @@
 .idea
 out
 *.iml
+/src/main/java/com/epam/jf/volkov/homework/task17/KissGenericArrayList.java
+sh.exe.stackdump
+src/main/resources/
+src/test/java/com/epam/jf/common/classwork/
+src/test/resources/

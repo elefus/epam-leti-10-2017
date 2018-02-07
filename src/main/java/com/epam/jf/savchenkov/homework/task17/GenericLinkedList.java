@@ -173,7 +173,7 @@ public class GenericLinkedList<E> extends AbstractGenericList<E> {
         Node node;
         if (size / 2 < index) {
             node = tail;
-            for (int i = size - 2; i >= index; i++) {
+            for (int i = size - 2; i >= index; i--) {
                 node = node.prev;
             }
         } else {
